@@ -10,6 +10,6 @@ public class CalendarViewHolder extends RecyclerView.ViewHolder {
     private final TextView dayOfMonth;
     public CalendarViewHolder(@NonNull View itemView) {
         super(itemView);
-        dayOfMonth = itemView.findViewById(R.id.cellDay=)
+        dayOfMonth = itemView.findViewById(R.id.cellDayText);
     }
 }
