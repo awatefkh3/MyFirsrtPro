@@ -7,6 +7,16 @@ public class Item{
     private boolean isHappy;
     private int amount;
 
+    @Override
+    public String toString() {
+        return "Item{" +
+                "description='" + description + '\'' +
+                ", resid=" + resid +
+                ", isHappy=" + isHappy +
+                ", amount=" + amount +
+                '}';
+    }
+
     public Item(String description, int resid, boolean isHappy, int amount) {
         this.description = description;
         this.resid = resid;
