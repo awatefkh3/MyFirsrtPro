@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/androidtwo"
+    tools:context=".SignUpActivity">
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:stretchColumns="1">
+
+        <TableRow >
+
+            <EditText
+                android:id="@+id/editTextEmailSignUp"
+                style="@style/style_one"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/validEmail"
+                style="@style/style_one"
+                android:text=""
+            />
+        </TableRow>
+        <TableRow>
+
+            <EditText
+                android:id="@+id/editTextPasswordSignUp"
+                style="@style/style_one"
+                android:hint="Password"
+                android:inputType="textPassword" />
+        </TableRow>
+<TableRow>
+
+    <TextView
+        android:id="@+id/textViewInclude"
+        style="@style/style_one"
+        android:text="password must include" />
+
+</TableRow>
+<TableRow>
+    <TextView
+        android:id="@+id/pass_1"
+        style="@style/style_one"
+        android:text="a lowerCase"
+        android:textColor="#ff3333" />
+
+</TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/pass_2"
+                style="@style/style_one"
+                android:text="an upperCase"
+                android:textColor="#ff3333"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/pass_3"
+                style="@style/style_one"
+                android:text="a number"
+                android:textColor="#ff3333"
+                />
+
+        </TableRow>
+       <TableRow>
+           <TextView
+               android:id="@+id/pass_4"
+                style="@style/style_one"
+               android:text="8 characters"
+               android:textColor="#ff3333"
+               />
+       </TableRow>
+
+        <TableRow >
+
+            <EditText
+                android:id="@+id/editTextName"
+                style="@style/style_one"
+                android:hint="Name"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+        <TableRow>
+
+            <EditText
+                android:id="@+id/editTextAge"
+                style="@style/style_one"
+                android:hint="Age"
+                android:inputType="number" />
+        </TableRow>
+
+        <TableRow >
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <RadioButton
+                    android:id="@+id/FemaleRadioButton"
+                    style="@style/style_one"
+                    android:text="@string/radioFemale" />
+
+                <RadioButton
+                    android:id="@+id/MaleRadioButton"
+                    style="@style/style_one"
+                    android:text="@string/radioMale" />
+            </RadioGroup>
+
+        </TableRow>
+
+        <TableRow >
+
+            <Button
+                android:id="@+id/buttonSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/black"
+                android:onClick="submit"
+                android:text="Submit" />
+        </TableRow>
+
+
+    </TableLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/androidtwo"
+    tools:context=".WelcomeActivity">
+
+    <TextView
+        android:id="@+id/welcomeText"
+        style="@style/style_one"
+        android:text="Hello There !"
+        />
+
+    <TextView
+        android:id="@+id/welcomeText2"
+        style="@style/style_one"
+        android:text="Welcome To Our Calendar"
+        />
+
+    <TextView
+        android:id="@+id/loginText"
+        style="@style/style_one"
+        android:text="Please Login If You Have An Account" />
+
+    <TextView
+        android:id="@+id/signUpText"
+        style="@style/style_one"
+        android:text="Or Sign Up To Create A New Account"
+        />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:backgroundTint="@color/black"
+        android:onClick="goTologin"
+        android:text="Login" />
+
+    <Button
+        android:id="@+id/buttonSignUp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:backgroundTint="@color/black"
+        android:onClick="goTosignUp"
+        android:text="SignUp" />
+
+</LinearLayout>

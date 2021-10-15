@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/reminder_menu"
+        android:title="Set new reminder" />
+    <item
+        android:id="@+id/alarm_menu"
+        android:title="Set new alarm" />
+    <item android:id="@+id/logOut_menu"
+        android:title="Log Out"/>
+    <item android:id="@+id/about_menu"
+        android:title="About Us"/>
+</menu>
