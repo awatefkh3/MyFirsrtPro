@@ -11,9 +11,9 @@ import java.util.ArrayList;
 
 public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>{
     private final ArrayList<String> daysOfMonth;
-    private final OnItemListener onItemListener ;
+    private final OnItemListener onItemListener;
 
-    public CalendarAdapter(ArrayList<String> daysOfMonth) {
+    public CalendarAdapter(ArrayList<String> daysOfMonth,OnItemListener onItemListener) {
         this.daysOfMonth = daysOfMonth;
         this.onItemListener = onItemListener;
     }
