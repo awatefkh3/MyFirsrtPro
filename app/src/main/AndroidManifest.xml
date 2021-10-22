@@ -13,7 +13,7 @@
             android:name=".ProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".MyCalExample"
+            android:name=".MainActivity"
             android:exported="true" />
         <activity
             android:name=".WelcomeActivity"
@@ -30,9 +30,9 @@
         <activity
             android:name=".SignUpActivity"
             android:exported="true" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MyyyActivity" />
         <activity
-            android:name=".MyyyActivity"
+            android:name=".MyCalExample"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

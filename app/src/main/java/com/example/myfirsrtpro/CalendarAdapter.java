@@ -22,10 +22,11 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>{
     @Override
     public CalendarViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view=inflater.inflate(R.layout.calendar_cell, parent, false);
+        View view = inflater.inflate(R.layout.calendar_cell, parent, false);
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        layoutParams.height = (int) (parent.getHeight() * 0.166666666);
-        return new CalendarViewHolder(view);
+        layoutParams.height = (int) (parent.getHeight()*0.166666666);
+        return new CalendarViewHolder(view, onItemListener);
+
     }
 
     @Override

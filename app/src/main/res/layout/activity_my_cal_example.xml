@@ -9,29 +9,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp">
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="<--"
-            android:textColor="@color/blue"
-            android:background="@null"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:backgroundTint="@color/white"
-            android:onClick="previousMonthAction"/>
-        <TextView
-            android:id="@+id/monthYearTV"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:text="OCT"/>
+        android:orientation="horizontal">
 
         <Button
             android:layout_width="0dp"
@@ -39,12 +20,34 @@
             android:layout_weight="1"
             android:background="@null"
             android:backgroundTint="@color/white"
-            android:text="-->"
+            android:onClick="previousMonthAction"
+            android:text="@string/back"
             android:textColor="@color/blue"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:onClick="nextMonthAction"/>
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/monthYearTV"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="OCT"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:backgroundTint="@color/white"
+            android:onClick="nextMonthAction"
+            android:text="@string/forward"
+            android:textColor="@color/blue"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -107,8 +110,9 @@
             android:textSize="16sp"/>
 
     </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendarRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 </LinearLayout>
