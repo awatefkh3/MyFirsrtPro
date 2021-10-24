@@ -1,10 +1,16 @@
 package com.example.myfirsrtpro;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,7 +20,7 @@ import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class MyCalExample extends AppCompatActivity implements CalendarAdapter.OnItemListener{
+public class MyCalExample extends AppCompatActivity implements CalendarAdapter.OnItemListener, DialogInterface.OnClickListener{
 
 
     private TextView monthYearText;
@@ -92,7 +98,55 @@ public class MyCalExample extends AppCompatActivity implements CalendarAdapter.O
 
         }
     }
+    @Override
+    public void onClick(DialogInterface dialogInterface, int i) {
+        if(i == dialogInterface.BUTTON_POSITIVE){
+            super.onBackPressed();
+            dialogInterface.cancel();
+        }
+        if(i == dialogInterface.BUTTON_POSITIVE){
+            dialogInterface.cancel();
+        }
+    }
 
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure ? this will log you out");
+        builder.setCancelable(false);
+        builder.setPositiveButton("yes", this);
+        builder.setNegativeButton("No",this);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    @Override
+    //inflates the design of the required menu on top of the activity
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.reminder_menu:
+                break;
+            case R.id.alarm_menu:
+                //closeApplication -- a method to write
+                break;
+            case R.id.about_menu:
+                //Toast.makeText(MyCalExample.this,"About Us",Toast.LENGTH_LONG).show();//a toast is a message that appears on the screen and disappears
+                Intent intent = new Intent(this,AboutActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.logOut_menu:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
 
 
 
