@@ -131,14 +131,14 @@ public class MyCalExample extends AppCompatActivity implements CalendarAdapter.O
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.reminder_menu:
-                break;
+                Intent intent = new Intent(this,MyyyActivity.class);
+                startActivity(intent);
             case R.id.alarm_menu:
-                //closeApplication -- a method to write
                 break;
             case R.id.about_menu:
                 //Toast.makeText(MyCalExample.this,"About Us",Toast.LENGTH_LONG).show();//a toast is a message that appears on the screen and disappears
-                Intent intent = new Intent(this,AboutActivity.class);
-                startActivity(intent);
+                Intent intent1 = new Intent(this,AboutActivity.class);
+                startActivity(intent1);
                 break;
             case R.id.logOut_menu:
                 onBackPressed();
@@ -146,6 +146,10 @@ public class MyCalExample extends AppCompatActivity implements CalendarAdapter.O
         }
         return super.onOptionsItemSelected(item);
 
+    }
+
+    public void dailyAction(View view){
+        startActivity(new Intent(this,DailyCalendarActivity.class));
     }
 
 
