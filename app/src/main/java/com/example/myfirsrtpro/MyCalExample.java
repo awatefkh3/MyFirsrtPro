@@ -25,20 +25,19 @@ public class MyCalExample extends AppCompatActivity implements CalendarAdapter.O
 
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
-    private LocalDate selectedDate;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_cal_example);
         initWidgets();
-        selectedDate = LocalDate.now();
+        CalendarUtils.selectedDate = LocalDate.now();
         setMonthView();
     }
 
     private void setMonthView() {
-        monthYearText.setText(monthYearFromDate(selectedDate));
-        ArrayList<String> daysInMonth = daysInMonthArray(selectedDate);
+        monthYearText.setText(monthYearFromDate(CalendarUtils.selectedDate));
+        ArrayList<String> daysInMonth = daysInMonthArray(CalendarUtils.selectedDate);
 
         CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth,this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),7);
@@ -53,7 +52,7 @@ public class MyCalExample extends AppCompatActivity implements CalendarAdapter.O
 
         int daysInMonth = yearMonth.lengthOfMonth();
 
-        LocalDate firstOfMonth = selectedDate.withDayOfMonth(1);
+        LocalDate firstOfMonth = CalendarUtils.selectedDate.withDayOfMonth(1);
         int dayOfWeek  = firstOfMonth.getDayOfWeek().getValue();
 
         for(int i = 1;i<=43;i++){
@@ -80,19 +79,19 @@ public class MyCalExample extends AppCompatActivity implements CalendarAdapter.O
     }
 
     public void previousMonthAction(View view) {
-        selectedDate = selectedDate.minusMonths(1);
+        CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusMonths(1);
         setMonthView();
     }
 
     public void nextMonthAction(View view) {
-        selectedDate  = selectedDate.plusMonths(1);
+        CalendarUtils.selectedDate  = CalendarUtils.selectedDate.plusMonths(1);
         setMonthView();
     }
 
     @Override
     public void onItemClick(int position, String dayText) {
         if(dayText.equals("")){
-            String message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate);
+            String message = "Selected Date " + dayText + " " + monthYearFromDate(CalendarUtils.selectedDate);
             Toast.makeText(this,message,Toast.LENGTH_LONG).show();
 
 
