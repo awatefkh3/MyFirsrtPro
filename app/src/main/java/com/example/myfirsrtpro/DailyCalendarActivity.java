@@ -36,16 +36,21 @@ public class DailyCalendarActivity extends AppCompatActivity {
     }
 
     private void setDayView() {
-        monthDayText.setText(CalendarUtils.monthDayFromDate(selectedDate));
+        monthDayText.setText(CalendarUtils.monthDayFromDate(CalendarUtils.selectedDate));
         String dayOfWeek = CalendarUtils.selectedDate.getDateOfWeek().getDisplayName(TextStyle.FULL,locale.getDefault());
         dayOfWeekTV.setText(dayOfWeek);
+
+
     }
 
     public void previousDayAction(View view) {
-
+        CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusDays(1);
+        setDayView();
     }
 
     public void nextDayAction(View view) {
+        CalendarUtils.selectedDate = CalendarUtils.selectedDate.plusDays(1);
+        setDayView();
     }
 
     public void newEventAction(View view) {

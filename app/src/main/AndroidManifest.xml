@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFirsrtPro">
         <activity
+            android:name=".EventEditActivity"
+            android:exported="true" />
+        <activity
+            android:name=".WeekViewActivity"
+            android:exported="true" />
+        <activity
             android:name=".DailyCalendarActivity"
             android:exported="true" />
         <activity
