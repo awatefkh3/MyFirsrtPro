@@ -1,31 +1,44 @@
 package com.example.myfirsrtpro;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.regex.Pattern;
 
-public class loginActivity extends AppCompatActivity implements View.OnLongClickListener{
+public class LoginActivity extends AppCompatActivity implements View.OnLongClickListener{
 
+    private static final String TAG = "FIREBASE";
     //declaring all components
     private EditText editTextPassword,editTextEmail;
     private Button buttonLogin;
     private TextView invalidEmailOrPass;
+    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        //returns a reference to the instance of the project Firebase
+        mAuth = FirebaseAuth.getInstance();
 
         //findViewById returns a reference to the object with the specified id
         editTextEmail = findViewById(R.id.editTextEmail);
@@ -57,7 +70,7 @@ public class loginActivity extends AppCompatActivity implements View.OnLongClick
 
     public void login(View view){
 
-        Intent intent = new Intent(this,MainActivity.class);
+        //Intent intent = new Intent(this,MainActivity.class);
         //if the username is not null move to the next page
 
 
@@ -75,8 +88,10 @@ public class loginActivity extends AppCompatActivity implements View.OnLongClick
             editor.commit();
 
             invalidEmailOrPass.setText("");
-            intent.putExtra("email",editTextEmail.getText().toString());
-            startActivity(intent);
+            //startActivity(intent);
+            //intent.putExtra("email",editTextEmail.getText().toString());
+            login(editTextEmail.getText().toString(),editTextPassword.getText().toString());
+
 
         }
         else {
@@ -94,7 +109,6 @@ public class loginActivity extends AppCompatActivity implements View.OnLongClick
             }
 
         }
-
 
 
     }
@@ -123,5 +137,29 @@ public class loginActivity extends AppCompatActivity implements View.OnLongClick
 
         return true;
     }
+
+
+
+
+        public void login(String email,String password){
+            mAuth.signInWithEmailAndPassword(email,password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d(TAG, "signInWithEmail:success");
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                Intent i = new Intent(LoginActivity.this,MainActivity.class);
+                                startActivity(i);
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }
 
 }

@@ -34,7 +34,7 @@
             android:name=".ArrayListActivity"
             android:exported="true" />
         <activity
-            android:name=".loginActivity"
+            android:name=".LoginActivity"
             android:exported="true" />
         <activity
             android:name=".SignUpActivity"
