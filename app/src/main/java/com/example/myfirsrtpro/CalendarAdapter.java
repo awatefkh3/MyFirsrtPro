@@ -1,5 +1,6 @@
 package com.example.myfirsrtpro;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,15 +26,31 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>{
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.calendar_cell, parent, false);
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        layoutParams.height = (int) (parent.getHeight()*0.166666666);
-        return new CalendarViewHolder(view, onItemListener);
+
+        if(days.size()>15){
+            layoutParams.height = (int) (parent.getHeight()*0.166666666);
+        }
+        else
+            layoutParams.height = (int) parent.getHeight();
+
+        return new CalendarViewHolder(view, onItemListener, days);
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull CalendarViewHolder holder, int position) {
         final LocalDate date = days.get(position);
-        holder.dayOfMonth.setText(date.getDayOfMonth());
+        if(date == null)
+            holder.dayOfMonth.setText("");
+        else
+            {
+                holder.dayOfMonth.setText(String.valueOf(date.getDayOfMonth()));
+                if(date.equals(CalendarUtils.selectedDate)){
+                    holder.parentView.setBackgroundColor(Color.LTGRAY);
+                }
+            }
+
+
     }
 
     @Override
@@ -42,6 +59,6 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>{
     }
 
     public interface OnItemListener{
-        void onItemClick(int position,String dayText);
+        void onItemClick(int position,LocalDate date);
     }
 }

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -58,10 +59,11 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     }
 
     public void newEventAction(View view) {
+        startActivity(new Intent(this, EventEditActivity.class));
     }
 
-    public void onItemClick(int position, String dayText) {
-            String message = "Selected Date " + dayText + " " + monthYearFromDate(CalendarUtils.selectedDate);
-            Toast.makeText(this,message,Toast.LENGTH_LONG).show();
+    public void onItemClick(int position, LocalDate date) {
+            CalendarUtils.selectedDate = date;
+            setWeekView();
     }
 }
