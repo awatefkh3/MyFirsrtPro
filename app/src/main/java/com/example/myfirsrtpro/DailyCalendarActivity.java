@@ -8,7 +8,12 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.TextStyle;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class DailyCalendarActivity extends AppCompatActivity {
 
@@ -37,10 +42,28 @@ public class DailyCalendarActivity extends AppCompatActivity {
 
     private void setDayView() {
         monthDayText.setText(CalendarUtils.monthDayFromDate(CalendarUtils.selectedDate));
-        String dayOfWeek = CalendarUtils.selectedDate.getDateOfWeek().getDisplayName(TextStyle.FULL,locale.getDefault());
+        String dayOfWeek = CalendarUtils.selectedDate.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault());
         dayOfWeekTV.setText(dayOfWeek);
+        setHourAdapter();
 
+    }
 
+    private void setHourAdapter() {
+        HourAdapter hourAdapter = new HourAdapter(getApplicationContext(),hourEventList());
+        hourListView.setAdapter(hourAdapter);
+    }
+
+    private List<HourEvent> hourEventList() {
+        ArrayList<HourEvent> list = new ArrayList<>();
+
+        for(int hour = 0; hour<24; hour++){
+            LocalTime time = LocalTime.of(hour,0);
+            ArrayList<Event> events =Event.eventsForDateAndTime(CalendarUtils.selectedDate,time);
+            HourEvent hourEvent = new HourEvent(time,events);
+            list.add(hourEvent);
+
+        }
+        return list;
     }
 
     public void previousDayAction(View view) {

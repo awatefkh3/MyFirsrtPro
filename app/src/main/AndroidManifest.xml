@@ -25,7 +25,7 @@
             android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".MyCalExample"
+            android:name=".WelcomeActivity"
             android:exported="true" />
         <activity
             android:name=".AboutActivity"
@@ -37,11 +37,11 @@
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".WelcomeActivity"
+            android:name=".SignUpActivity"
             android:exported="true" />
         <activity android:name=".MyyyActivity" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".MyCalExample"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

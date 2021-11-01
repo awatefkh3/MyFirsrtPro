@@ -1,7 +1,5 @@
 package com.example.myfirsrtpro;
 
-import android.media.metrics.Event;
-
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -13,7 +11,6 @@ public class HourEvent {
         this.time = time;
         this.events = events;
     }
-
     public LocalTime getTime() {
         return time;
     }
