@@ -58,6 +58,16 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         monthYearText = findViewById(R.id.monthYearTV);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setEventAdapter();
+    }
+
+    private void setEventAdapter() {
+
+    }
+
     public void newEventAction(View view) {
         startActivity(new Intent(this, EventEditActivity.class));
     }

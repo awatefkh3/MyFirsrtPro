@@ -37,11 +37,11 @@
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".WelcomeActivity"
             android:exported="true" />
         <activity android:name=".MyyyActivity" />
         <activity
-            android:name=".WelcomeActivity"
+            android:name=".SignUpActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
