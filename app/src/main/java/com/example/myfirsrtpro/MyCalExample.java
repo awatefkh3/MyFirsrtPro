@@ -99,7 +99,7 @@ public class MyCalExample extends AppCompatActivity implements CalendarAdapter.O
     @Override
     //inflates the design of the required menu on top of the activity
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.layout.new_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -124,13 +124,10 @@ public class MyCalExample extends AppCompatActivity implements CalendarAdapter.O
 
     }
 
-    public void dailyAction(View view){
-        startActivity(new Intent(this,DailyCalendarActivity.class));
-    }
 
 
-    public void weeklyAction(View view){
 
+    public void WeeklyAction(View view){
         startActivity(new Intent(this,WeekViewActivity.class));
     }
 

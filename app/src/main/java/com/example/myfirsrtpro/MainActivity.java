@@ -68,15 +68,17 @@ public class MainActivity extends AppCompatActivity implements  DialogInterface.
             case R.id.reminder_menu:
                 break;
             case R.id.alarm_menu:
-                //closeApplication -- a method to write
                 break;
             case R.id.about_menu:
-                Toast.makeText(MainActivity.this,"About Us",Toast.LENGTH_LONG).show();//a toast is a message that appears on the screen and disappears
-                Intent intent = new Intent(this,AboutActivity.class);
-                startActivity(intent);
+                //Toast.makeText(MainActivity.this,"About Us",Toast.LENGTH_LONG).show();//a toast is a message that appears on the screen and disappears
+                startActivity(new Intent(this,AboutActivity.class));
                 break;
+            case R.id.camera_menu:
+                startActivity(new Intent(this,ProfileActivity.class));
+            case R.id.gallery_menu:
+                startActivity(new Intent(this,ProfileActivity.class));
             case R.id.logOut_menu:
-                onBackPressed();
+                //logOut();
                 break;
         }
         return super.onOptionsItemSelected(item);

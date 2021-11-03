@@ -81,7 +81,12 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     }
 
     public void onItemClick(int position, LocalDate date) {
-            CalendarUtils.selectedDate = date;
-            setWeekView();
+        CalendarUtils.selectedDate = date;
+        setWeekView();
     }
+
+    public void dailyAction(View view){
+        startActivity(new Intent(this,DailyCalendarActivity.class));
+    }
+
 }
