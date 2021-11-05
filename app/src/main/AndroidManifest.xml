@@ -10,12 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFirsrtPro">
         <activity
+            android:name=".EventActicity2"
+            android:exported="true" />
+        <activity
             android:name=".nav_menu1"
             android:exported="true"
             android:label="@string/title_activity_nav_menu1"
             android:theme="@style/Theme.MyFirsrtPro.NoActionBar" />
         <activity
-            android:name=".EventEditActivity"
+            android:name=".MyyyActivity"
             android:exported="true" />
         <activity
             android:name=".WeekViewActivity"
@@ -44,9 +47,8 @@
         <activity
             android:name=".SignUpActivity"
             android:exported="true" />
-        <activity android:name=".MyCalExample" />
         <activity
-            android:name=".MyyyActivity"
+            android:name=".MyCalExample"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

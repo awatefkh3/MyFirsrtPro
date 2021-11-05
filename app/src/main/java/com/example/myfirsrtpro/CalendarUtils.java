@@ -53,6 +53,7 @@ public class CalendarUtils {
         return time.format(formatter);
     }
 
+
     public static ArrayList<LocalDate> daysInWeekArray(LocalDate selectedDate) {
         ArrayList<LocalDate> days = new ArrayList<>();
         LocalDate current = sundayForDate(selectedDate);

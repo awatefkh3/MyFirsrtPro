@@ -78,6 +78,6 @@ public class DailyCalendarActivity extends AppCompatActivity {
     }
 
     public void newEventAction(View view) {
-        startActivity(new Intent(this,EventEditActivity.class));
+        startActivity(new Intent(this,EventActicity2.class));
     }
 }

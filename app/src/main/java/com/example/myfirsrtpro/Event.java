@@ -1,8 +1,11 @@
 package com.example.myfirsrtpro;
 
+import android.text.format.Time;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Event {
     public static ArrayList<Event> eventList = new ArrayList<>();
@@ -33,12 +36,19 @@ public class Event {
 
     private String name;
     private LocalDate date;
+    private Time time1;
     private LocalTime time;
 
     public Event(String name, LocalDate date, LocalTime time) {
         this.name = name;
         this.date = date;
         this.time = time;
+    }
+
+    public Event(String name, LocalDate date, Time time) {
+        this.name = name;
+        this.date = date;
+        this.time1 = time;
     }
 
     public String getName() {

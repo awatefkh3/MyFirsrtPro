@@ -76,9 +76,6 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         eventListView.setAdapter(eventAdapter);
     }
 
-    public void newEventAction(View view) {
-        startActivity(new Intent(this, EventEditActivity.class));
-    }
 
     public void onItemClick(int position, LocalDate date) {
         CalendarUtils.selectedDate = date;
