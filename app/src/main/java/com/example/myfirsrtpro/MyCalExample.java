@@ -99,7 +99,7 @@ public class MyCalExample extends AppCompatActivity implements CalendarAdapter.O
     @Override
     //inflates the design of the required menu on top of the activity
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.layout.new_menu, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

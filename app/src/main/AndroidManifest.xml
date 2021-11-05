@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFirsrtPro">
         <activity
+            android:name=".nav_menu1"
+            android:exported="true"
+            android:label="@string/title_activity_nav_menu1"
+            android:theme="@style/Theme.MyFirsrtPro.NoActionBar" />
+        <activity
             android:name=".EventEditActivity"
             android:exported="true" />
         <activity
@@ -39,9 +44,9 @@
         <activity
             android:name=".SignUpActivity"
             android:exported="true" />
-        <activity android:name=".MyyyActivity" />
+        <activity android:name=".MyCalExample" />
         <activity
-            android:name=".MyCalExample"
+            android:name=".MyyyActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

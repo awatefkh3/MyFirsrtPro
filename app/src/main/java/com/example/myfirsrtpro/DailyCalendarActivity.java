@@ -26,15 +26,16 @@ public class DailyCalendarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_calendar);
         initWidgets();
+        setDayView();
     }
 
     private void initWidgets() {
-        monthDayText  = findViewById(R.id.monthYearTV);
+        monthDayText  = findViewById(R.id.monthDayText);
         dayOfWeekTV = findViewById(R.id.dayOfWeekTV);
         hourListView = findViewById(R.id.hourListView);
     }
 
-    @Override
+   @Override
     protected void onResume() {
         super.onResume();
         setDayView();
