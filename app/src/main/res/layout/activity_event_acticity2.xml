@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".EventActicity2">
+    tools:context=".EventActicity2"
+    android:background="@drawable/download">
 
     <EditText
         android:layout_width="wrap_content"
@@ -29,13 +30,14 @@
         />
 
 
-    <Button
-        android:id="@+id/timePickerButton"
-        android:layout_width="250dp"
+    <EditText
+        android:id="@+id/editTextEventTime"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="choose time"
-        android:textSize="30sp"
+        android:hint="choose time"
+        android:textSize="20sp"
         android:textColor="@color/black"
+        android:layout_gravity="center"
         android:backgroundTint="@color/white"
         android:layout_marginTop="10dp"
         android:onClick="showTimeDialog"

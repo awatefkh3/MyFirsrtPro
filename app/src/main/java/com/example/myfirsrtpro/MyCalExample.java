@@ -119,6 +119,14 @@ public class MyCalExample extends AppCompatActivity implements CalendarAdapter.O
             case R.id.logOut_menu:
                 onBackPressed();
                 break;
+            case R.id.camera_menu:
+                Intent intent2 = new Intent(this,ProfileActivity.class);
+                startActivity(intent2);
+                break;
+            case R.id.gallery_menu:
+                Intent intent3 = new Intent(this,ProfileActivity.class);
+                startActivity(intent3);
+                break;
         }
         return super.onOptionsItemSelected(item);
 

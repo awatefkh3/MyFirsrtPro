@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/androidtwo"
+    android:background="@drawable/download"
     tools:context=".WelcomeActivity">
 
     <TextView

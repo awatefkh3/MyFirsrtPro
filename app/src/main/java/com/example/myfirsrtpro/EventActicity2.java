@@ -28,8 +28,7 @@ public class EventActicity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_acticity2);
         //initialize widgets
-        //editTextEventTime = findViewById(R.id.editTextEventTime);
-        timePickerButton = findViewById(R.id.timePickerButton);
+        editTextEventTime = findViewById(R.id.editTextEventTime);
         editTextEventName = findViewById(R.id.editTextEventName);
         textViewEventDate = findViewById(R.id.textViewEventDate);
         textViewEventDate.setText("Date: " + CalendarUtils.formattedDate(CalendarUtils.selectedDate));

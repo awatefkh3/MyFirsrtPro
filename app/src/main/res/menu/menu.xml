@@ -37,10 +37,10 @@
         </item>
     </group>
     <group android:checkableBehavior="single">
-        <item android:title="pictures">
+        <item android:title="communicate">
             <menu>
                 <item android:id="@+id/about_menu"
-                    android:title="Communicate"/>
+                    android:title="about"/>
             </menu>
         </item>
     </group>
