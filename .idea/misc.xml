@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
+        <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/drawable/button_background_1.xml" value="0.2546875" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/drawable/custom_button.xml" value="0.2703125" />
+        <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.2546875" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/activity_about.xml" value="0.6" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/activity_array_list.xml" value="0.23641304347826086" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/activity_daily_calendar.xml" value="0.1" />
@@ -14,13 +16,13 @@
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/activity_intro.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/activity_my_cal_example.xml" value="0.23854166666666668" />
+        <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/activity_my_cal_example.xml" value="0.1" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/activity_myyy.xml" value="0.23867753623188406" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/activity_nav_menu1.xml" value="0.22509057971014493" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/activity_profile.xml" value="0.23867753623188406" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/activity_week_view.xml" value="0.1" />
-        <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/activity_welcome.xml" value="0.2217741935483871" />
+        <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/activity_welcome.xml" value="0.1" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/app_bar_nav_menu1.xml" value="0.22509057971014493" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/calendar_cell.xml" value="0.25" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/calendar_row.xml" value="0.25416666666666665" />

@@ -11,7 +11,7 @@ import android.widget.DatePicker;
 
 import java.util.Calendar;
 
-public class MyyyActivity extends AppCompatActivity {
+public class ReminderActivity extends AppCompatActivity {
 
 
     private DatePickerDialog datePickerDialog;

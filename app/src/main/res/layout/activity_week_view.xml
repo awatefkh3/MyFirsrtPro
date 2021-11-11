@@ -6,16 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".WeekViewActivity"
-    android:background="@drawable/download">
+    android:background="@drawable/androidpic">
 
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Daily"
-        android:textColor="@color/blue"
-        android:backgroundTint="@color/white"
-        android:background="@null"
+        android:background="?android:attr/selectableItemBackground"
         android:textStyle="bold"
         android:onClick="dailyAction"
         android:layout_gravity="center"
@@ -32,8 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@null"
-            android:backgroundTint="@color/white"
+            android:background="?android:attr/selectableItemBackground"
             android:onClick="previousWeekAction"
             android:text="@string/back"
             android:textColor="@color/blue"
@@ -53,8 +50,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@null"
-            android:backgroundTint="@color/white"
+            android:background="?android:attr/selectableItemBackground"
             android:onClick="nextWeekAction"
             android:text="@string/forward"
             android:textColor="@color/blue"

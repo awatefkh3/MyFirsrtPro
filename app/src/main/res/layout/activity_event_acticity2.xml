@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".EventActicity2"
-    android:background="@drawable/download">
+    tools:context=".EventEditActivity2"
+    android:background="@drawable/androidpic">
 
     <EditText
         android:layout_width="wrap_content"
@@ -43,17 +43,27 @@
         android:onClick="showTimeDialog"
         />
 
-    <Button
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:textColor="@color/blue"
-        android:backgroundTint="@color/white"
-        android:background="@null"
-        android:textStyle="bold"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_background_1"
         android:onClick="saveEventAction"
-        android:layout_gravity="center"
-        android:textSize="20sp"/>
+        android:backgroundTint="@color/black">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </LinearLayout>

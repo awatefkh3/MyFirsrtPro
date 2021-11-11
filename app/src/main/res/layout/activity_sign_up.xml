@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/download"
+    android:background="@drawable/androidpic"
     tools:context=".SignUpActivity">
 
     <TableLayout
@@ -125,9 +125,10 @@
 
             <Button
                 android:id="@+id/buttonSubmit"
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/black"
+                android:background="@drawable/button_background_1"
                 android:onClick="submit"
                 android:text="Submit" />
         </TableRow>

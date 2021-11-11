@@ -4,48 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/download"
+    android:orientation="vertical"
     tools:context=".WelcomeActivity">
 
-    <TextView
-        android:id="@+id/welcomeText"
-        style="@style/style_one"
-        android:text="Hello There !"
-        />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:gravity="top"
+        app:srcCompat="@drawable/androidpictwo" />
 
     <TextView
-        android:id="@+id/welcomeText2"
-        style="@style/style_one"
-        android:text="Welcome To Our Calendar"
-        />
-
-    <TextView
-        android:id="@+id/loginText"
-        style="@style/style_one"
-        android:text="Please Login If You Have An Account" />
-
-    <TextView
-        android:id="@+id/signUpText"
-        style="@style/style_one"
-        android:text="Or Sign Up To Create A New Account"
-        />
-
-    <Button
-        android:id="@+id/buttonLogin"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:backgroundTint="@color/black"
+        android:layout_height="wrap_content"
+        android:text="Welcome to calendar"
+        android:textColor="@color/black"
+        android:textSize="26sp" />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="20dp"
+        android:inputType="textMultiLine"
+        android:text="Please Login If You Have An Account Or Sign Up To Create A New Account"
+        android:textAlignment="center"
+        android:textColor="#828282"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="250dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_background_1"
+        android:onClick="goTosignUp">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_background_1"
         android:onClick="goTologin"
-        android:text="Login" />
+        android:layout_marginTop="20dp">
 
-    <Button
-        android:id="@+id/buttonSignUp"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:backgroundTint="@color/black"
-        android:onClick="goTosignUp"
-        android:text="SignUp" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Log In"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </LinearLayout>

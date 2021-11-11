@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.text.format.Time;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,12 +11,11 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
-public class EventActicity2 extends AppCompatActivity {
+public class EventEditActivity2 extends AppCompatActivity {
 
     EditText editTextEventTime,editTextEventName;
     TextView textViewEventDate;
@@ -53,7 +51,7 @@ public class EventActicity2 extends AppCompatActivity {
                 editTextEventTime.setText(sdf.format(calendar1));
             }
         };
-            new TimePickerDialog(EventActicity2.this,timeSetListener,calendar1.get(Calendar.HOUR_OF_DAY),calendar1.get(Calendar.MINUTE),true).show();
+            new TimePickerDialog(EventEditActivity2.this,timeSetListener,calendar1.get(Calendar.HOUR_OF_DAY),calendar1.get(Calendar.MINUTE),true).show();
     }
 
     public void saveEventAction(View view) {

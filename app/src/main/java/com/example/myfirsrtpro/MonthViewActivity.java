@@ -16,14 +16,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.time.LocalDate;
-import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class MyCalExample extends AppCompatActivity implements CalendarAdapter.OnItemListener, DialogInterface.OnClickListener{
+public class MonthViewActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener, DialogInterface.OnClickListener{
 
 
     private TextView monthYearText;
@@ -107,7 +104,7 @@ public class MyCalExample extends AppCompatActivity implements CalendarAdapter.O
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.reminder_menu:
-                Intent intent = new Intent(this,MyyyActivity.class);
+                Intent intent = new Intent(this, ReminderActivity.class);
                 startActivity(intent);
             case R.id.alarm_menu:
                 break;

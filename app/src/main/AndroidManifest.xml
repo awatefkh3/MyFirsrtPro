@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFirsrtPro">
         <activity
-            android:name=".EventActicity2"
+            android:name=".EventEditActivity2"
             android:exported="true" />
         <activity
             android:name=".nav_menu1"
@@ -18,7 +18,7 @@
             android:label="@string/title_activity_nav_menu1"
             android:theme="@style/Theme.MyFirsrtPro.NoActionBar" />
         <activity
-            android:name=".MyyyActivity"
+            android:name=".ReminderActivity"
             android:exported="true" />
         <activity
             android:name=".WeekViewActivity"
@@ -45,7 +45,7 @@
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".MyCalExample"
+            android:name=".MonthViewActivity"
             android:exported="true" />
         <activity
             android:name=".WelcomeActivity"

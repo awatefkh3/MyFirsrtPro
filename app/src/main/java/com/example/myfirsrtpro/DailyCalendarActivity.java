@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
@@ -78,6 +77,6 @@ public class DailyCalendarActivity extends AppCompatActivity {
     }
 
     public void newEventAction(View view) {
-        startActivity(new Intent(this,EventActicity2.class));
+        startActivity(new Intent(this, EventEditActivity2.class));
     }
 }
