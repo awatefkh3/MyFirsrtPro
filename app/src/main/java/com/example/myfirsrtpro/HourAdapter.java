@@ -73,7 +73,7 @@ public class HourAdapter extends ArrayAdapter<HourEvent> {
             setEvent(event2,events.get(1));
             event3.setVisibility(View.VISIBLE);
             String eventsNotShown = String.valueOf(events.size()-2);
-            eventsNotShown += "More events";
+            eventsNotShown += " More events";
             event3.setText(eventsNotShown);
         }
 
