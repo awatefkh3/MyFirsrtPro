@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/nav_view"
-        app:menu="@menu/menu"/>
+        app:menu="@menu/activity_main_drawer"/>
 
   <ScrollView
       android:layout_width="match_parent"

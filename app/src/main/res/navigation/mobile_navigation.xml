@@ -22,4 +22,13 @@
         android:name="com.example.myfirsrtpro.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/reminder_menu"
+        android:name="com.example.myfirsrtpro.ui.reminder.ReminderFragment"
+        android:label="@string/menu_reminder"
+        tools:layout="@layout/fragment_reminder" />
+
+
+
 </navigation>

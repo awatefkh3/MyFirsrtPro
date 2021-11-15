@@ -17,4 +17,46 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_slideshow" />
     </group>
+    <group android:checkableBehavior="single">
+        <item android:title="set">
+            <menu>
+                <item
+                    android:id="@+id/reminder_menu"
+                    android:title="Set new reminder" />
+                <item
+                    android:id="@+id/alarm_menu"
+                    android:title="Set new alarm" />
+            </menu>
+        </item>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:title="profile">
+            <menu>
+                <item android:id="@+id/logOut_menu"
+                    android:title="Log Out"/>
+            </menu>
+        </item>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:title="pictures">
+            <menu>
+                <item
+                    android:id="@+id/camera_menu"
+                    android:title="Take a picture" />
+                <item
+                    android:id="@+id/gallery_menu"
+                    android:title="Go to gallery" />
+            </menu>
+        </item>
+    </group>
+    <group android:checkableBehavior="single">
+        <item android:title="communicate">
+            <menu>
+                <item android:id="@+id/about_menu"
+                    android:title="about"/>
+            </menu>
+        </item>
+    </group>
 </menu>
