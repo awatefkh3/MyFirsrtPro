@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnLongClick
     private Button buttonLogin;
     private TextView invalidEmailOrPass;
     private FirebaseAuth mAuth;
+    private Intent musicIntent;
 
 
     @Override
@@ -56,6 +57,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnLongClick
             editTextEmail.setText(email);
             editTextPassword.setText(password);
         }
+
+        //this will start the service which will turn on the music
+        musicIntent = new Intent(this,MusicService.class);
+        startService(musicIntent);
 
     }
 

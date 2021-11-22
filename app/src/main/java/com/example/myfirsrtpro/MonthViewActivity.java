@@ -33,6 +33,7 @@ public class MonthViewActivity extends AppCompatActivity implements CalendarAdap
         initWidgets();
         CalendarUtils.selectedDate = LocalDate.now();
         setMonthView();
+
     }
 
     private void setMonthView() {
