@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnLongClick
 
         //this will start the service which will turn on the music
         musicIntent = new Intent(this,MusicService.class);
-        startService(musicIntent);
+        //startService(musicIntent);
 
     }
 

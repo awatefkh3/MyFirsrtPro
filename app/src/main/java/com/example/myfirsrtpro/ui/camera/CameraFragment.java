@@ -1,4 +1,4 @@
-package com.example.myfirsrtpro.ui.home;
+package com.example.myfirsrtpro.ui.camera;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,24 +12,23 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.myfirsrtpro.R;
-import com.example.myfirsrtpro.databinding.FragmentHomeBinding;
+import com.example.myfirsrtpro.databinding.FragmentCameraBinding;
 
-public class HomeFragment extends Fragment {
+public class CameraFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
-    private FragmentHomeBinding binding;
+    private CameraViewModel cameraViewModel;
+    private FragmentCameraBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        cameraViewModel =
+                new ViewModelProvider(this).get(CameraViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentCameraBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        final TextView textView = binding.textCamera;
+        cameraViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

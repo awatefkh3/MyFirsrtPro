@@ -12,9 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.myfirsrtpro.databinding.FragmentHomeBinding;
 import com.example.myfirsrtpro.databinding.FragmentReminderBinding;
-import com.example.myfirsrtpro.ui.home.HomeViewModel;
 
 public class ReminderFragment extends Fragment {
 
