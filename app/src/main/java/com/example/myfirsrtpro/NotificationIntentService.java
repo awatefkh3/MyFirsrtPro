@@ -2,10 +2,12 @@ package com.example.myfirsrtpro;
 
 import android.app.IntentService;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.Context;
+import android.os.Build;
 
 import androidx.core.app.NotificationManagerCompat;
 
@@ -18,50 +20,13 @@ import androidx.core.app.NotificationManagerCompat;
  * helper methods.
  */
 public class NotificationIntentService extends IntentService {
-
-    // TODO: Rename actions, choose action names that describe tasks that this
-    // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
-    private static final String ACTION_FOO = "com.example.myfirsrtpro.action.FOO";
-    private static final String ACTION_BAZ = "com.example.myfirsrtpro.action.BAZ";
-
-    // TODO: Rename parameters
-    private static final String EXTRA_PARAM1 = "com.example.myfirsrtpro.extra.PARAM1";
-    private static final String EXTRA_PARAM2 = "com.example.myfirsrtpro.extra.PARAM2";
+    //this is the channel id for notification management uses
     private static final int NOTIFICATION_ID = 3;
 
     public NotificationIntentService() {
         super("NotificationIntentService");
     }
 
-    /**
-     * Starts this service to perform action Foo with the given parameters. If
-     * the service is already performing a task this action will be queued.
-     *
-     * @see IntentService
-     */
-    // TODO: Customize helper method
-    public static void startActionFoo(Context context, String param1, String param2) {
-        Intent intent = new Intent(context, NotificationIntentService.class);
-        intent.setAction(ACTION_FOO);
-        intent.putExtra(EXTRA_PARAM1, param1);
-        intent.putExtra(EXTRA_PARAM2, param2);
-        context.startService(intent);
-    }
-
-    /**
-     * Starts this service to perform action Baz with the given parameters. If
-     * the service is already performing a task this action will be queued.
-     *
-     * @see IntentService
-     */
-    // TODO: Customize helper method
-    public static void startActionBaz(Context context, String param1, String param2) {
-        Intent intent = new Intent(context, NotificationIntentService.class);
-        intent.setAction(ACTION_BAZ);
-        intent.putExtra(EXTRA_PARAM1, param1);
-        intent.putExtra(EXTRA_PARAM2, param2);
-        context.startService(intent);
-    }
 
     @Override
     protected void onHandleIntent(Intent intent) {
@@ -73,7 +38,7 @@ public class NotificationIntentService extends IntentService {
 
         //this intent will be pending until the user clicks on the notification
         //and will activate the activity specified in the intent
-        Intent noIntent1 = new Intent(this,AboutActivity.class);
+        Intent noIntent1 = new Intent(this,WelcomeActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this,2,noIntent1,PendingIntent.FLAG_UPDATE_CURRENT);
         noBuilder.setContentIntent(pendingIntent);
 
@@ -81,23 +46,27 @@ public class NotificationIntentService extends IntentService {
         NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
         managerCompat.notify(NOTIFICATION_ID,notification);
 
+        NotificationManager mNotificationManager;
+        mNotificationManager =
+                (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        //this is required for SDK version 26 and above
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            String channelId = "Your_channel_id";
+            NotificationChannel channel = new NotificationChannel(
+                    channelId,
+                    "Channel human readable title",
+                    NotificationManager.IMPORTANCE_HIGH);
+            mNotificationManager.createNotificationChannel(channel);
+            noBuilder.setChannelId(channelId);
+        }
+        noBuilder.build();
+        mNotificationManager.notify(NOTIFICATION_ID,notification);
+
+
+
     }
 
-    /**
-     * Handle action Foo in the provided background thread with the provided
-     * parameters.
-     */
-    private void handleActionFoo(String param1, String param2) {
-        // TODO: Handle action Foo
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
 
-    /**
-     * Handle action Baz in the provided background thread with the provided
-     * parameters.
-     */
-    private void handleActionBaz(String param1, String param2) {
-        // TODO: Handle action Baz
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
 }
