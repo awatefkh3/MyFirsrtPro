@@ -30,7 +30,4 @@
         tools:layout="@layout/fragment_about" />
 
 
-
-
-
 </navigation>
