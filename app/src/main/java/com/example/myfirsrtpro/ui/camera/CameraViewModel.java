@@ -10,7 +10,7 @@ public class CameraViewModel extends ViewModel {
 
     public CameraViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is camera fragment");
+        mText.setValue("");
     }
 
     public LiveData<String> getText() {
