@@ -3,32 +3,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+    <group android:checkableBehavior="single">
+        <item android:title="Calendar">
+            <menu>
+                <item
+                    android:id="@+id/nav_monthlyCal"
+                    android:icon="@drawable/ic_baseline_calendar_month_24"
+                    android:title="@string/menu_monthlyCal" />
+                <item
+                    android:id="@+id/nav_weeklyCal"
+                    android:icon="@drawable/ic_baseline_calendar_view_week_24"
+                    android:title="@string/menu_weeklyCal" />
+                <item
+                    android:id="@+id/nav_dailyCal"
+                    android:icon="@drawable/ic_baseline_calendar_view_day_24"
+                    android:title="@string/menu_dailyCal" />
+            </menu>
+        </item>
+    </group>
 
     <group android:checkableBehavior="single">
         <item android:title="photos">
             <menu>
-                  <item
+                <item
                     android:id="@+id/nav_camera"
                     android:icon="@drawable/ic_menu_camera"
                     android:title="@string/menu_camera" />
-                  <item
+                <item
                     android:id="@+id/nav_gallery"
                     android:icon="@drawable/ic_menu_gallery"
                     android:title="@string/menu_gallery" />
             </menu>
         </item>
     </group>
+
     <group android:checkableBehavior="single">
-        <item android:title="set">
+        <item android:title="Reminders">
             <menu>
                 <item
                     android:id="@+id/reminder_menu"
-                    android:icon="@drawable/reminder_icon"
+                    android:icon="@drawable/ic_baseline_notifications_24"
                     android:title="Set new reminder" />
                 <item
+                    android:id="@+id/nav_reminders"
+                    android:icon="@drawable/reminder_icon"
+                    android:title="All reminders" />
+            </menu>
+        </item>
+    </group>
+
+
+    <group android:checkableBehavior="single">
+        <item android:title="Alarms">
+            <menu>
+                <item
                     android:id="@+id/alarm_menu"
-                    android:icon="@drawable/alarm_icon"
+                    android:icon="@drawable/ic_baseline_add_alarm_24"
                     android:title="Set new alarm" />
+                <item
+                    android:id="@+id/nav_alarms"
+                    android:icon="@drawable/alarm_icon"
+                    android:title="All alarms" />
+
+            </menu>
+        </item>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:title="Events">
+            <menu>
+                <item
+                    android:id="@+id/event_menu"
+                    android:icon="@drawable/ic_baseline_add_card_24"
+                    android:title="Set new event" />
+                <item
+                    android:id="@+id/nav_events"
+                    android:icon="@drawable/ic_baseline_event_note_24"
+                    android:title="All events" />
+            </menu>
+        </item>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:title="Period">
+            <menu>
+                <item
+                    android:id="@+id/currentPeriod_menu"
+                    android:icon="@drawable/ic_baseline_add_circle_24"
+                    android:title="Add Current Period" />
+                <item
+                    android:id="@+id/nav_periods"
+                    android:icon="@drawable/ic_baseline_list_alt_24"
+                    android:title="All periods" />
+                <item
+                    android:id="@+id/nextPeriod_menu"
+                    android:icon="@drawable/ic_baseline_next_plan_24"
+                    android:title="Next Period Prediction" />
+
             </menu>
         </item>
     </group>

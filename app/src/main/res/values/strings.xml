@@ -24,6 +24,9 @@
     <string name="menu_reminder">Reminder</string>
     <string name="menu_about">About</string>
     <string name="menu_test">Test</string>
+    <string name="menu_monthlyCal">Monthly Calendar</string>
+    <string name="menu_weeklyCal">Weekly Calendar</string>
+    <string name="menu_dailyCal">Daily Calendar</string>
 
 
 </resources>
