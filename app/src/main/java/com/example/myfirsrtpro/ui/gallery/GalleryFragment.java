@@ -29,7 +29,6 @@ public class GalleryFragment extends Fragment implements View.OnClickListener {
     private static final int GALLERY_REQUEST = 1;
     private GalleryViewModel galleryViewModel;
     private FragmentGalleryBinding binding;
-    private TextView newTV;
 
 
     //attributes
