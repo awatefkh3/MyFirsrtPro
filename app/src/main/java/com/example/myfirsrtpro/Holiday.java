@@ -13,6 +13,10 @@ public class Holiday {
         this.desc = desc;
     }
 
+    public Holiday() {
+
+    }
+
     public String getName() {
         return name;
     }

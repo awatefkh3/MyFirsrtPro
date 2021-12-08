@@ -85,7 +85,7 @@
     </group>
 
     <group android:checkableBehavior="single">
-        <item android:title="Period">
+        <item android:title="Period" android:id="@+id/periodMenu">
             <menu>
                 <item
                     android:id="@+id/currentPeriod_menu"
@@ -99,7 +99,6 @@
                     android:id="@+id/nextPeriod_menu"
                     android:icon="@drawable/ic_baseline_next_plan_24"
                     android:title="Next Period Prediction" />
-
             </menu>
         </item>
     </group>

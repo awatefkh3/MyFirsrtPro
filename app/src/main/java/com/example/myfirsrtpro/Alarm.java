@@ -15,6 +15,10 @@ public class Alarm {
         this.desc = desc;
     }
 
+    public Alarm(){
+
+    }
+
     public Date getDate() {
         return date;
     }

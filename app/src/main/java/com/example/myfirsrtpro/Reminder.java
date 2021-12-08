@@ -14,6 +14,10 @@ public class Reminder {
         this.desc = desc;
     }
 
+    public Reminder() {
+    }
+
+
     public Date getDate() {
         return date;
     }

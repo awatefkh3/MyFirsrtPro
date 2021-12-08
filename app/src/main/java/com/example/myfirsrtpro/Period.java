@@ -20,6 +20,10 @@ public class Period {
         this.counter1 = counter1;
         this.counter2 = counter2;
     }
+    public Period(){
+
+    }
+
 
     public Date getFirstDay() {
         return firstDay;

@@ -17,6 +17,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -26,13 +30,19 @@ public class MonthViewActivity extends AppCompatActivity implements CalendarAdap
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_cal_example);
+
+
+
         initWidgets();
         CalendarUtils.selectedDate = LocalDate.now();
         setMonthView();
+
 
     }
 

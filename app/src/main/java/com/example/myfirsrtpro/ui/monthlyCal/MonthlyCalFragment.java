@@ -10,16 +10,20 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.myfirsrtpro.Item;
 import com.example.myfirsrtpro.databinding.FragmentMonthlycalBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MonthlyCalFragment extends Fragment {
-    private MonthlyCalViewModel monthlyCalViewModel;
     private FragmentMonthlycalBinding binding;
+    private FirebaseAuth mFirebaseAuth  = FirebaseAuth.getInstance();
+    private FirebaseDatabase database = FirebaseDatabase.getInstance("https://myfirsrtpro-default-rtdb.europe-west1.firebasedatabase.app/");
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        monthlyCalViewModel =
-                new ViewModelProvider(this).get(MonthlyCalViewModel.class);
 
         binding = FragmentMonthlycalBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -31,6 +35,16 @@ public class MonthlyCalFragment extends Fragment {
 //                textView.setText(s);
 //            }
 //        });
+
+
+        // Write a message to the database
+        String UID  = mFirebaseAuth.getUid();
+        DatabaseReference myRef = database.getReference("users/"+UID);
+        //getReference returns root - the path is users / all (for me )
+
+        //todo this
+        myRef.push().setValue(new Item()); //put the object
+
         return root;
     }
 
