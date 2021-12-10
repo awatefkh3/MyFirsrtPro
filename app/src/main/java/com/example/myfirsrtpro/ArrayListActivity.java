@@ -58,4 +58,6 @@ public class ArrayListActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

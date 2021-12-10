@@ -31,9 +31,9 @@
 
     <fragment
         android:id="@+id/nav_monthlyCal"
-        android:name="com.example.myfirsrtpro.ui.monthlyCal.MonthlyCalFragment"
+        android:name="com.example.myfirsrtpro.ui.monthly.MonthlyFragment"
         android:label="Monthly Calendar"
-        tools:layout="@layout/fragment_monthlycal" />
+        tools:layout="@layout/fragment_monthlyCal" />
 
 
 </navigation>

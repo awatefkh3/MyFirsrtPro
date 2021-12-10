@@ -63,15 +63,15 @@ public class MonthViewActivity extends AppCompatActivity implements CalendarAdap
         monthYearText = findViewById(R.id.monthYearTV);
     }
 
-    public void previousMonthAction(View view) {
-        CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusMonths(1);
-        setMonthView();
-    }
-
-    public void nextMonthAction(View view) {
-        CalendarUtils.selectedDate  = CalendarUtils.selectedDate.plusMonths(1);
-        setMonthView();
-    }
+//    public void previousMonthAction(View view) {
+//        CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusMonths(1);
+//        setMonthView();
+//    }
+//
+//    public void nextMonthAction(View view) {
+//        CalendarUtils.selectedDate  = CalendarUtils.selectedDate.plusMonths(1);
+//        setMonthView();
+//    }
 
     public void onItemClick(int position, LocalDate date) {
         if(date != null){
@@ -143,9 +143,9 @@ public class MonthViewActivity extends AppCompatActivity implements CalendarAdap
 
 
 
-    public void WeeklyAction(View view){
-        startActivity(new Intent(this,WeekViewActivity.class));
-    }
+//    public void WeeklyAction(View view){
+//        startActivity(new Intent(this,WeekViewActivity.class));
+//    }
 
 
 }
