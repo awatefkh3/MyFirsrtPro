@@ -33,7 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemListener{
+public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemListener, View.OnClickListener {
     private FragmentMonthlyBinding binding;
     //gets instance of authentication project in FB console
     private FirebaseAuth mFirebaseAuth  = FirebaseAuth.getInstance();
@@ -41,7 +41,7 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://myfirsrtpro-default-rtdb.europe-west1.firebasedatabase.app/");
     private TextView monthYearTV;
     private RecyclerView calendarRecyclerView;
-    private Button weeklyButton,preButton,nxtButton;
+    private Button preButton,nxtButton;
 
 
 
@@ -61,6 +61,12 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
         monthYearTV = root.findViewById(R.id.monthYearTV);
         preButton = root.findViewById(R.id.preButton);
         nxtButton = root.findViewById(R.id.nxtButton);
+
+
+        //setting onClock listener to the buttons
+        nxtButton.setOnClickListener(this);
+        preButton.setOnClickListener(this);
+
 
 
         setMonthView();
@@ -140,10 +146,22 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
 
 
     }
-    public void WeeklyAction(View view){
+    /*public void WeeklyAction(View view){
         startActivity(new Intent(this.getActivity(), WeekViewActivity.class));
     }
 
-
-
+*/
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.nxtButton:
+                nextMonthAction(nxtButton);
+                break;
+            case R.id.preButton:
+                previousMonthAction(preButton);
+                break;
+            default:
+                break;
+        }
+    }
 }

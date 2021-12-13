@@ -33,7 +33,23 @@
         android:id="@+id/nav_monthlyCal"
         android:name="com.example.myfirsrtpro.ui.monthly.MonthlyFragment"
         android:label="Monthly Calendar"
-        tools:layout="@layout/fragment_monthlyCal" />
+        tools:layout="@layout/fragment_monthly" />
+
+    <fragment
+        android:id="@+id/nav_weeklyCal"
+        android:name="com.example.myfirsrtpro.ui.WeeklyFragment"
+        android:label="Weekly Calendar"
+        tools:layout="@layout/fragment_weekly" />
+
+    <fragment
+        android:id="@+id/nav_dailyCal"
+        android:name="com.example.myfirsrtpro.ui.DailyFragment"
+        android:label="Daily Calendar"
+        tools:layout="@layout/fragment_daily" />
+
+
+
+
 
 
 </navigation>
