@@ -84,24 +84,24 @@
         </item>
     </group>
 
-    <group android:checkableBehavior="single">
-        <item android:title="Period" android:id="@+id/periodMenu">
-            <menu>
-                <item
-                    android:id="@+id/currentPeriod_menu"
-                    android:icon="@drawable/ic_baseline_add_circle_24"
-                    android:title="Add Current Period" />
-                <item
-                    android:id="@+id/nav_periods"
-                    android:icon="@drawable/ic_baseline_list_alt_24"
-                    android:title="All periods" />
-                <item
-                    android:id="@+id/nextPeriod_menu"
-                    android:icon="@drawable/ic_baseline_next_plan_24"
-                    android:title="Next Period Prediction" />
-            </menu>
-        </item>
-    </group>
+<!--    <group android:checkableBehavior="single">-->
+<!--        <item android:title="Period" android:id="@+id/periodMenu">-->
+<!--            <menu>-->
+<!--                <item-->
+<!--                    android:id="@+id/currentPeriod_menu"-->
+<!--                    android:icon="@drawable/ic_baseline_add_circle_24"-->
+<!--                    android:title="Add Current Period" />-->
+<!--                <item-->
+<!--                    android:id="@+id/nav_periods"-->
+<!--                    android:icon="@drawable/ic_baseline_list_alt_24"-->
+<!--                    android:title="All periods" />-->
+<!--                <item-->
+<!--                    android:id="@+id/nextPeriod_menu"-->
+<!--                    android:icon="@drawable/ic_baseline_next_plan_24"-->
+<!--                    android:title="Next Period Prediction" />-->
+<!--            </menu>-->
+<!--        </item>-->
+<!--    </group>-->
 
     <group android:checkableBehavior="single">
         <item android:title="profile">

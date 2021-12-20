@@ -128,4 +128,8 @@ public class ReminderFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
+
+
 }
