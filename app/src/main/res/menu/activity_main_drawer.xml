@@ -18,6 +18,10 @@
                     android:id="@+id/nav_dailyCal"
                     android:icon="@drawable/ic_baseline_calendar_view_day_24"
                     android:title="@string/menu_dailyCal" />
+                <item
+                    android:id="@+id/nav_events"
+                    android:icon="@drawable/ic_baseline_event_note_24"
+                    android:title="All events" />
             </menu>
         </item>
     </group>
@@ -69,20 +73,6 @@
         </item>
     </group>
 
-    <group android:checkableBehavior="single">
-        <item android:title="Events">
-            <menu>
-                <item
-                    android:id="@+id/event_menu"
-                    android:icon="@drawable/ic_baseline_add_card_24"
-                    android:title="Set new event" />
-                <item
-                    android:id="@+id/nav_events"
-                    android:icon="@drawable/ic_baseline_event_note_24"
-                    android:title="All events" />
-            </menu>
-        </item>
-    </group>
 
 <!--    <group android:checkableBehavior="single">-->
 <!--        <item android:title="Period" android:id="@+id/periodMenu">-->
