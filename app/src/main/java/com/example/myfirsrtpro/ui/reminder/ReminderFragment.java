@@ -19,9 +19,18 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.myfirsrtpro.Item;
 import com.example.myfirsrtpro.R;
+import com.example.myfirsrtpro.Reminder;
 import com.example.myfirsrtpro.ReminderActivity;
+import com.example.myfirsrtpro.databinding.FragmentMonthlyBinding;
 import com.example.myfirsrtpro.databinding.FragmentReminderBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
@@ -30,6 +39,11 @@ public class ReminderFragment extends Fragment implements DialogInterface.OnClic
 
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
+
+    //gets instance of authentication project in FB console
+    private FirebaseAuth mFirebaseAuth  = FirebaseAuth.getInstance();
+    //gets the root of the real time DataBase in the FB console
+    private FirebaseDatabase database = FirebaseDatabase.getInstance("https://myfirsrtpro-default-rtdb.europe-west1.firebasedatabase.app/");
 
     private ReminderViewModel reminderViewModel;
     private FragmentReminderBinding binding;
@@ -50,8 +64,33 @@ public class ReminderFragment extends Fragment implements DialogInterface.OnClic
             }
         });
         initDatePicker();
+        // Write a message to the database
+        String UID  = mFirebaseAuth.getUid();
+        //build a ref for user related data in real time DataBase using user id
+        DatabaseReference myRef = database.getReference("users/"+UID);
+        //getReference returns root - the path is users / all (for me )
 
+        //todo this
+        //adds an item to the FB under the referenced specified
+        Reminder reminder1 = new Reminder();
+        myRef.push().setValue(reminder1); //put the object
 
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //for each,children are the objects
+                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    Reminder reminder1 = dataSnapshot.getValue(Reminder.class);
+                    //list.add(item1);--> add to the arrayList
+                    //myAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         return root;
     }
