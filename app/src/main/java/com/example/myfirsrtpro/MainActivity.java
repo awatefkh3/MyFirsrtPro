@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements  DialogInterface.
             super.onBackPressed();
             dialogInterface.cancel();
         }
-        if(i == dialogInterface.BUTTON_POSITIVE){
+        if(i == dialogInterface.BUTTON_NEGATIVE){
             dialogInterface.cancel();
         }
     }

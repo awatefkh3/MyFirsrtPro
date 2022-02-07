@@ -2,6 +2,7 @@ package com.example.myfirsrtpro.ui.reminder;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +25,7 @@ import com.example.myfirsrtpro.databinding.FragmentReminderBinding;
 
 import java.util.Calendar;
 
-public class ReminderFragment extends Fragment {
+public class ReminderFragment extends Fragment implements DialogInterface.OnClickListener {
 
 
     private DatePickerDialog datePickerDialog;
@@ -127,6 +128,18 @@ public class ReminderFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    public void onClick(DialogInterface dialogInterface, int i) {
+        if(i == dialogInterface.BUTTON_POSITIVE){
+            saveReminder(dialogInterface);
+        }
+        if(i == dialogInterface.BUTTON_NEGATIVE){
+            dialogInterface.cancel();
+        }
+    }
+    public void saveReminder(DialogInterface dialogInterface){
+
     }
 
 

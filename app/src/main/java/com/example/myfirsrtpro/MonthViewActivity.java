@@ -69,7 +69,7 @@ public class MonthViewActivity extends AppCompatActivity implements CalendarAdap
 //    }
 //
 //    public void nextMonthAction(View view) {
-//        CalendarUtils.selectedDate  = CalendarUtils.selectedDate.plusMonths(1);
+//        CalendarUtils.selectedDate  = CalendarUtils.selectedDate.plusMonths   (1);
 //        setMonthView();
 //    }
 

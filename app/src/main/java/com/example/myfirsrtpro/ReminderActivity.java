@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -55,6 +56,8 @@ public class ReminderActivity extends AppCompatActivity {
 
         datePickerDialog = new DatePickerDialog(this,style,dateSetListener,year,month,day);
 
+
+
     }
 
     private String makeDateString(int day, int month, int year) {
@@ -93,4 +96,8 @@ public class ReminderActivity extends AppCompatActivity {
     public void openDatePicker(View view) {
          datePickerDialog.show();
     }
+
+
+
+
 }
