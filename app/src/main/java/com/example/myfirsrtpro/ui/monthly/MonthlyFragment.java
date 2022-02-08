@@ -87,7 +87,7 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
         //getReference returns root - the path is users / all (for me )
 
         //todo this
-        //adds an item to the FB under the referenced specified
+        //adds an item to the FB under the reference specified
         Item item1 = new Item();
         myRef.push().setValue(item1); //put the object
 

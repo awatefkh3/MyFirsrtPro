@@ -64,33 +64,7 @@ public class ReminderFragment extends Fragment implements DialogInterface.OnClic
             }
         });
         initDatePicker();
-        // Write a message to the database
-        String UID  = mFirebaseAuth.getUid();
-        //build a ref for user related data in real time DataBase using user id
-        DatabaseReference myRef = database.getReference("users/"+UID);
-        //getReference returns root - the path is users / all (for me )
 
-        //todo this
-        //adds an item to the FB under the referenced specified
-        Reminder reminder1 = new Reminder();
-        myRef.push().setValue(reminder1); //put the object
-
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //for each,children are the objects
-                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    Reminder reminder1 = dataSnapshot.getValue(Reminder.class);
-                    //list.add(item1);--> add to the arrayList
-                    //myAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
         return root;
     }
@@ -178,7 +152,35 @@ public class ReminderFragment extends Fragment implements DialogInterface.OnClic
         }
     }
     public void saveReminder(DialogInterface dialogInterface){
+        // Write a message to the database
+        String UID  = mFirebaseAuth.getUid();
+        //build a ref for user related data in real time DataBase using user id
+        DatabaseReference myRef = database.getReference("users/"+UID);
+        //getReference returns root - the path is users / all (for me )
 
+        //todo this
+        //adds an item to the FB under the referenced specified
+        Reminder reminder1 = new Reminder();
+        myRef.push().setValue(reminder1); //put the object
+
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //for each,children are the objects
+                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+
+                    Reminder reminder1 = dataSnapshot.getValue(Reminder.class);
+                    //list.add(reminder1);--> add to the arrayList
+                    //myAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 
