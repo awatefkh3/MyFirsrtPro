@@ -38,6 +38,11 @@ public class Event {
     private LocalDate date;
     private Time time1;
     private LocalTime time;
+    private Date date1;
+
+    public Event(LocalTime time){
+        this.time = LocalTime.now();
+    }
 
     public Event(String name, LocalDate date, LocalTime time) {
         this.name = name;
@@ -45,10 +50,10 @@ public class Event {
         this.time = time;
     }
 
-    public Event(String name, LocalDate date, Time time) {
+    public Event(String name, Date date, LocalTime time) {
         this.name = name;
-        this.date = date;
-        this.time1 = time;
+        this.date1 = date;
+        this.time = time;
     }
 
     public String getName() {

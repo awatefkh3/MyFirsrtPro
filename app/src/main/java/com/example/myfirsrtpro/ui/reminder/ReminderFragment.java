@@ -34,7 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
-public class ReminderFragment extends Fragment implements DialogInterface.OnClickListener {
+public class ReminderFragment extends Fragment {
 
 
     private DatePickerDialog datePickerDialog;
@@ -64,7 +64,6 @@ public class ReminderFragment extends Fragment implements DialogInterface.OnClic
             }
         });
         initDatePicker();
-
 
         return root;
     }
@@ -134,31 +133,12 @@ public class ReminderFragment extends Fragment implements DialogInterface.OnClic
 
     public void openDatePicker(View view) {
         datePickerDialog.show();
-    }
-
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-
-    public void onClick(DialogInterface dialogInterface, int i) {
-        if(i == dialogInterface.BUTTON_POSITIVE){
-            saveReminder(dialogInterface);
-        }
-        if(i == dialogInterface.BUTTON_NEGATIVE){
-            dialogInterface.cancel();
-        }
-    }
-    public void saveReminder(DialogInterface dialogInterface){
         // Write a message to the database
         String UID  = mFirebaseAuth.getUid();
         //build a ref for user related data in real time DataBase using user id
         DatabaseReference myRef = database.getReference("users/"+UID);
         //getReference returns root - the path is users / all (for me )
 
-        //todo this
         //adds an item to the FB under the referenced specified
         Reminder reminder1 = new Reminder();
         myRef.push().setValue(reminder1); //put the object
@@ -182,6 +162,14 @@ public class ReminderFragment extends Fragment implements DialogInterface.OnClic
             }
         });
     }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
 
 
 

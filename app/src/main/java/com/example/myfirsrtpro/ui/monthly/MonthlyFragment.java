@@ -63,7 +63,7 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
         nxtButton = root.findViewById(R.id.nxtButton);
 
 
-        //setting onClock listener to the buttons
+        //setting onClick listener to the buttons
         nxtButton.setOnClickListener(this);
         preButton.setOnClickListener(this);
 
