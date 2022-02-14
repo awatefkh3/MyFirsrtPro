@@ -64,9 +64,11 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
                 calendar1.set(Calendar.MINUTE,minute);
                 SimpleDateFormat df= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US);
                 editTextEventTime.setText(df.format(new Date()));
+
+                myTime = new Time(minute,hourOfDay,0);
             }
         };
-            new TimePickerDialog(EventEditActivity2.this,timeSetListener,calendar1.get(Calendar.HOUR_OF_DAY),calendar1.get(Calendar.MINUTE),true).show();
+        new TimePickerDialog(EventEditActivity2.this,timeSetListener,calendar1.get(Calendar.HOUR_OF_DAY),calendar1.get(Calendar.MINUTE),true).show();
     }
 
     public void saveEventAction(View view) {
@@ -87,7 +89,7 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
 
         //todo this
         //adds an item to the FB under the reference specified
-        Event event1 = new Event(eventName,stringToDate(textViewEventDate.getText().toString(),"DD MM YYYY"),ldt);
+        Event event1 = new Event(eventName,textViewEventDate.getText().toString(),myTime.toString());
         myRef.push().setValue(event1); //put the object
 
         myRef.addValueEventListener(new ValueEventListener() {

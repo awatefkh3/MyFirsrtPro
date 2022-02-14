@@ -8,6 +8,30 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Event {
+
+    private String name;
+    private LocalDate date;
+    private LocalTime time;
+    private Date date1;
+    private Time time1;
+    private String time2;
+    private String date2;
+
+
+    public Event(){
+
+    }
+
+    public Event(LocalTime time){
+        this.time = LocalTime.now();
+    }
+
+
+    public Event(String name, LocalDate date, LocalTime time) {
+        this.name = name;
+        this.date = date;
+        this.time = time;
+    }
     public static ArrayList<Event> eventList = new ArrayList<>();
 
     public static ArrayList<Event> eventsForDate(LocalDate date){
@@ -34,26 +58,12 @@ public class Event {
         return events;
     }
 
-    private String name;
-    private LocalDate date;
-    private Time time1;
-    private LocalTime time;
-    private Date date1;
 
-    public Event(LocalTime time){
-        this.time = LocalTime.now();
-    }
 
-    public Event(String name, LocalDate date, LocalTime time) {
+    public Event(String name, String date, String time) {
         this.name = name;
-        this.date = date;
-        this.time = time;
-    }
-
-    public Event(String name, Date date, LocalTime time) {
-        this.name = name;
-        this.date1 = date;
-        this.time = time;
+        this.date2 = date;
+        this.time2 = time;
     }
 
     public String getName() {
