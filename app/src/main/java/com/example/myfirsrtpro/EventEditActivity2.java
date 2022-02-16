@@ -31,6 +31,15 @@ import java.util.Locale;
 
 public class EventEditActivity2 extends AppCompatActivity implements View.OnClickListener {
     private Time myTime;
+    //trying to use the classes i made of time and date
+    private String myHour;
+    private String myMinute;
+    private String mySecond;
+    private String myMonth;
+    private String myYear;
+    private String myDay;
+
+
     EditText editTextEventTime,editTextEventName;
     TextView textViewEventDate, saveTv;
     //gets instance of authentication project in FB console
@@ -49,6 +58,10 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
         saveTv = findViewById(R.id.textView4);
 
         textViewEventDate.setText("Date: " + CalendarUtils.formattedDate(CalendarUtils.selectedDate));
+        myDay = String.valueOf(CalendarUtils.selectedDate.getDayOfMonth());
+        myMonth = String.valueOf(CalendarUtils.selectedDate.getMonth());
+        myYear = String.valueOf(CalendarUtils.selectedDate.getYear());
+
 
         saveTv.setOnClickListener(this);
         editTextEventTime.setOnClickListener(this);
@@ -66,6 +79,11 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
                 editTextEventTime.setText(df.format(new Date()));
 
                 myTime = new Time(minute,hourOfDay,0);
+                myHour = String.valueOf(hourOfDay);
+                myMinute = String.valueOf(minute);
+                mySecond = "";
+
+
             }
         };
         new TimePickerDialog(EventEditActivity2.this,timeSetListener,calendar1.get(Calendar.HOUR_OF_DAY),calendar1.get(Calendar.MINUTE),true).show();
@@ -84,12 +102,15 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
         // Write a message to the database
         String UID  = mFirebaseAuth.getUid();
         //build a ref for user related data in real time DataBase using user id
-        DatabaseReference myRef = database.getReference("users/"+UID);
+        DatabaseReference myRef = database.getReference("events/"+UID);
         //getReference returns root - the path is users / all (for me )
 
         //todo this
         //adds an item to the FB under the reference specified
-        Event event1 = new Event(eventName,textViewEventDate.getText().toString(),myTime.toString());
+        //building objects to my date and time classes
+        MyTime myTime1 = new MyTime(myHour,myMinute,mySecond);
+        MyDate myDate1 = new MyDate(myDay,myMonth,myYear);
+        firebaseEvent event1 = new firebaseEvent(myTime1,myDate1,eventName);
         myRef.push().setValue(event1); //put the object
 
         myRef.addValueEventListener(new ValueEventListener() {
@@ -97,7 +118,7 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //for each,children are the objects
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    Event event1 = dataSnapshot.getValue(Event.class);
+                    firebaseEvent event1 = dataSnapshot.getValue(firebaseEvent.class);
                     //list.add(item1);--> add to the arrayList
                     //myAdapter.notifyDataSetChanged();
                 }

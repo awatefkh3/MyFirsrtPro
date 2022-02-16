@@ -12,15 +12,9 @@ public class Event {
     private String name;
     private LocalDate date;
     private LocalTime time;
-    private Date date1;
-    private Time time1;
-    private String time2;
-    private String date2;
+    //private Date date1;
+    //private Time time1;
 
-
-    public Event(){
-
-    }
 
     public Event(LocalTime time){
         this.time = LocalTime.now();
@@ -56,14 +50,6 @@ public class Event {
         }
 
         return events;
-    }
-
-
-
-    public Event(String name, String date, String time) {
-        this.name = name;
-        this.date2 = date;
-        this.time2 = time;
     }
 
     public String getName() {

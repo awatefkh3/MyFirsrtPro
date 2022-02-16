@@ -136,7 +136,7 @@ public class ReminderFragment extends Fragment {
         // Write a message to the database
         String UID  = mFirebaseAuth.getUid();
         //build a ref for user related data in real time DataBase using user id
-        DatabaseReference myRef = database.getReference("users/"+UID);
+        DatabaseReference myRef = database.getReference("reminders/"+UID);
         //getReference returns root - the path is users / all (for me )
 
         //adds an item to the FB under the referenced specified

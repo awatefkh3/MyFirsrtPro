@@ -47,7 +47,11 @@
         android:label="Daily Calendar"
         tools:layout="@layout/fragment_daily" />
 
-
+    <fragment
+        android:id="@+id/nav_eventsList"
+        android:name="com.example.myfirsrtpro.ui.EventsFragment"
+        android:label="Events List"
+        tools:layout="@layout/fragment_events" />
 
 
 
