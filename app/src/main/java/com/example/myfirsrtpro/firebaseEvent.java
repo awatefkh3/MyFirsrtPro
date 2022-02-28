@@ -12,12 +12,6 @@ public class firebaseEvent {
         this.name = name;
     }
 
-    public firebaseEvent(){
-        this.time = new MyTime();
-        this.date = new MyDate();
-    }
-
-
 
     public MyTime getTime() {
         return time;

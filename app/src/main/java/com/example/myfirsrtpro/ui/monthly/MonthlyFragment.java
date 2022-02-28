@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,7 +42,8 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://myfirsrtpro-default-rtdb.europe-west1.firebasedatabase.app/");
     private TextView monthYearTV;
     private RecyclerView calendarRecyclerView;
-    private Button preButton,nxtButton;
+    private Button preButton,nxtButton,weeklyButton;
+
 
 
 
@@ -61,12 +63,13 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
         monthYearTV = root.findViewById(R.id.monthYearTV);
         preButton = root.findViewById(R.id.preButton);
         nxtButton = root.findViewById(R.id.nxtButton);
+        weeklyButton = root.findViewById(R.id.weeklyButton);
 
 
         //setting onClick listener to the buttons
         nxtButton.setOnClickListener(this);
         preButton.setOnClickListener(this);
-
+        weeklyButton.setOnClickListener(this);
 
 
         setMonthView();
@@ -88,10 +91,10 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
 
         //todo this
         //adds an item to the FB under the reference specified
-        Item item1 = new Item();
-        myRef.push().setValue(item1); //put the object
+        //Item item1 = new Item();
+        //myRef.push().setValue(item1); //put the object
 
-        myRef.addValueEventListener(new ValueEventListener() {
+        /*myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //for each,children are the objects
@@ -106,7 +109,7 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });*/
 
         return root;
     }
@@ -160,6 +163,7 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
             case R.id.preButton:
                 previousMonthAction(preButton);
                 break;
+            //case R.id.weeklyButton;
             default:
                 break;
         }

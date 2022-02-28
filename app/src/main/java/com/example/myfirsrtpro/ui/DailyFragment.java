@@ -102,6 +102,12 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
         return list;
     }
 
+    //to add event in another fragment
+    public void addEvent(HourEvent event,ArrayList<HourEvent> list)
+    {
+        list.add(event);
+    }
+
     public void previousDayAction(View view) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusDays(1);
         setDayView();

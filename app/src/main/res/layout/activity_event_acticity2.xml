@@ -29,20 +29,15 @@
         android:textColor="@color/black"
         />
 
-
-    <EditText
-        android:id="@+id/editTextEventTime"
+    <TextView
+        android:id="@+id/textViewEventTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="choose time"
-        android:textSize="20sp"
-        android:textColor="@color/black"
         android:layout_gravity="center"
-        android:backgroundTint="@color/white"
-        android:layout_marginTop="10dp"
-
-        />
-
+        android:text="Event time"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="250dp"

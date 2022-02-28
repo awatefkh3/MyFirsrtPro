@@ -12,6 +12,8 @@ public class Event {
     private String name;
     private LocalDate date;
     private LocalTime time;
+    public static ArrayList<Event> eventList = new ArrayList<>();
+
     //private Date date1;
     //private Time time1;
 
@@ -26,7 +28,6 @@ public class Event {
         this.date = date;
         this.time = time;
     }
-    public static ArrayList<Event> eventList = new ArrayList<>();
 
     public static ArrayList<Event> eventsForDate(LocalDate date){
         ArrayList<Event> events = new ArrayList<>();

@@ -25,13 +25,17 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 public class EventEditActivity2 extends AppCompatActivity implements View.OnClickListener {
-    private Time myTime;
+
     //trying to use the classes i made of time and date
+
+    private ArrayList<Event> eventsList;
+
     private String myHour;
     private String myMinute;
     private String mySecond;
@@ -39,9 +43,11 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
     private String myYear;
     private String myDay;
 
+    private LocalTime time;
 
-    EditText editTextEventTime,editTextEventName;
-    TextView textViewEventDate, saveTv;
+    EditText editTextEventName;
+    TextView textViewEventDate,textViewEventTime,saveTv;
+
     //gets instance of authentication project in FB console
     private FirebaseAuth mFirebaseAuth  = FirebaseAuth.getInstance();
     //gets the root of the real time DataBase in the FB console
@@ -52,22 +58,29 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_acticity2);
         //initialize widgets
-        editTextEventTime = findViewById(R.id.editTextEventTime);
+
         editTextEventName = findViewById(R.id.editTextEventName);
         textViewEventDate = findViewById(R.id.textViewEventDate);
+        textViewEventTime = findViewById(R.id.textViewEventTime);
         saveTv = findViewById(R.id.textView4);
 
+        time = LocalTime.now();
         textViewEventDate.setText("Date: " + CalendarUtils.formattedDate(CalendarUtils.selectedDate));
-        myDay = String.valueOf(CalendarUtils.selectedDate.getDayOfMonth());
-        myMonth = String.valueOf(CalendarUtils.selectedDate.getMonth());
-        myYear = String.valueOf(CalendarUtils.selectedDate.getYear());
+        textViewEventTime.setText("Time: " + CalendarUtils.formattedTime(time));
+
+        //myDay = String.valueOf(CalendarUtils.selectedDate.getDayOfMonth());
+        //myMonth = String.valueOf(CalendarUtils.selectedDate.getMonth());
+        //myYear = String.valueOf(CalendarUtils.selectedDate.getYear());
+
+        myHour = String.valueOf(CalendarUtils.formattedTime(time).charAt(0)+CalendarUtils.formattedTime(time).charAt(2));
+        myMinute = String.valueOf(CalendarUtils.formattedTime(time).charAt(3)+CalendarUtils.formattedTime(time).charAt(4));
+        mySecond = String.valueOf(CalendarUtils.formattedTime(time).charAt(6)+CalendarUtils.formattedTime(time).charAt(7));
 
 
         saveTv.setOnClickListener(this);
-        editTextEventTime.setOnClickListener(this);
     }
 
-    public  void showTimeDialog(View view) {
+    /*public  void showTimeDialog(View view) {
         final Calendar calendar1 = Calendar.getInstance();
 
         TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
@@ -76,29 +89,32 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
                 calendar1.set(Calendar.HOUR_OF_DAY,hourOfDay);
                 calendar1.set(Calendar.MINUTE,minute);
                 SimpleDateFormat df= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US);
-                editTextEventTime.setText(df.format(new Date()));
+                //editTextEventTime.setText(df.format(new Date()));
 
-                myTime = new Time(minute,hourOfDay,0);
+                //myTime = new Time(minute,hourOfDay,0);
                 myHour = String.valueOf(hourOfDay);
                 myMinute = String.valueOf(minute);
                 mySecond = "";
 
+                //editTextEventTime.setText(myTime+":"+myHour+":"+myMinute+":"+mySecond);
 
             }
         };
         new TimePickerDialog(EventEditActivity2.this,timeSetListener,calendar1.get(Calendar.HOUR_OF_DAY),calendar1.get(Calendar.MINUTE),true).show();
-    }
+    }*/
 
     public void saveEventAction(View view) {
 
-        Log.d("TESTING", "TESTING");
+        //Log.d("TESTING", "TESTING");
         String eventName = editTextEventName.getText().toString();
-        String time = editTextEventTime.getText().toString();
-
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern(("yyyy-MM-dd'T'HH:mm:ss.SSS"));
-        LocalTime ldt = LocalTime.parse(time,dtf);
-        Event newEvent = new Event(eventName, CalendarUtils.selectedDate,ldt);
+        Event newEvent = new Event(eventName,CalendarUtils.selectedDate,time);
         Event.eventList.add(newEvent);
+        //String time = editTextEventTime.getText().toString();
+
+       // DateTimeFormatter dtf = DateTimeFormatter.ofPattern(("yyyy-MM-dd'T'HH:mm:ss.SSS"));
+       // LocalTime ldt = LocalTime.parse(time,dtf);
+        //Event newEvent = new Event(eventName, CalendarUtils.selectedDate,ldt);
+        //Event.eventList.add(newEvent);
         // Write a message to the database
         String UID  = mFirebaseAuth.getUid();
         //build a ref for user related data in real time DataBase using user id
@@ -112,6 +128,7 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
         MyDate myDate1 = new MyDate(myDay,myMonth,myYear);
         firebaseEvent event1 = new firebaseEvent(myTime1,myDate1,eventName);
         myRef.push().setValue(event1); //put the object
+
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -144,10 +161,6 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View view) {
-        if(view == editTextEventTime){
-            showTimeDialog(view);
-        }else {
             saveEventAction(view);
         }
-    }
 }
