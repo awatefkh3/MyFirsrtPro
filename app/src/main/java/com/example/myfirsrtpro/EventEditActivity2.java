@@ -72,9 +72,13 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
         //myMonth = String.valueOf(CalendarUtils.selectedDate.getMonth());
         //myYear = String.valueOf(CalendarUtils.selectedDate.getYear());
 
-        myHour = String.valueOf(CalendarUtils.formattedTime(time).charAt(0)+CalendarUtils.formattedTime(time).charAt(2));
-        myMinute = String.valueOf(CalendarUtils.formattedTime(time).charAt(3)+CalendarUtils.formattedTime(time).charAt(4));
-        mySecond = String.valueOf(CalendarUtils.formattedTime(time).charAt(6)+CalendarUtils.formattedTime(time).charAt(7));
+        myHour = String.valueOf(time.getHour());
+        myMinute = String.valueOf(time.getMinute());
+        mySecond = String.valueOf(time.getSecond());
+
+        myDay = String.valueOf(CalendarUtils.selectedDate.getDayOfMonth());
+        myMonth= String.valueOf(CalendarUtils.selectedDate.getMonth());
+        myYear = String.valueOf(CalendarUtils.selectedDate.getYear());
 
 
         saveTv.setOnClickListener(this);
@@ -147,6 +151,8 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
             }
         });
         finish();
+
+
     }
 
     private Date stringToDate(String aDate, String aFormat) {

@@ -24,6 +24,7 @@ import com.example.myfirsrtpro.Item;
 import com.example.myfirsrtpro.R;
 import com.example.myfirsrtpro.WeekViewActivity;
 import com.example.myfirsrtpro.databinding.FragmentMonthlyBinding;
+import com.example.myfirsrtpro.ui.WeeklyFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -163,7 +164,11 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
             case R.id.preButton:
                 previousMonthAction(preButton);
                 break;
-            //case R.id.weeklyButton;
+                //todo this
+            //case R.id.weeklyButton:
+                //FragmentTransaction fr = getFragmentManager().beginTransaction();
+                //fr.replace(R.id.nav_view,new WeeklyFragment());
+                //fr.commit();
             default:
                 break;
         }

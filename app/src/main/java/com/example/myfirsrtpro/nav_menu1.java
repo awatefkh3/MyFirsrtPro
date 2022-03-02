@@ -6,10 +6,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.myfirsrtpro.databinding.FragmentDailyBinding;
+import com.example.myfirsrtpro.ui.WeeklyFragment;
+import com.example.myfirsrtpro.ui.monthly.MonthlyFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -50,6 +54,14 @@ public class nav_menu1 extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_nav_menu1);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        //in order to move between fragments
+        //FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+        //fragmentTransaction.add(R.id.nav_view,new MonthlyFragment());
+        //fragmentTransaction.commit();
+
+
     }
 
     @Override
