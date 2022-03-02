@@ -102,6 +102,7 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 eventlist.remove(i);
+                database.getReference().child("").removeValue();
                 myEventAdapter.notifyDataSetChanged();
                 return false;
             }
