@@ -1,16 +1,13 @@
 package com.example.myfirsrtpro;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -19,20 +16,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Time;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 public class EventEditActivity2 extends AppCompatActivity implements View.OnClickListener {
 
-    //trying to use the classes i made of time and date
 
     private String myHour;
     private String myMinute;
@@ -42,7 +33,7 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
     private String myDay;
 
     private LocalTime time;
-    private ArrayList<Event> events;
+    private ArrayList<FireBaseEvent> firebaseEvents;
 
    // private EventAdapter myEventAdapter;
 
@@ -54,6 +45,8 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
     private FirebaseAuth mFirebaseAuth  = FirebaseAuth.getInstance();
     //gets the root of the real time DataBase in the FB console
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://myfirsrtpro-default-rtdb.europe-west1.firebasedatabase.app/");
+
+    private FireBaseEventAdapter myAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,13 +63,14 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
         textViewEventDate.setText("Date: " + CalendarUtils.formattedDate(CalendarUtils.selectedDate));
         textViewEventTime.setText("Time: " + CalendarUtils.formattedTime(time));
 
-        //myDay = String.valueOf(CalendarUtils.selectedDate.getDayOfMonth());
-        //myMonth = String.valueOf(CalendarUtils.selectedDate.getMonth());
-        //myYear = String.valueOf(CalendarUtils.selectedDate.getYear());
+
+        firebaseEvents = new ArrayList<FireBaseEvent>();
+        myAdapter = new FireBaseEventAdapter(getApplicationContext(),R.layout.event_cell,firebaseEvents);
 
         myHour = String.valueOf(time.getHour());
         myMinute = String.valueOf(time.getMinute());
         mySecond = String.valueOf(time.getSecond());
+
 
         myDay = String.valueOf(CalendarUtils.selectedDate.getDayOfMonth());
         myMonth= String.valueOf(CalendarUtils.selectedDate.getMonth());
@@ -113,8 +107,8 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
 
         //Log.d("TESTING", "TESTING");
         String eventName = editTextEventName.getText().toString();
-        Event newEvent = new Event(eventName,CalendarUtils.selectedDate,time);
-        events.add(newEvent);
+        //Event newEvent = new Event(eventName,CalendarUtils.selectedDate,time);
+        //events.add(newEvent);
        // myEventAdapter.notifyDataSetChanged();
 
         //String time = editTextEventTime.getText().toString();
@@ -134,17 +128,22 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
         //building objects to my date and time classes
         MyTime myTime1 = new MyTime(myHour,myMinute,mySecond);
         MyDate myDate1 = new MyDate(myDay,myMonth,myYear);
-        firebaseEvent event1 = new firebaseEvent(myTime1,myDate1,eventName);
-        myRef.push().setValue(event1); //put the object
+        FireBaseEvent event1 = new FireBaseEvent(myTime1,myDate1,eventName);
+        myRef.push().setValue(event1); //push the object to the firebase data sets
+        firebaseEvents.add(event1);
+        myAdapter.notifyDataSetChanged();
 
 
-        myRef.addValueEventListener(new ValueEventListener() {
+
+
+
+       /* myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //for each,children are the objects
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    firebaseEvent event1 = dataSnapshot.getValue(firebaseEvent.class);
-                    //list.add(item1);--> add to the arrayList
+                    FireBaseEvent event1 = dataSnapshot.getValue(FireBaseEvent.class);
+
                     //myAdapter.notifyDataSetChanged();
                 }
             }
@@ -153,13 +152,13 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });*/
         finish();
 
 
     }
 
-    private Date stringToDate(String aDate, String aFormat) {
+    /*private Date stringToDate(String aDate, String aFormat) {
 
         if (aDate == null) return null;
         ParsePosition pos = new ParsePosition(0);
@@ -167,7 +166,7 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
         Date stringDate = simpledateformat.parse(aDate, pos);
         return stringDate;
     }
-
+*/
 
     @Override
     public void onClick(View view) {

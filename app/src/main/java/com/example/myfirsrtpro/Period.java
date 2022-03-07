@@ -57,3 +57,4 @@ public class Period {
         this.counter2 = counter2;
     }
 }
+//todo delete this

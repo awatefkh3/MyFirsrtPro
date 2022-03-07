@@ -7,18 +7,19 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Event {
+//public class Event {
 
-    private String name;
-    private LocalDate date;
-    private LocalTime time;
+    /*private String name;
+    //private LocalDate date;
+    //private LocalTime time;
     public static ArrayList<Event> eventList = new ArrayList<>();
+
 
     //private Date date1;
     //private Time time1;
 
 
-    public Event(LocalTime time){
+    *//*public Event(LocalTime time){
         this.time = LocalTime.now();
     }
 
@@ -28,7 +29,7 @@ public class Event {
         this.date = date;
         this.time = time;
     }
-
+*//*
     public static ArrayList<Event> eventsForDate(LocalDate date){
         ArrayList<Event> events = new ArrayList<>();
 
@@ -40,7 +41,7 @@ public class Event {
         return events;
     }
 
-    public static ArrayList<Event> eventsForDateAndTime(LocalDate date,LocalTime time){
+    *//*public static ArrayList<Event> eventsForDateAndTime(LocalDate date,LocalTime time){
         ArrayList<Event> events = new ArrayList<>();
 
         for(Event event : eventList){
@@ -51,7 +52,7 @@ public class Event {
         }
 
         return events;
-    }
+    }*//*
 
     public String getName() {
         return name;
@@ -61,7 +62,7 @@ public class Event {
         this.name = name;
     }
 
-    public LocalDate getDate() {
+    *//*public LocalDate getDate() {
         return date;
     }
 
@@ -75,5 +76,9 @@ public class Event {
 
     public void setTime(LocalTime time) {
         this.time = time;
-    }
+    }*//*
+
+
 }
+*/
+//todo delete this

@@ -18,3 +18,4 @@ public class AboutActivity extends AppCompatActivity {
 
     }
 }
+//todo delete this

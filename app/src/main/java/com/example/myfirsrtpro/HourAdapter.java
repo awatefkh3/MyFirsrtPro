@@ -14,6 +14,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
 public class HourAdapter extends ArrayAdapter<HourEvent> {
     public HourAdapter(@NonNull Context context, List<HourEvent> hourEvents ) {
         super(context, 0, hourEvents);
@@ -89,3 +90,5 @@ public class HourAdapter extends ArrayAdapter<HourEvent> {
 
 
 }
+*/
+//todo delete this

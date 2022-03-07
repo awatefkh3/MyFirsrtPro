@@ -1,21 +1,27 @@
 package com.example.myfirsrtpro;
 
-public class firebaseEvent {
+import android.icu.util.IndianCalendar;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+
+public class FireBaseEvent {
 
     private MyTime time;
     private MyDate date;
     private String name;
 
-    public firebaseEvent(MyTime time, MyDate date, String name) {
-        this.time = time;
-        this.date = date;
+
+    public FireBaseEvent(MyTime time, MyDate date, String name) {
+        this.time = new MyTime(time.getHour(),time.getMinute(),time.getSecond());
+        this.date = new MyDate(date.getDay(),date.getMonth(),date.getYear());
         this.name = name;
     }
 
-    public firebaseEvent(){
+    public FireBaseEvent(){
 
     }
-
 
     public MyTime getTime() {
         return time;

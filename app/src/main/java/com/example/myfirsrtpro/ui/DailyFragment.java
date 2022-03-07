@@ -13,10 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.myfirsrtpro.CalendarUtils;
-import com.example.myfirsrtpro.Event;
+//import com.example.myfirsrtpro.Event;
 import com.example.myfirsrtpro.EventEditActivity2;
-import com.example.myfirsrtpro.HourAdapter;
-import com.example.myfirsrtpro.HourEvent;
+//import com.example.myfirsrtpro.HourAdapter;
+//import com.example.myfirsrtpro.HourEvent;
+import com.example.myfirsrtpro.FireBaseEvent;
+import com.example.myfirsrtpro.FireBaseEventAdapter;
 import com.example.myfirsrtpro.R;
 import com.example.myfirsrtpro.databinding.FragmentDailyBinding;
 import com.example.myfirsrtpro.databinding.FragmentWeeklyBinding;
@@ -36,12 +38,14 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
     private TextView monthDayText;
     private TextView dayOfWeekTV;
     private ListView hourListView;
+    //private ArrayList<FireBaseEvent> dailyList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         CalendarUtils.selectedDate = LocalDate.now();
 
+        //dailyList = new ArrayList<FireBaseEvent>();
 
         binding = FragmentDailyBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -63,6 +67,9 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
         nxtDay.setOnClickListener(this);
         newEvent.setOnClickListener(this);
 
+        //connect listView with adapter+arrayList
+
+
         setDayView();
 
 
@@ -80,16 +87,38 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
         monthDayText.setText(CalendarUtils.monthDayFromDate(CalendarUtils.selectedDate));
         String dayOfWeek = CalendarUtils.selectedDate.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault());
         dayOfWeekTV.setText(dayOfWeek);
-        setHourAdapter();
+        //setDayEventList();
+        //setHourAdapter();
 
     }
 
-    private void setHourAdapter() {
+   /* private void setDayEventList(){
+        ArrayList<FireBaseEvent> dailyEvents = eventsForDate(dailyList);
+        FireBaseEventAdapter fireBaseEventAdapter = new FireBaseEventAdapter(getContext().getApplicationContext(),R.layout.event_cell,dailyEvents);
+        hourListView.setAdapter(fireBaseEventAdapter);
+    }
+
+    public  ArrayList<FireBaseEvent> eventsForDate(ArrayList<FireBaseEvent> eventList){
+        ArrayList<FireBaseEvent> events = new ArrayList<>();
+
+        for(FireBaseEvent event : eventList){
+            if(event.getDate().getDay().equals(String.valueOf(CalendarUtils.selectedDate.getDayOfMonth()))&&
+                    event.getDate().getMonth().equals(String.valueOf(CalendarUtils.selectedDate.getMonth()))&&
+                    event.getDate().getYear().equals(String.valueOf(CalendarUtils.selectedDate.getYear())))
+            {
+                events.add(event);
+            }
+        }
+
+        return events;
+    }*/
+
+    /*private void setHourAdapter() {
         HourAdapter hourAdapter = new HourAdapter(getContext().getApplicationContext(),hourEventList());
         hourListView.setAdapter(hourAdapter);
-    }
+    }*/
 
-    private List<HourEvent> hourEventList() {
+   /* private List<HourEvent> hourEventList() {
         ArrayList<HourEvent> list = new ArrayList<>();
 
         for(int hour = 0; hour<24; hour++){
@@ -100,13 +129,7 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
 
         }
         return list;
-    }
-
-    //to add event in another fragment
-    public void addEvent(HourEvent event,ArrayList<HourEvent> list)
-    {
-        list.add(event);
-    }
+    }*/
 
     public void previousDayAction(View view) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusDays(1);
@@ -141,3 +164,4 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
         }
     }
 }
+//todo show events of the day. *

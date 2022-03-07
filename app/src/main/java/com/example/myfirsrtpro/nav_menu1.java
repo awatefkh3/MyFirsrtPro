@@ -47,6 +47,7 @@ public class nav_menu1 extends AppCompatActivity {
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+        //todo rearrange this
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_camera, R.id.nav_gallery,R.id.reminder_menu,R.id.alarm_menu,R.id.logOut_menu,R.id.camera_menu,R.id.gallery_menu,R.id.about_menu,R.id.nav_monthlyCal,R.id.nav_weeklyCal,R.id.nav_dailyCal,R.id.nav_reminders,R.id.nav_events,R.id.nav_alarms)
                 .setOpenableLayout(drawer)

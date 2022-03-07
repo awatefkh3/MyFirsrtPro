@@ -90,3 +90,4 @@ public class GalleryFragment extends Fragment implements View.OnClickListener {
         binding = null;
     }
 }
+//todo use this

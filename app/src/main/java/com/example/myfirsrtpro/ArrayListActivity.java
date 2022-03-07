@@ -16,10 +16,11 @@ public class ArrayListActivity extends AppCompatActivity {
     //the object of the view
     private ListView myListView;
     //the object for the adapter connecting the data to the view
-    private CustomAdapter myAdapter;
+    //private CustomAdapter myAdapter;
+    private FireBaseEventAdapter myAdapter;
     //object containing the items to be displayed - Data
-    private ArrayList<Item> list;
-
+    //private ArrayList<Item> list;
+    private ArrayList<FireBaseEvent> list;
 
 
     @Override
@@ -28,16 +29,18 @@ public class ArrayListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_array_list);
 
         list = new ArrayList<>();
-        list.add(new Item("This is my first Item",R.drawable.ic_launcher_background,true,50));
+       /* list.add(new Item("This is my first Item",R.drawable.ic_launcher_background,true,50));
         list.add(new Item("This is my second Item",R.drawable.ic_launcher_background,false,60));
         list.add(new Item("This is my third Item",R.drawable.ic_launcher_background,true,70));
         list.add(new Item("This is my fourth Item",R.drawable.ic_launcher_background,true,80));
-
+*/
         //reference to the list view so it can be programmed
         myListView = findViewById(R.id.myListView);
 
         //connect adapter with data
-        myAdapter = new CustomAdapter(this,R.layout.item_row,list);
+        //myAdapter = new CustomAdapter(this,R.layout.item_row,list);
+
+        myAdapter = new FireBaseEventAdapter(this,R.layout.event_cell,list);
 
         //connect adapter with view
         myListView.setAdapter(myAdapter);
@@ -46,7 +49,7 @@ public class ArrayListActivity extends AppCompatActivity {
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(),"Item: "+list.get(i),Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),"Item: "+list.get(i),Toast.LENGTH_LONG).show();
             }
         });
         myListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {

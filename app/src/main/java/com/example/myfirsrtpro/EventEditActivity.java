@@ -18,6 +18,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/*
 public class EventEditActivity extends AppCompatActivity {
 
     private EditText eventNameET;
@@ -55,4 +56,6 @@ public class EventEditActivity extends AppCompatActivity {
     }
 
 
-}
+*/
+//}
+//todo delete this

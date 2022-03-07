@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
+/*
 public class EventAdapter extends ArrayAdapter<Event> {
 
 
@@ -47,3 +48,5 @@ public class EventAdapter extends ArrayAdapter<Event> {
         return convertView;
     }
 }
+*/
+//todo delete this

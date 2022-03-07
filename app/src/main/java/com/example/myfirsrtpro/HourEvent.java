@@ -3,6 +3,7 @@ package com.example.myfirsrtpro;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+/*
 public class HourEvent {
     LocalTime time;
     ArrayList<Event> events;
@@ -27,3 +28,5 @@ public class HourEvent {
         this.events = events;
     }
 }
+*/
+//todo delete this

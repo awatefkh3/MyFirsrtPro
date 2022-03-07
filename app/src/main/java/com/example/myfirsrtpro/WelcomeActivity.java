@@ -174,3 +174,4 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnLongCli
 
 
 }
+//todo delete this

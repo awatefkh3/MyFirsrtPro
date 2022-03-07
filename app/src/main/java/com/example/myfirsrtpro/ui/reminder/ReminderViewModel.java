@@ -24,3 +24,4 @@ public class ReminderViewModel extends ViewModel {
         return mText;
     }
 }
+//todo delete this

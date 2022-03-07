@@ -43,3 +43,4 @@ public class AboutFragment extends Fragment {
         binding = null;
     }
 }
+//todo rearrange this

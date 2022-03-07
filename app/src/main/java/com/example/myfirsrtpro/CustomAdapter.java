@@ -51,3 +51,4 @@ public class CustomAdapter extends ArrayAdapter<Item> {
     }
 }
 
+//todo dlete this or keep it as an example

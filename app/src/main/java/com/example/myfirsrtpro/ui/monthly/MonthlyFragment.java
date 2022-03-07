@@ -22,7 +22,7 @@ import com.example.myfirsrtpro.CalendarAdapter;
 import com.example.myfirsrtpro.CalendarUtils;
 import com.example.myfirsrtpro.Item;
 import com.example.myfirsrtpro.R;
-import com.example.myfirsrtpro.WeekViewActivity;
+//import com.example.myfirsrtpro.WeekViewActivity;
 import com.example.myfirsrtpro.databinding.FragmentMonthlyBinding;
 import com.example.myfirsrtpro.ui.WeeklyFragment;
 import com.google.firebase.auth.FirebaseAuth;
@@ -43,7 +43,7 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://myfirsrtpro-default-rtdb.europe-west1.firebasedatabase.app/");
     private TextView monthYearTV;
     private RecyclerView calendarRecyclerView;
-    private Button preButton,nxtButton,weeklyButton;
+    private Button preButton,nxtButton;
 
 
 
@@ -64,13 +64,11 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
         monthYearTV = root.findViewById(R.id.monthYearTV);
         preButton = root.findViewById(R.id.preButton);
         nxtButton = root.findViewById(R.id.nxtButton);
-        weeklyButton = root.findViewById(R.id.weeklyButton);
 
 
         //setting onClick listener to the buttons
         nxtButton.setOnClickListener(this);
         preButton.setOnClickListener(this);
-        weeklyButton.setOnClickListener(this);
 
 
         setMonthView();
@@ -90,7 +88,7 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
         DatabaseReference myRef = database.getReference("users/"+UID);
         //getReference returns root - the path is users / all (for me )
 
-        //todo this
+
         //adds an item to the FB under the reference specified
         //Item item1 = new Item();
         //myRef.push().setValue(item1); //put the object
@@ -164,11 +162,6 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
             case R.id.preButton:
                 previousMonthAction(preButton);
                 break;
-                //todo this
-            //case R.id.weeklyButton:
-                //FragmentTransaction fr = getFragmentManager().beginTransaction();
-                //fr.replace(R.id.nav_view,new WeeklyFragment());
-                //fr.commit();
             default:
                 break;
         }

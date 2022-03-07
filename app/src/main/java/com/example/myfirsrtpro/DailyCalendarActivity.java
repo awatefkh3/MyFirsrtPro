@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+/*
 public class DailyCalendarActivity extends AppCompatActivity {
 
     private TextView monthDayText;
@@ -79,4 +80,6 @@ public class DailyCalendarActivity extends AppCompatActivity {
     public void newEventAction(View view) {
         startActivity(new Intent(this, EventEditActivity2.class));
     }
-}
+*/
+//}
+//todo delete this

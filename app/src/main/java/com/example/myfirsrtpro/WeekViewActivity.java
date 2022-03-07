@@ -18,6 +18,7 @@ import android.widget.Toast;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/*
 public class WeekViewActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener{
 
     private TextView monthYearText;
@@ -86,4 +87,6 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         startActivity(new Intent(this,DailyCalendarActivity.class));
     }
 
-}
+*/
+//}
+//todo delete this
