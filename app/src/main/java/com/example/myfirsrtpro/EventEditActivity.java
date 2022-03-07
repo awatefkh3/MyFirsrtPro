@@ -15,6 +15,7 @@ import android.widget.TextView;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class EventEditActivity extends AppCompatActivity {
@@ -26,6 +27,7 @@ public class EventEditActivity extends AppCompatActivity {
     private Button dateButton;
     private TimePickerDialog timePickerDialog;
     private Button timeButton;
+    private ArrayList<Event> eventList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,7 @@ public class EventEditActivity extends AppCompatActivity {
     public void saveEventAction(View view) {
         String eventName = eventNameET.getText().toString();
         Event newEvent = new Event(eventName, CalendarUtils.selectedDate,time);
-        Event.eventList.add(newEvent);
+        eventList.add(newEvent);
         finish();
     }
 

@@ -34,8 +34,6 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
 
     //trying to use the classes i made of time and date
 
-    private ArrayList<Event> eventsList;
-
     private String myHour;
     private String myMinute;
     private String mySecond;
@@ -44,6 +42,10 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
     private String myDay;
 
     private LocalTime time;
+    private ArrayList<Event> events;
+
+   // private EventAdapter myEventAdapter;
+
 
     EditText editTextEventName;
     TextView textViewEventDate,textViewEventTime,saveTv;
@@ -112,7 +114,9 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
         //Log.d("TESTING", "TESTING");
         String eventName = editTextEventName.getText().toString();
         Event newEvent = new Event(eventName,CalendarUtils.selectedDate,time);
-        Event.eventList.add(newEvent);
+        events.add(newEvent);
+       // myEventAdapter.notifyDataSetChanged();
+
         //String time = editTextEventTime.getText().toString();
 
        // DateTimeFormatter dtf = DateTimeFormatter.ofPattern(("yyyy-MM-dd'T'HH:mm:ss.SSS"));

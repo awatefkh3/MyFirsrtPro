@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,8 +30,10 @@ import com.example.myfirsrtpro.Item;
 import com.example.myfirsrtpro.R;
 
 import com.example.myfirsrtpro.databinding.FragmentWeeklyBinding;
+import com.example.myfirsrtpro.firebaseEvent;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -56,7 +59,7 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
     //the object for the adapter connecting the data to the view
     private EventAdapter myEventAdapter;
     //object containing the items to be displayed - Data
-    private ArrayList<Event> eventlist;
+   /// private ArrayList<Event> eventlist;
 
 
 
@@ -71,13 +74,16 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
         binding = FragmentWeeklyBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+
+        String UID = mFirebaseAuth.getUid();
+        DatabaseReference myRef = database.getReference("events/"+UID);
+
         calendarRecyclerView = root.findViewById(R.id.calendarRecyclerView);
         monthYearText = root.findViewById(R.id.monthYearTV);
         eventListView = root.findViewById(R.id.eventListView);
 
         preButtonWeek = root.findViewById(R.id.preButtonWeek);
         nxtButtonWeek = root.findViewById(R.id.nxtButtonWeek);
-
 
         //setting onClock listener to the buttons
         nxtButtonWeek.setOnClickListener(this);
@@ -86,7 +92,7 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
         myEventsListView = root.findViewById(R.id.eventListView);
 
         //connect adapter with data
-        myEventAdapter = new EventAdapter(getContext(),R.layout.event_cell,eventlist);
+        myEventAdapter = new EventAdapter(getContext(),R.layout.event_cell,Event.eventList);
 
         //connect adapter with view
         myEventsListView.setAdapter(myEventAdapter);
@@ -101,12 +107,14 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
         myEventsListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                eventlist.remove(i);
-                database.getReference().child("").removeValue();
+                myRef.child("users/").removeValue();
+                Event.eventList.remove(i);
                 myEventAdapter.notifyDataSetChanged();
                 return false;
             }
         });
+
+
 
         setWeekView();
 
