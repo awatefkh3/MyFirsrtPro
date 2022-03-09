@@ -48,9 +48,9 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
 
     //accessing the events list view
     //the object for the adapter connecting the data to the view
-    private FireBaseEventAdapter myEventAdapter;
+    //private FireBaseEventAdapter myEventAdapter;
     //object containing the items to be displayed - Data
-    private ArrayList<FireBaseEvent> eventlist;
+    //private ArrayList<FireBaseEvent> eventlist;
 
 
 
@@ -83,14 +83,14 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
         //two names for the same id !!
         //myEventsListView = root.findViewById(R.id.eventListView);
 
-        eventlist = new ArrayList<FireBaseEvent>();
+        //eventlist = new ArrayList<FireBaseEvent>();
         //connect adapter with data
         //this was context
-        myEventAdapter = new FireBaseEventAdapter(getContext().getApplicationContext(),R.layout.event_cell,eventlist);
+        //myEventAdapter = new FireBaseEventAdapter(getContext().getApplicationContext(),R.layout.event_cell,eventlist);
 
 
         //connect adapter with view
-        eventListView.setAdapter(myEventAdapter);
+        //eventListView.setAdapter(myEventAdapter);
 
         //connects click listener to items in the list
         /*myEventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -112,7 +112,7 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
 */
 
         setWeekView();
-        setEventAdapter();
+        //setEventAdapter();
         return root;
 
     }
@@ -141,10 +141,10 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
     @Override
     public void onResume() {
         super.onResume();
-        setEventAdapter();
+        //setEventAdapter();
     }
 
-    private void setEventAdapter() {
+    /*private void setEventAdapter() {
         ArrayList<FireBaseEvent> dailyEvents = eventsForDate(CalendarUtils.selectedDate,eventlist);
         //this was context
         FireBaseEventAdapter eventAdapter = new FireBaseEventAdapter(getContext().getApplicationContext(),dailyEvents);
@@ -157,17 +157,18 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
         ArrayList<FireBaseEvent> events = new ArrayList<>();
 
         for(FireBaseEvent event : eventList){
-            if(event.getDate().getDay().equals(String.valueOf(date.getDayOfMonth()))&&
-                    event.getDate().getMonth().equals(String.valueOf(date.getMonth()))&&
-                    event.getDate().getYear().equals(String.valueOf(date.getYear())))
-            {
+            if(event.getDate().toString().equals(date.toString()){
                 events.add(event);
             }
         }
 
         return events;
-    }
+    }*/
 
+    /*public String toString(LocalDate date){
+        return return ""+date.getDayOfMonth()+"/"+date.getMonth()+"/"+date.getYear();
+    }
+*/
 
     public void onItemClick(int position, LocalDate date) {
         CalendarUtils.selectedDate = date;

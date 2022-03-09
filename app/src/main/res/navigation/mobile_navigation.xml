@@ -17,12 +17,12 @@
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
-    <fragment
+   <!-- <fragment
         android:id="@+id/reminder_menu"
         android:name="com.example.myfirsrtpro.ui.reminder.ReminderFragment"
         android:label="@string/menu_reminder"
         tools:layout="@layout/fragment_reminder" />
-
+-->
     <fragment
         android:id="@+id/about_menu"
         android:name="com.example.myfirsrtpro.ui.about.AboutFragment"

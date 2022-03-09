@@ -41,7 +41,7 @@
         </item>
     </group>
 
-    <group android:checkableBehavior="single">
+    <!--<group android:checkableBehavior="single">
         <item android:title="Reminders">
             <menu>
                 <item
@@ -54,7 +54,7 @@
                     android:title="All reminders" />
             </menu>
         </item>
-    </group>
+    </group>-->
 
 
     <group android:checkableBehavior="single">

@@ -128,12 +128,16 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
         //building objects to my date and time classes
         MyTime myTime1 = new MyTime(myHour,myMinute,mySecond);
         MyDate myDate1 = new MyDate(myDay,myMonth,myYear);
-        FireBaseEvent event1 = new FireBaseEvent(myTime1,myDate1,eventName);
+        String myDate1Str = myDate1.getDay()+"/"+myDate1.getMonth()+"/"+myDate1.getYear();
+        String myTime1Str = myTime1.getHour()+":"+myTime1.getMinute()+":"+myTime1.getSecond();
+        FireBaseEvent event1 = new FireBaseEvent(myTime1Str,myDate1Str,eventName);
         myRef.push().setValue(event1); //push the object to the firebase data sets
         firebaseEvents.add(event1);
         myAdapter.notifyDataSetChanged();
 
+        finish();
 
+        }
 
 
 
@@ -153,10 +157,10 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
 
             }
         });*/
-        finish();
 
 
-    }
+
+
 
     /*private Date stringToDate(String aDate, String aFormat) {
 

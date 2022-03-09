@@ -22,6 +22,12 @@ import com.example.myfirsrtpro.FireBaseEventAdapter;
 import com.example.myfirsrtpro.R;
 import com.example.myfirsrtpro.databinding.FragmentDailyBinding;
 import com.example.myfirsrtpro.databinding.FragmentWeeklyBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -37,7 +43,13 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
 
     private TextView monthDayText;
     private TextView dayOfWeekTV;
-    private ListView hourListView;
+    private ListView eventsListView;
+
+    private ArrayList<FireBaseEvent> eventlist;
+
+    private FireBaseEventAdapter myEventAdapter;
+
+
     //private ArrayList<FireBaseEvent> dailyList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -53,7 +65,7 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
 
         monthDayText  = root.findViewById(R.id.monthDayText);
         dayOfWeekTV = root.findViewById(R.id.dayOfWeekTV);
-        hourListView = root.findViewById(R.id.hourListView);
+        eventsListView = root.findViewById(R.id.eventsListView);
 
 
 
@@ -68,7 +80,13 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
         newEvent.setOnClickListener(this);
 
         //connect listView with adapter+arrayList
+        eventlist = new ArrayList<>();
 
+        myEventAdapter = new FireBaseEventAdapter(getContext().getApplicationContext(),R.layout.event_cell,eventlist);
+
+
+        //connect adapter with view
+        eventsListView.setAdapter(myEventAdapter);
 
         setDayView();
 
@@ -81,16 +99,72 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
     public void onResume() {
         super.onResume();
         setDayView();
+        setEventAdapter();
     }
 
+   /* public String toString(LocalDate date){
+         return date.getDayOfMonth()+"/"+date.getMonth()+"/"+date.getYear();
+    }
+
+*/
     private void setDayView() {
         monthDayText.setText(CalendarUtils.monthDayFromDate(CalendarUtils.selectedDate));
         String dayOfWeek = CalendarUtils.selectedDate.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault());
+
         dayOfWeekTV.setText(dayOfWeek);
         //setDayEventList();
         //setHourAdapter();
 
     }
+
+    public  ArrayList<FireBaseEvent> eventsForDate(LocalDate date,ArrayList<FireBaseEvent> eventList){
+        ArrayList<FireBaseEvent> events = new ArrayList<>();
+
+        String  dateStr = date.getDayOfMonth()+"/"+date.getMonth()+"/"+date.getYear();
+        for(FireBaseEvent event : eventList){
+            if(event.getDate().equals(dateStr)){
+                events.add(event);
+            }
+        }
+
+        return events;
+    }
+
+    private void setEventAdapter() {
+        //gets instance of authentication project in FB console
+        FirebaseAuth mFirebaseAuth  = FirebaseAuth.getInstance();
+        //gets the root of the real time DataBase in the FB console
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://myfirsrtpro-default-rtdb.europe-west1.firebasedatabase.app/");
+        String UID = mFirebaseAuth.getUid();
+        DatabaseReference myRef = database.getReference("events/"+UID);
+        //eventlist.add(new FireBaseEvent("aa","bb","cc"));
+        ArrayList<FireBaseEvent> dailyEvents = eventsForDate(CalendarUtils.selectedDate,eventlist);
+        //this was context
+        FireBaseEventAdapter eventAdapter = new FireBaseEventAdapter(getContext().getApplicationContext(),dailyEvents);
+
+        eventsListView.setAdapter(eventAdapter);
+
+        myRef.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+              // eventlist = new ArrayList<>();
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    FireBaseEvent fireBaseEvent = dataSnapshot.getValue(FireBaseEvent.class);
+                    eventlist.add(fireBaseEvent);
+                    eventAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+    }
+
 
    /* private void setDayEventList(){
         ArrayList<FireBaseEvent> dailyEvents = eventsForDate(dailyList);
@@ -133,6 +207,7 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
 
     public void previousDayAction(View view) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusDays(1);
+        setEventAdapter();
         setDayView();
     }
 

@@ -39,4 +39,9 @@ public class MyDate {
     public void setYear(String year) {
         this.year = year;
     }
+
+    @Override
+    public String toString() {
+        return ""+this.day+"/"+this.month+"/"+this.year;
+    }
 }

@@ -38,4 +38,8 @@ public class MyTime {
     public void setSecond(String second) {
         this.second = second;
     }
+
+    public String toString() {
+        return ""+this.hour+":"+this.minute+":"+this.second;
+    }
 }
