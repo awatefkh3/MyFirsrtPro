@@ -43,12 +43,12 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
 
     private TextView monthDayText;
     private TextView dayOfWeekTV;
-    private ListView eventsListView;
+    /*private ListView eventsListView;
 
     private ArrayList<FireBaseEvent> eventlist;
 
     private FireBaseEventAdapter myEventAdapter;
-
+*/
 
     //private ArrayList<FireBaseEvent> dailyList;
 
@@ -65,7 +65,7 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
 
         monthDayText  = root.findViewById(R.id.monthDayText);
         dayOfWeekTV = root.findViewById(R.id.dayOfWeekTV);
-        eventsListView = root.findViewById(R.id.eventsListView);
+        //eventsListView = root.findViewById(R.id.eventsListView);
 
 
 
@@ -80,13 +80,13 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
         newEvent.setOnClickListener(this);
 
         //connect listView with adapter+arrayList
-        eventlist = new ArrayList<>();
+        //eventlist = new ArrayList<>();
 
-        myEventAdapter = new FireBaseEventAdapter(getContext().getApplicationContext(),R.layout.event_cell,eventlist);
+        //myEventAdapter = new FireBaseEventAdapter(getContext().getApplicationContext(),R.layout.event_cell,eventlist);
 
 
         //connect adapter with view
-        eventsListView.setAdapter(myEventAdapter);
+        //eventsListView.setAdapter(myEventAdapter);
 
         setDayView();
 
@@ -99,7 +99,7 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
     public void onResume() {
         super.onResume();
         setDayView();
-        setEventAdapter();
+        //setEventAdapter();
     }
 
    /* public String toString(LocalDate date){
@@ -117,7 +117,7 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
 
     }
 
-    public  ArrayList<FireBaseEvent> eventsForDate(LocalDate date,ArrayList<FireBaseEvent> eventList){
+    /*public  ArrayList<FireBaseEvent> eventsForDate(LocalDate date,ArrayList<FireBaseEvent> eventList){
         ArrayList<FireBaseEvent> events = new ArrayList<>();
 
         String  dateStr = date.getDayOfMonth()+"/"+date.getMonth()+"/"+date.getYear();
@@ -129,8 +129,8 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
 
         return events;
     }
-
-    private void setEventAdapter() {
+*/
+    /*private void setEventAdapter() {
         //gets instance of authentication project in FB console
         FirebaseAuth mFirebaseAuth  = FirebaseAuth.getInstance();
         //gets the root of the real time DataBase in the FB console
@@ -165,7 +165,7 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
 
     }
 
-
+*/
    /* private void setDayEventList(){
         ArrayList<FireBaseEvent> dailyEvents = eventsForDate(dailyList);
         FireBaseEventAdapter fireBaseEventAdapter = new FireBaseEventAdapter(getContext().getApplicationContext(),R.layout.event_cell,dailyEvents);
@@ -207,7 +207,6 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
 
     public void previousDayAction(View view) {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusDays(1);
-        setEventAdapter();
         setDayView();
     }
 
