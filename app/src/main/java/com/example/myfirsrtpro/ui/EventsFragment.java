@@ -103,7 +103,7 @@ public class EventsFragment extends Fragment {
                 myAdapter.notifyDataSetChanged();
             }
         });
-
+//
 
         return root;
 
