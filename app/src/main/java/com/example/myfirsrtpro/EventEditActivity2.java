@@ -35,14 +35,14 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
     private LocalTime time;
     private ArrayList<FireBaseEvent> firebaseEvents;
 
-   // private EventAdapter myEventAdapter;
+    // private EventAdapter myEventAdapter;
 
 
     EditText editTextEventName;
-    TextView textViewEventDate,textViewEventTime,saveTv;
+    TextView textViewEventDate, textViewEventTime, saveTv;
 
     //gets instance of authentication project in FB console
-    private FirebaseAuth mFirebaseAuth  = FirebaseAuth.getInstance();
+    private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     //gets the root of the real time DataBase in the FB console
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://myfirsrtpro-default-rtdb.europe-west1.firebasedatabase.app/");
 
@@ -65,7 +65,7 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
 
 
         firebaseEvents = new ArrayList<FireBaseEvent>();
-        myAdapter = new FireBaseEventAdapter(getApplicationContext(),R.layout.event_cell,firebaseEvents);
+        myAdapter = new FireBaseEventAdapter(getApplicationContext(), R.layout.event_cell, firebaseEvents);
 
         myHour = String.valueOf(time.getHour());
         myMinute = String.valueOf(time.getMinute());
@@ -73,7 +73,7 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
 
 
         myDay = String.valueOf(CalendarUtils.selectedDate.getDayOfMonth());
-        myMonth= String.valueOf(CalendarUtils.selectedDate.getMonth());
+        myMonth = String.valueOf(CalendarUtils.selectedDate.getMonth());
         myYear = String.valueOf(CalendarUtils.selectedDate.getYear());
 
 
@@ -109,55 +109,40 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
         String eventName = editTextEventName.getText().toString();
         //Event newEvent = new Event(eventName,CalendarUtils.selectedDate,time);
         //events.add(newEvent);
-       // myEventAdapter.notifyDataSetChanged();
+        // myEventAdapter.notifyDataSetChanged();
 
         //String time = editTextEventTime.getText().toString();
 
-       // DateTimeFormatter dtf = DateTimeFormatter.ofPattern(("yyyy-MM-dd'T'HH:mm:ss.SSS"));
-       // LocalTime ldt = LocalTime.parse(time,dtf);
+        // DateTimeFormatter dtf = DateTimeFormatter.ofPattern(("yyyy-MM-dd'T'HH:mm:ss.SSS"));
+        // LocalTime ldt = LocalTime.parse(time,dtf);
         //Event newEvent = new Event(eventName, CalendarUtils.selectedDate,ldt);
         //Event.eventList.add(newEvent);
         // Write a message to the database
-        String UID  = mFirebaseAuth.getUid();
+        String UID = mFirebaseAuth.getUid();
         //build a ref for user related data in real time DataBase using user id
-        DatabaseReference myRef = database.getReference("events/"+UID);
         //getReference returns root - the path is users / all (for me )
+        DatabaseReference myRef = database.getReference("events/" + UID);
 
         //todo this
         //adds an item to the FB under the reference specified
         //building objects to my date and time classes
-        MyTime myTime1 = new MyTime(myHour,myMinute,mySecond);
-        MyDate myDate1 = new MyDate(myDay,myMonth,myYear);
-        String myDate1Str = myDate1.getDay()+"/"+myDate1.getMonth()+"/"+myDate1.getYear();
-        String myTime1Str = myTime1.getHour()+":"+myTime1.getMinute()+":"+myTime1.getSecond();
-        FireBaseEvent event1 = new FireBaseEvent(myTime1Str,myDate1Str,eventName);
-        myRef.push().setValue(event1); //push the object to the firebase data sets
+        MyTime myTime1 = new MyTime(myHour, myMinute, mySecond);
+        MyDate myDate1 = new MyDate(myDay, myMonth, myYear);
+        String myDate1Str = myDate1.getDay() + "/" + myDate1.getMonth() + "/" + myDate1.getYear();
+        String myTime1Str = myTime1.getHour() + ":" + myTime1.getMinute() + ":" + myTime1.getSecond();
+        FireBaseEvent event1 = new FireBaseEvent(myTime1Str, myDate1Str, eventName);
+        String key = myRef.push().getKey();
+        myRef = database.getReference("events/" + UID + "/" + key);
+        event1.setKey(key);
+
+        myRef.setValue(event1); //push the object to the firebase data sets
         firebaseEvents.add(event1);
         myAdapter.notifyDataSetChanged();
 
         finish();
 
-        }
 
-
-
-       /* myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //for each,children are the objects
-                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    FireBaseEvent event1 = dataSnapshot.getValue(FireBaseEvent.class);
-
-                    //myAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
-
+    }
 
 
 
@@ -172,8 +157,9 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
     }
 */
 
-    @Override
-    public void onClick(View view) {
+        @Override
+        public void onClick (View view){
             saveEventAction(view);
         }
-}
+    }
+

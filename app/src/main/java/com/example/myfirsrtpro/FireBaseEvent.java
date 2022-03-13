@@ -13,6 +13,7 @@ public class FireBaseEvent {
     private String time;
     private String date;
     private String name;
+    private String key;
 
 
   /*  public FireBaseEvent(MyTime time, MyDate date, String name) {
@@ -74,4 +75,11 @@ public class FireBaseEvent {
     }
 
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 }
