@@ -57,21 +57,21 @@
     </group>-->
 
 
-    <group android:checkableBehavior="single">
+   <!-- <group android:checkableBehavior="single">
         <item android:title="Alarms">
             <menu>
                 <item
-                    android:id="@+id/alarm_menu"
+                    android:id="@+id/nav_editAlarm"
                     android:icon="@drawable/ic_baseline_add_alarm_24"
                     android:title="Set new alarm" />
-                <item
+              <item
                     android:id="@+id/nav_alarms"
                     android:icon="@drawable/alarm_icon"
                     android:title="All alarms" />
 
             </menu>
         </item>
-    </group>
+    </group>-->
 
 
 <!--    <group android:checkableBehavior="single">-->
@@ -96,7 +96,7 @@
     <group android:checkableBehavior="single">
         <item android:title="profile">
             <menu>
-                <item android:id="@+id/logOut_menu"
+                <item android:id="@+id/nav_logout"
                     android:icon="@drawable/logout_icon"
                     android:title="Log Out"/>
             </menu>

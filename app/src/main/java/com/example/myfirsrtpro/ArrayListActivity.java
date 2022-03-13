@@ -1,3 +1,4 @@
+/*
 package com.example.myfirsrtpro;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,4 +32,5 @@ public class ArrayListActivity extends AppCompatActivity {
     }
 
 
-}
+*/
+//}

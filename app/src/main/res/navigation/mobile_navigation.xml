@@ -53,6 +53,26 @@
         android:label="Events List"
         tools:layout="@layout/fragment_events" />
 
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.example.myfirsrtpro.ui.LogOutFragment"
+        android:label="Log Out"
+        tools:layout="@layout/fragment_logout"/>
+
+    <!--<fragment
+        android:id="@+id/nav_editAlarm"
+        android:name="com.example.myfirsrtpro.ui.MyAlarmFragment"
+        android:label="Alarm"
+        tools:layout="@layout/fragment_alarm"/>
+-->
+    <!--<fragment
+        android:id="@+id/nav_alarms"
+        android:name="com.example.myfirsrtpro.ui.AlarmsFragment"
+        android:label="Alarm"
+        tools:layout="@layout/fragment_alarms"/>-->
+
+
+
 
 
 

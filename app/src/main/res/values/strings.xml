@@ -27,6 +27,7 @@
     <string name="menu_monthlyCal">Monthly Calendar</string>
     <string name="menu_weeklyCal">Weekly Calendar</string>
     <string name="menu_dailyCal">Daily Calendar</string>
+    <string name="done">Done</string>
 
 
 </resources>

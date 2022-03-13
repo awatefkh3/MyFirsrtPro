@@ -31,12 +31,12 @@
         <activity
             android:name=".ReminderActivity"
             android:exported="true" />
-        <activity
+        <!--<activity
             android:name=".WeekViewActivity"
-            android:exported="true" />
-        <activity
+            android:exported="true" />-->
+        <!--<activity
             android:name=".DailyCalendarActivity"
-            android:exported="true" />
+            android:exported="true" />-->
         <activity
             android:name=".ProfileActivity"
             android:exported="true" />
@@ -49,9 +49,9 @@
         <activity
             android:name=".AboutActivity"
             android:exported="true" />
-        <activity
+        <!--<activity
             android:name=".ArrayListActivity"
-            android:exported="true" />
+            android:exported="true" />-->
         <activity
             android:name=".LoginActivity"
             android:exported="true" />
@@ -68,10 +68,11 @@
             </intent-filter>
         </activity>
 
-        <receiver
+       <receiver
             android:name=".NotificationReceiver"
             android:enabled="true"
             android:exported="false" />
+
     </application>
 
 </manifest>

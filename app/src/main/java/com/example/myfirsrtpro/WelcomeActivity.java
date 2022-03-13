@@ -3,6 +3,9 @@ package com.example.myfirsrtpro;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -26,6 +29,7 @@ import java.util.regex.Pattern;
 public class WelcomeActivity extends AppCompatActivity implements View.OnLongClickListener{
 
     //declaring all components
+    //private static final int NOTIFICATION_REMINDER_NIGHT = 1;
     private static final String TAG = "FIREBASE";
     private EditText editTextPassword,editTextEmail;
     private Button buttonLogin;
@@ -37,6 +41,15 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnLongCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
+      /* //pending intent waiting for the right time
+        Intent notifyIntent = new Intent(this,NotificationReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast
+                (this, NOTIFICATION_REMINDER_NIGHT, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,  System.currentTimeMillis(),
+                1000 * 60 * 60 * 24, pendingIntent);
+
+*/
 
         //returns a reference to the instance of the project Firebase
         mAuth = FirebaseAuth.getInstance();

@@ -1,8 +1,10 @@
 package com.example.myfirsrtpro;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.content.Intent;
@@ -23,7 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.regex.Pattern;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity implements  DialogInterface.OnClickListener{
 
     private static final String TAG = "FIREBASE";
     private EditText editTextEmailSignUp,editTextName,editTextAge,editTextPasswordSignUp;
@@ -139,5 +141,28 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    @Override
+    public void onClick(DialogInterface dialogInterface, int i) {
+        if(i == dialogInterface.BUTTON_POSITIVE){
+            super.onBackPressed();
+            dialogInterface.cancel();
+        }
+        if(i == dialogInterface.BUTTON_NEGATIVE){
+            dialogInterface.cancel();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure ? this will take you back to the first page");
+        builder.setCancelable(false);
+        builder.setPositiveButton("yes", this);
+        builder.setNegativeButton("No",this);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 
 }

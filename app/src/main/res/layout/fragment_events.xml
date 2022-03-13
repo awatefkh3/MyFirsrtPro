@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:text="Your events :"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:textColor="@color/black"
         android:textSize="20sp"
         />
@@ -18,6 +19,8 @@
         android:id="@+id/eventsListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="5"/>
+        android:layout_weight="5"
+        />
+
 
 </LinearLayout>

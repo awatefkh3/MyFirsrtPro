@@ -46,15 +46,18 @@
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/calendar_cell.xml" value="0.25" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/calendar_row.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/content_nav_menu1.xml" value="0.22509057971014493" />
-        <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/event_cell.xml" value="0.1" />
+        <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/event_cell.xml" value="0.2" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/event_row.xml" value="0.22192028985507245" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/fragment_a.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/fragment_about.xml" value="0.264" />
+        <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/fragment_alarm.xml" value="0.25" />
+        <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/fragment_alarms.xml" value="0.25" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/fragment_camera.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/fragment_daily.xml" value="0.23854166666666668" />
-        <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/fragment_events.xml" value="0.234375" />
+        <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/fragment_events.xml" value="0.17326732673267325" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/fragment_gallery.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/fragment_logout.xml" value="0.1" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/fragment_monthly.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/fragment_monthlycal.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/fragment_reminder.xml" value="0.1875" />
@@ -65,10 +68,12 @@
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/hour_cell.xml" value="0.25226449275362317" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/item_row.xml" value="0.2477355072463768" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/menu_new.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/mymain_menu.xml" value="0.25" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/nav_header_nav_menu1.xml" value="0.1875" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/layout/new_menu.xml" value="0.264" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/menu/activity_main_drawer.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/menu/menu.xml" value="0.32608695652173914" />
+        <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/menu/mymain_menu.xml" value="0.25" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/menu/nav_menu1.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/Awsel/AndroidStudioProjects/MyFirsrtPro/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.26614583333333336" />

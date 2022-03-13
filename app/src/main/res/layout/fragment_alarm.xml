@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/androidpic">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/selected_time"
+        android:text="10 : 00 PM"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:textSize="46dp"/>
+
+    <Button
+        android:id="@+id/setAlarmBtn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:background="@drawable/button_background_1"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="Set Alarm" />
+
+    <Button
+        android:id="@+id/cancelAlarmBtn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:background="@drawable/button_background_1"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="Cancel Alarm" />
+
+
+
+
+</LinearLayout>

@@ -107,6 +107,8 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
 
         //Log.d("TESTING", "TESTING");
         String eventName = editTextEventName.getText().toString();
+
+
         //Event newEvent = new Event(eventName,CalendarUtils.selectedDate,time);
         //events.add(newEvent);
         // myEventAdapter.notifyDataSetChanged();

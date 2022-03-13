@@ -1,20 +1,31 @@
 package com.example.myfirsrtpro.ui;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.myfirsrtpro.AboutActivity;
 import com.example.myfirsrtpro.CalendarUtils;
 import com.example.myfirsrtpro.EventEditActivity2;
 import com.example.myfirsrtpro.FireBaseEvent;
 import com.example.myfirsrtpro.FireBaseEventAdapter;
+import com.example.myfirsrtpro.MusicService;
+import com.example.myfirsrtpro.ProfileActivity;
 import com.example.myfirsrtpro.R;
 import com.example.myfirsrtpro.databinding.FragmentDailyBinding;
 import com.example.myfirsrtpro.databinding.FragmentEventsBinding;
@@ -44,6 +55,7 @@ public class EventsFragment extends Fragment {
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://myfirsrtpro-default-rtdb.europe-west1.firebasedatabase.app/");
 
 
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -55,7 +67,6 @@ public class EventsFragment extends Fragment {
 
 
         eventsListView = root.findViewById(R.id.eventsListView);
-
 
         //connect listView with adapter+arrayList
         eventlist = new ArrayList<>();
@@ -76,6 +87,23 @@ public class EventsFragment extends Fragment {
                 return false;
             }
         });
+
+        eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                FireBaseEvent event2 = (FireBaseEvent) eventsListView.getItemAtPosition(i);
+                if(!event2.isDone()){
+                    myAdapter.checkDone(event2);
+                    myRef.child(eventlist.get(i).getKey()).child("done").setValue(true);
+                }
+                else if(event2.isDone()){
+                    myAdapter.undoCheckDone(event2);
+                    myRef.child(eventlist.get(i).getKey()).child("done").setValue(false);
+                }
+                myAdapter.notifyDataSetChanged();
+            }
+        });
+
 
         return root;
 
@@ -115,6 +143,7 @@ public class EventsFragment extends Fragment {
 
 
 
+
         /*myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -132,6 +161,9 @@ public class EventsFragment extends Fragment {
         });
 */
     }
+
+
+
 }
 
 

@@ -4,6 +4,9 @@ package com.example.myfirsrtpro.ui.monthly;
 import static com.example.myfirsrtpro.CalendarUtils.daysInMonthArray;
 import static com.example.myfirsrtpro.CalendarUtils.monthYearFromDate;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myfirsrtpro.CalendarAdapter;
 import com.example.myfirsrtpro.CalendarUtils;
 import com.example.myfirsrtpro.Item;
+import com.example.myfirsrtpro.NotificationReceiver;
 import com.example.myfirsrtpro.R;
 //import com.example.myfirsrtpro.WeekViewActivity;
 import com.example.myfirsrtpro.databinding.FragmentMonthlyBinding;
@@ -36,7 +40,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemListener, View.OnClickListener {
+
     private FragmentMonthlyBinding binding;
+    private static final int NOTIFICATION_REMINDER_NIGHT = 1;
     //gets instance of authentication project in FB console
     private FirebaseAuth mFirebaseAuth  = FirebaseAuth.getInstance();
     //gets the root of the real time DataBase in the FB console
@@ -59,6 +65,14 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
 
         binding = FragmentMonthlyBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        //pending intent waiting for the right time
+        Intent notifyIntent = new Intent(getContext(), NotificationReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast
+                (getContext(), NOTIFICATION_REMINDER_NIGHT, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,  System.currentTimeMillis(),
+                1000 * 60 * 60 * 24, pendingIntent);
 
         calendarRecyclerView = root.findViewById(R.id.calendarRecyclerView);
         monthYearTV = root.findViewById(R.id.monthYearTV);

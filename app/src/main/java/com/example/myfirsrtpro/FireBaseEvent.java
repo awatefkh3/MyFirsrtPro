@@ -14,6 +14,7 @@ public class FireBaseEvent {
     private String date;
     private String name;
     private String key;
+    private boolean done;
 
 
   /*  public FireBaseEvent(MyTime time, MyDate date, String name) {
@@ -26,8 +27,8 @@ public class FireBaseEvent {
         this.time = time;
         this.date = date;
         this.name = name;
+        this.done = false;
     }
-
 
     public FireBaseEvent(){
 
@@ -81,5 +82,13 @@ public class FireBaseEvent {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public boolean isDone() {
+        return this.done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
     }
 }
