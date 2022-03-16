@@ -125,7 +125,6 @@ public class EventEditActivity2 extends AppCompatActivity implements View.OnClic
         //getReference returns root - the path is users / all (for me )
         DatabaseReference myRef = database.getReference("events/" + UID);
 
-        //todo this
         //adds an item to the FB under the reference specified
         //building objects to my date and time classes
         MyTime myTime1 = new MyTime(myHour, myMinute, mySecond);

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:gravity="center">
+
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:stretchColumns="1">
+
+        <TableRow>
+            <ImageView
+                android:id="@+id/editprofilepic"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/androidprofile"
+                />
+        </TableRow>
+    <TableRow >
+
+        <EditText
+            android:id="@+id/edituseremail"
+            style="@style/style_one"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            />
+    </TableRow>
+    <TableRow>
+
+        <EditText
+            android:id="@+id/edituserpass"
+            style="@style/style_one"
+            android:hint="Password"
+            android:inputType="textPassword" />
+    </TableRow>
+
+    <TableRow >
+
+        <EditText
+            android:id="@+id/editusername"
+            style="@style/style_one"
+            android:hint="Name"
+            android:inputType="textPersonName" />
+    </TableRow>
+
+    <TableRow>
+
+        <EditText
+            android:id="@+id/edituserage"
+            style="@style/style_one"
+            android:hint="Age"
+            android:inputType="number" />
+    </TableRow>
+
+        <TableRow>
+            <Button
+                android:id="@+id/buttonupdate"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/black"
+                android:background="@drawable/button_background_1"
+                android:text="update" />
+        </TableRow>
+
+
+</TableLayout>
+</LinearLayout>

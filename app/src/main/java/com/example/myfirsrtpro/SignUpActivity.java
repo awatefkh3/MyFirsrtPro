@@ -17,11 +17,14 @@ import android.widget.TextView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.example.myfirsrtpro.ui.monthly.MonthlyFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.regex.Pattern;
 
@@ -128,7 +131,37 @@ public class SignUpActivity extends AppCompatActivity implements  DialogInterfac
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent i = new Intent(SignUpActivity.this, MonthViewActivity.class);
+                            //gets instance of authentication project in FB console
+                            FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+                            //gets the root of the real time DataBase in the FB console
+                            FirebaseDatabase database = FirebaseDatabase.getInstance("https://myfirsrtpro-default-rtdb.europe-west1.firebasedatabase.app/");
+                            String UID = mFirebaseAuth.getUid();
+                            //build a ref for user related data in real time DataBase using user id
+                            //getReference returns root - the path is users / all (for me )
+                            DatabaseReference myRef = database.getReference("users/" + UID);
+
+                            String email1 =String.valueOf(editTextEmailSignUp.getText());
+                            String password1 =String.valueOf(editTextPasswordSignUp.getText());
+                            String name1 =String.valueOf(editTextName.getText());
+                            int age1 = Integer.parseInt(String.valueOf(editTextAge.getText()));
+                            boolean female1 = true;
+                            if(FemaleRadioButton.isChecked()){
+                                female1 = true;
+                            }
+                            else if(MaleRadioButton.isChecked()){
+                                female1 = false;
+                            }
+                            User user1 = new User(email1,password1,name1,age1,female1);
+                            String key = myRef.push().getKey();
+                            myRef = database.getReference("users/" + UID + "/" + key);
+                            user1.setKey(key);
+
+                            myRef.setValue(user1); //push the object to the firebase data sets
+                            /*firebaseEvents.add(event1);
+                            myAdapter.notifyDataSetChanged();*/
+
+
+                            Intent i = new Intent(SignUpActivity.this, nav_menu1.class);
                             startActivity(i);
 
 
