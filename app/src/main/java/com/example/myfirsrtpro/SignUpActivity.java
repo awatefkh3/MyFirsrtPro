@@ -76,6 +76,9 @@ public class SignUpActivity extends AppCompatActivity implements  DialogInterfac
         if(exist && !editTextEmailSignUp.getText().toString().equals("") && validatePassword1(editTextPasswordSignUp.getText().toString()) && Patterns.EMAIL_ADDRESS.matcher(editTextEmailSignUp.getText().toString()).find()){
             //intent.putExtra("email",editTextEmailSignUp.getText().toString());
             signUp(editTextEmailSignUp.getText().toString(),editTextPasswordSignUp.getText().toString());
+
+
+
         }
     }
 
@@ -156,14 +159,12 @@ public class SignUpActivity extends AppCompatActivity implements  DialogInterfac
                             myRef = database.getReference("users/" + UID + "/" + key);
                             user1.setKey(key);
 
-                            myRef.setValue(user1); //push the object to the firebase data sets
+                            myRef.setValue(user1); //push the object to the firebase data set
                             /*firebaseEvents.add(event1);
                             myAdapter.notifyDataSetChanged();*/
 
-
                             Intent i = new Intent(SignUpActivity.this, nav_menu1.class);
                             startActivity(i);
-
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -172,7 +173,9 @@ public class SignUpActivity extends AppCompatActivity implements  DialogInterfac
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
+
                 });
+
     }
 
     @Override

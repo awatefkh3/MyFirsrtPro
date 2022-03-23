@@ -7,6 +7,7 @@ public class User {
     private int age;
     private boolean female;
     private String key;
+    private String image;
 
 
     public User(String email, String password, String name, int age, boolean female) {
@@ -68,4 +69,17 @@ public class User {
     public void setFemale(boolean female) {
         this.female = female;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public User findUser(String key){
+        return this;
+    }
+
 }

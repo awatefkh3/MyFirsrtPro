@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
+    android:background="@drawable/androidpic"
     android:gravity="center">
 
 
@@ -22,6 +23,31 @@
                 android:src="@drawable/androidprofile"
                 />
         </TableRow>
+
+        <TableRow>
+            <Button
+                android:id="@+id/setGallery"
+                android:layout_marginTop="20dp"
+                android:layout_width="250dp"
+                android:background="@drawable/button_background_1"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/black"
+                android:text="choose from gallery"
+                />
+        </TableRow>
+
+        <TableRow>
+            <Button
+                android:id="@+id/setCamera"
+                android:layout_marginTop="20dp"
+                android:layout_width="250dp"
+                android:background="@drawable/button_background_1"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/black"
+                android:text="take new picture"
+                />
+        </TableRow>
+
     <TableRow >
 
         <EditText
@@ -57,6 +83,27 @@
             android:hint="Age"
             android:inputType="number" />
     </TableRow>
+
+        <TableRow>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <RadioButton
+                    android:id="@+id/FemaleRadioButtonEdit"
+                    style="@style/style_one"
+                    android:text="@string/radioFemale" />
+
+                <RadioButton
+                    android:id="@+id/MaleRadioButtonEdit"
+                    style="@style/style_one"
+                    android:text="@string/radioMale" />
+            </RadioGroup>
+
+        </TableRow>
+
 
         <TableRow>
             <Button
