@@ -189,17 +189,17 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         mUpdate(email1,pass1);
 
         //todo when more than user has signed up ( clear firebase maybe before sign up )
-        Intent i = new Intent(getActivity(),nav_menu1.class);
+        /*Intent i = new Intent(getActivity(),nav_menu1.class);
         i.putExtra("emailTV",myRef.child(userslist.get(0).getKey()).child("email").toString());
         i.putExtra("nameTV",myRef.child(userslist.get(0).getKey()).child("name").toString());
         i.putExtra("imgstr",myRef.child(userslist.get(0).getKey()).child("image").toString());
-
+*/
 
 
     }
 
     public void mUpdate(String email1,String pass1){
-        mAuth.getCurrentUser().delete();
+        //mAuth.getCurrentUser().delete();
         mAuth.createUserWithEmailAndPassword(email1,pass1)
                 .addOnCompleteListener(this.getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
@@ -296,7 +296,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
             myBit = null;
         }
 
-        profilepic.setImageBitmap(myBit);
+       /* profilepic.setImageBitmap(myBit);
 
         profilepic.buildDrawingCache();
         Bitmap bmap = profilepic.getDrawingCache();
@@ -307,7 +307,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         this.pic = Base64.encodeToString(arr,Base64.DEFAULT);
 
         myRef.child(userslist.get(0).getKey()).child("image").setValue(pic);
-
+*/
 
     }
 
