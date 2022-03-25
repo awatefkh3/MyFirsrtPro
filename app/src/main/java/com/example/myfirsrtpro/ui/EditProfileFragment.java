@@ -5,6 +5,7 @@ import static android.app.Activity.RESULT_OK;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -32,7 +33,9 @@ import com.example.myfirsrtpro.User;
 import com.example.myfirsrtpro.nav_menu1;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -47,6 +50,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class EditProfileFragment extends Fragment implements View.OnClickListener{
 
@@ -125,6 +129,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     User user = dataSnapshot.child("").getValue(User.class);
                     userslist.add(user);
+                    showUserProfile(user);
                 }
             }
 
@@ -169,35 +174,75 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
     }
 
 
-    private void updateUserProfile(){
-        profilepic.buildDrawingCache();
-        Bitmap bmap = profilepic.getDrawingCache();
+    private void showUserProfile(User user){
 
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmap.compress(Bitmap.CompressFormat.PNG,100,baos);
-        byte[] arr = baos.toByteArray();
-        this.pic = Base64.encodeToString(arr,Base64.DEFAULT);
+        editemail.setText(user.getEmail());
+        editname.setText(user.getName());
+        editage.setText(user.getAge()+"");
 
-
-        String email1 = editemail.getText().toString();
-        String pass1 = editpassword.getText().toString();
-
-
-
-        myRef = database.getReference("users/" + UID);
-
-        mUpdate(email1,pass1);
-
-        //todo when more than user has signed up ( clear firebase maybe before sign up )
-        /*Intent i = new Intent(getActivity(),nav_menu1.class);
-        i.putExtra("emailTV",myRef.child(userslist.get(0).getKey()).child("email").toString());
-        i.putExtra("nameTV",myRef.child(userslist.get(0).getKey()).child("name").toString());
-        i.putExtra("imgstr",myRef.child(userslist.get(0).getKey()).child("image").toString());
-*/
+        pic = user.getImage();
+        picture = StringToBitMap(pic);
+        profilepic.setImageBitmap(picture);
 
 
     }
 
+    private void updateUserProfile(){
+
+        String name1 = editname.getText().toString();
+        int age1 = Integer.parseInt(editage.getText().toString());
+        boolean female1 = true;
+        if(FemaleRadioButtonEdit.isChecked()){
+            female1 = true;
+        }
+        else if(MaleRadioButtonEdit.isChecked()){
+            female1 = false;
+        }
+        String email1 = editemail.getText().toString();
+        String pass1 = editpassword.getText().toString();
+
+        if(validatePassword1(pass1)){
+            myRef.child(userslist.get(0).getKey()).child("password").setValue(pass1);
+
+        }
+        else{
+            Toast.makeText(getActivity(), "Authentication failed.",Toast.LENGTH_SHORT).show();
+        }
+
+
+        /*String oldPass = myRef.child(userslist.get(0).getKey()).child("password").get().toString();
+
+        AuthCredential credential = EmailAuthProvider.getCredential(email1,oldPass);
+
+        user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    user.updatePassword(pass1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Log.d(TAG, "Password updated");
+                            } else {
+                                Log.d(TAG, "Error password not updated");
+                            }
+                        }
+                    });
+                } else {
+                    Log.d(TAG, "Error auth failed");
+                }
+            }
+        });*/
+
+
+
+        myRef.child(userslist.get(0).getKey()).child("age").setValue(age1);
+        myRef.child(userslist.get(0).getKey()).child("email").setValue(email1);
+        myRef.child(userslist.get(0).getKey()).child("name").setValue(name1);
+        myRef.child(userslist.get(0).getKey()).child("female").setValue(female1);
+
+
+    }
     public void mUpdate(String email1,String pass1){
         //mAuth.getCurrentUser().delete();
         mAuth.createUserWithEmailAndPassword(email1,pass1)
@@ -280,21 +325,62 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
             }
         }
 
+
+        myRef.child(userslist.get(0).getKey()).child("image").setValue(pic);
+
+
     }
 
 
-    public  void updateUserImage(){
+    public  void updateUserImage() {
         Bitmap myBit;
         String profilepicSTR = myRef.child(userslist.get(0).getKey()).child("image").toString();
-        try{
-            byte[] encodeByte = Base64.decode(profilepicSTR,Base64.DEFAULT);
+        try {
+            byte[] encodeByte = Base64.decode(profilepicSTR, Base64.DEFAULT);
             InputStream inputStream = new ByteArrayInputStream(encodeByte);
             myBit = BitmapFactory.decodeStream(inputStream);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.getMessage();
             myBit = null;
         }
+    }
+
+    public Bitmap StringToBitMap(String image){
+        try{
+            byte [] encodeByte = Base64.decode(image, Base64.DEFAULT);
+            InputStream inputStream = new ByteArrayInputStream(encodeByte);
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+
+            return bitmap;
+        }
+        catch (Exception e){
+            e.getMessage();
+            return null;
+        }
+    }
+
+
+    public boolean validatePassword1(String str){
+        Pattern upperCase = Pattern.compile("[A-Z]");
+        Pattern lowerCase = Pattern.compile("[a-z]");
+        Pattern number = Pattern.compile("[0-9]");
+        if(!lowerCase.matcher(str).find()){
+            return false;
+        }
+
+        if(!upperCase.matcher(str).find()){
+            return false;
+        }
+        if(!number.matcher(str).find()){
+            return false ;
+        }
+
+        if(str.length()<8){
+            return false;
+        }
+
+        return true;
+    }
 
        /* profilepic.setImageBitmap(myBit);
 
@@ -309,7 +395,8 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         myRef.child(userslist.get(0).getKey()).child("image").setValue(pic);
 */
 
-    }
+
+
 
 
 }

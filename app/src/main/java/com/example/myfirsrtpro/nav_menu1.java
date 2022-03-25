@@ -51,10 +51,13 @@ public class nav_menu1 extends AppCompatActivity {
     private Bundle b;
     private Button btnRefresh;
 
+    private static final String TAG = "FIREBASE";
+
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://myfirsrtpro-default-rtdb.europe-west1.firebasedatabase.app/");
     private ArrayList<User> userslist;
-    String UID = mFirebaseAuth.getUid();
+    String email = mFirebaseAuth.getCurrentUser().getEmail();
+    String UID  = mFirebaseAuth.getUid();
     //build a ref for user related data in real time DataBase using user id
     DatabaseReference myRef = database.getReference("users/" + UID);
 
@@ -97,6 +100,12 @@ public class nav_menu1 extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        View hView = navigationView.getHeaderView(0);
+        TextView nav_user = (TextView) hView.findViewById(R.id.userEmailTV);
+        nav_user.setText(email);
+
+
+
         //in order to move between fragments
         //FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
@@ -112,6 +121,7 @@ public class nav_menu1 extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     User user = dataSnapshot.child("").getValue(User.class);
                     userslist.add(user);
+                    loadImage(user);
                 }
             }
 
@@ -120,6 +130,24 @@ public class nav_menu1 extends AppCompatActivity {
 
             }
         });
+
+
+
+    }
+
+    private void loadImage(User user){
+        NavigationView navigationView = binding.navView;
+        View hView = navigationView.getHeaderView(0);
+        if(user.getImage()!=null){
+           /* NavigationView navigationView = binding.navView;
+            View hView = navigationView.getHeaderView(0);
+            ImageView nav_img = (ImageView) hView.findViewById(R.id.userImage);*/
+            ImageView nav_img = (ImageView) hView.findViewById(R.id.userImage);
+            Bitmap bitmap = StringToBitMap(user.getImage());
+            nav_img.setImageBitmap(bitmap);
+        }
+        TextView nav_name = (TextView) hView.findViewById(R.id.userNameTV);
+        nav_name.setText(user.getName());
 
 
 
@@ -180,7 +208,6 @@ public class nav_menu1 extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
 
 
 
