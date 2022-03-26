@@ -21,7 +21,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@drawable/ic_baseline_calendar_today_24"/>
+        android:background="@drawable/calendar_icon"/>
 
     <EditText
         android:id="@+id/editTextEmail"
@@ -56,6 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:textSize="20dp"
         android:textColor="@color/black"
         android:text="don't have an account? signUp "/>
 

@@ -33,7 +33,6 @@ import com.example.myfirsrtpro.User;
 import com.example.myfirsrtpro.nav_menu1;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
@@ -181,9 +180,10 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         editage.setText(user.getAge()+"");
 
         pic = user.getImage();
-        picture = StringToBitMap(pic);
-        profilepic.setImageBitmap(picture);
-
+        if(pic!=null){
+            picture = StringToBitMap(pic);
+            profilepic.setImageBitmap(picture);
+        }
 
     }
 
@@ -203,10 +203,16 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
 
         if(validatePassword1(pass1)){
             myRef.child(userslist.get(0).getKey()).child("password").setValue(pass1);
+            myRef.child(userslist.get(0).getKey()).child("age").setValue(age1);
+            myRef.child(userslist.get(0).getKey()).child("email").setValue(email1);
+            myRef.child(userslist.get(0).getKey()).child("name").setValue(name1);
+            myRef.child(userslist.get(0).getKey()).child("female").setValue(female1);
+
+            Toast.makeText(getActivity(), "your profile is updated.",Toast.LENGTH_SHORT).show();
 
         }
         else{
-            Toast.makeText(getActivity(), "Authentication failed.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "invalid password .",Toast.LENGTH_SHORT).show();
         }
 
 
@@ -233,15 +239,6 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
                 }
             }
         });*/
-
-
-
-        myRef.child(userslist.get(0).getKey()).child("age").setValue(age1);
-        myRef.child(userslist.get(0).getKey()).child("email").setValue(email1);
-        myRef.child(userslist.get(0).getKey()).child("name").setValue(name1);
-        myRef.child(userslist.get(0).getKey()).child("female").setValue(female1);
-
-
     }
     public void mUpdate(String email1,String pass1){
         //mAuth.getCurrentUser().delete();
@@ -325,7 +322,13 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
             }
         }
 
+        profilepic.buildDrawingCache();
+        Bitmap bmap = profilepic.getDrawingCache();
 
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmap.compress(Bitmap.CompressFormat.PNG,100,baos);
+        byte[] arr = baos.toByteArray();
+        this.pic = Base64.encodeToString(arr,Base64.DEFAULT);
         myRef.child(userslist.get(0).getKey()).child("image").setValue(pic);
 
 

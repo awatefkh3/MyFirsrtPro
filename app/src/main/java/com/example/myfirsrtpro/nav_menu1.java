@@ -30,6 +30,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myfirsrtpro.databinding.ActivityNavMenu1Binding;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,9 +48,7 @@ public class nav_menu1 extends AppCompatActivity {
     private TextView userNameTV,userEmailTV;
     private ImageView userImage;
 
-    private String imgStr,emailTVstr,nameTVstr;
-    private Bundle b;
-    private Button btnRefresh;
+    private MenuItem nav_logout;
 
     private static final String TAG = "FIREBASE";
 
@@ -69,10 +68,7 @@ public class nav_menu1 extends AppCompatActivity {
         userEmailTV = findViewById(R.id.userEmailTV);
         userNameTV = findViewById(R.id.userNameTV);
         userImage = findViewById(R.id.userImage);
-
-
-        Intent i = getIntent();
-         b = i.getExtras();
+        nav_logout = findViewById(R.id.nav_logout);
 
 
         binding = ActivityNavMenu1Binding.inflate(getLayoutInflater());
@@ -104,6 +100,13 @@ public class nav_menu1 extends AppCompatActivity {
         TextView nav_user = (TextView) hView.findViewById(R.id.userEmailTV);
         nav_user.setText(email);
 
+        navigationView.getMenu().findItem(R.id.nav_logout).setOnMenuItemClickListener(menuItem -> {
+            logout();
+            Intent i = new Intent(this,WelcomeActivity.class);
+            startActivity(i);
+            return true;
+        });
+
 
 
         //in order to move between fragments
@@ -131,8 +134,16 @@ public class nav_menu1 extends AppCompatActivity {
             }
         });
 
+    }
 
-
+    private void logout() {
+        FirebaseUser user = mFirebaseAuth.getCurrentUser();
+        if (user != null){
+            mFirebaseAuth.signOut();
+            Toast.makeText(this, user.getEmail()+ " Sign out!", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "Sign Out failed!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void loadImage(User user){
@@ -149,26 +160,11 @@ public class nav_menu1 extends AppCompatActivity {
         TextView nav_name = (TextView) hView.findViewById(R.id.userNameTV);
         nav_name.setText(user.getName());
 
-
-
     }
 
-    //todo update profile pic !
     @Override
     protected void onResume() {
         super.onResume();
-
-        if(b!=null){
-            emailTVstr = b.get("emailTV").toString();
-            nameTVstr = b.get("nameTV").toString();
-            imgStr = b.get("strImg").toString();
-            userEmailTV.setText(emailTVstr);
-            userNameTV.setText(nameTVstr);
-            Bitmap bitmp = StringToBitMap(imgStr);
-            userImage.setImageBitmap(bitmp);
-        }
-
-
     }
 
     public Bitmap StringToBitMap(String image){
@@ -209,7 +205,20 @@ public class nav_menu1 extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-
+   /* @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==nav_logout.getItemId()){
+            FirebaseUser user = mFirebaseAuth.getCurrentUser();
+            if (user != null){
+                mFirebaseAuth.signOut();
+                Toast.makeText(this, user.getEmail()+ " Sign out!", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this, "Sign Out failed!", Toast.LENGTH_SHORT).show();
+            }
+        }
+        return true;
+    }
+    */
 
 
 }

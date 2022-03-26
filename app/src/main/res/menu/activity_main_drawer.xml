@@ -41,67 +41,17 @@
         </item>
     </group>
 
-    <!--<group android:checkableBehavior="single">
-        <item android:title="Reminders">
-            <menu>
-                <item
-                    android:id="@+id/reminder_menu"
-                    android:icon="@drawable/ic_baseline_notifications_24"
-                    android:title="Set new reminder" />
-                <item
-                    android:id="@+id/nav_reminders"
-                    android:icon="@drawable/reminder_icon"
-                    android:title="All reminders" />
-            </menu>
-        </item>
-    </group>-->
-
-
-   <!-- <group android:checkableBehavior="single">
-        <item android:title="Alarms">
-            <menu>
-                <item
-                    android:id="@+id/nav_editAlarm"
-                    android:icon="@drawable/ic_baseline_add_alarm_24"
-                    android:title="Set new alarm" />
-              <item
-                    android:id="@+id/nav_alarms"
-                    android:icon="@drawable/alarm_icon"
-                    android:title="All alarms" />
-
-            </menu>
-        </item>
-    </group>-->
-
-
-<!--    <group android:checkableBehavior="single">-->
-<!--        <item android:title="Period" android:id="@+id/periodMenu">-->
-<!--            <menu>-->
-<!--                <item-->
-<!--                    android:id="@+id/currentPeriod_menu"-->
-<!--                    android:icon="@drawable/ic_baseline_add_circle_24"-->
-<!--                    android:title="Add Current Period" />-->
-<!--                <item-->
-<!--                    android:id="@+id/nav_periods"-->
-<!--                    android:icon="@drawable/ic_baseline_list_alt_24"-->
-<!--                    android:title="All periods" />-->
-<!--                <item-->
-<!--                    android:id="@+id/nextPeriod_menu"-->
-<!--                    android:icon="@drawable/ic_baseline_next_plan_24"-->
-<!--                    android:title="Next Period Prediction" />-->
-<!--            </menu>-->
-<!--        </item>-->
-<!--    </group>-->
-
     <group android:checkableBehavior="single">
         <item android:title="profile">
             <menu>
-                <item android:id="@+id/nav_logout"
-                    android:icon="@drawable/logout_icon"
-                    android:title="Log Out"/>
                 <item android:id="@+id/nav_propic"
                     android:icon="@drawable/ic_baseline_person_24"
                     android:title="Edit Profile"/>
+
+                <item android:id="@+id/nav_logout"
+                    android:icon="@drawable/logout_icon"
+                    android:title="Log Out" />
+
             </menu>
         </item>
     </group>
