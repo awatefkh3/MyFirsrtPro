@@ -1,61 +1,109 @@
 package com.example.myfirsrtpro;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Calendar;
 
-/*
-public class EventEditActivity extends AppCompatActivity {
+public class EventEditActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText eventNameET;
-    private TextView eventDateTV ,eventTimeTV;
+
+    private String myHour;
+    private String myMinute;
+    private String mySecond;
+    private String myMonth;
+    private String myYear;
+    private String myDay;
+
     private LocalTime time;
-    private DatePickerDialog datePickerDialog;
-    private Button dateButton;
-    private TimePickerDialog timePickerDialog;
-    private Button timeButton;
-    private ArrayList<Event> eventList;
+    private ArrayList<Event> firebaseEvents;
+
+    EditText editTextEventName;
+    TextView textViewEventDate, textViewEventTime, saveTv;
+
+    //gets instance of authentication project in FB console
+    private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+    //gets the root of the real time DataBase in the FB console
+    private FirebaseDatabase database = FirebaseDatabase.getInstance("https://myfirsrtpro-default-rtdb.europe-west1.firebasedatabase.app/");
+
+    private EventAdapter myAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_edit);
-        initWidgets();
+        setContentView(R.layout.activity_event_activity);
+        //initialize widgets
+
+        editTextEventName = findViewById(R.id.editTextEventName);
+        textViewEventDate = findViewById(R.id.textViewEventDate);
+        textViewEventTime = findViewById(R.id.textViewEventTime);
+        saveTv = findViewById(R.id.textView4);
+
         time = LocalTime.now();
-        eventDateTV.setText("Date: " + CalendarUtils.formattedDate(CalendarUtils.selectedDate));
-        eventTimeTV.setText("Time: " + CalendarUtils.formattedTime(time));
+        textViewEventDate.setText("Date: " + CalendarUtils.formattedDate(CalendarUtils.selectedDate));
+        textViewEventTime.setText("Time: " + CalendarUtils.formattedTime(time));
+
+
+        firebaseEvents = new ArrayList<Event>();
+        myAdapter = new EventAdapter(getApplicationContext(), R.layout.event_cell, firebaseEvents);
+
+        myHour = String.valueOf(time.getHour());
+        myMinute = String.valueOf(time.getMinute());
+        mySecond = String.valueOf(time.getSecond());
+
+
+        myDay = String.valueOf(CalendarUtils.selectedDate.getDayOfMonth());
+        myMonth = String.valueOf(CalendarUtils.selectedDate.getMonth());
+        myYear = String.valueOf(CalendarUtils.selectedDate.getYear());
+
+
+        saveTv.setOnClickListener(this);
     }
 
-
-
-    private void initWidgets() {
-        eventDateTV = findViewById(R.id.eventDateTV);
-        eventNameET = findViewById(R.id.eventNameET);
-        eventTimeTV = findViewById(R.id.eventTimeTV);
-    }
 
     public void saveEventAction(View view) {
-        String eventName = eventNameET.getText().toString();
-        Event newEvent = new Event(eventName, CalendarUtils.selectedDate,time);
-        eventList.add(newEvent);
+
+        String eventName = editTextEventName.getText().toString();
+        // Write a message to the database
+        String UID = mFirebaseAuth.getUid();
+        //build a ref for user related data in real time DataBase using user id
+        //getReference returns root - the path is users / all (for me )
+        DatabaseReference myRef = database.getReference("events/" + UID);
+
+        //adds an item to the FB under the reference specified
+        //building objects to my date and time classes
+        MyTime myTime1 = new MyTime(myHour, myMinute, mySecond);
+        MyDate myDate1 = new MyDate(myDay, myMonth, myYear);
+        String myDate1Str = myDate1.getDay() + "/" + myDate1.getMonth() + "/" + myDate1.getYear();
+        String myTime1Str = myTime1.getHour() + ":" + myTime1.getMinute() + ":" + myTime1.getSecond();
+        Event event1 = new Event(myTime1Str, myDate1Str, eventName);
+        String key = myRef.push().getKey();
+        myRef = database.getReference("events/" + UID + "/" + key);
+        event1.setKey(key);
+
+        myRef.setValue(event1); //push the object to the firebase data sets
+        firebaseEvents.add(event1);
+        myAdapter.notifyDataSetChanged();
+
         finish();
+
+
     }
 
 
-*/
-//}
-//todo delete this
+        @Override
+        public void onClick (View view){
+            saveEventAction(view);
+        }
+    }
+

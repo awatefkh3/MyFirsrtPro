@@ -17,7 +17,6 @@ import android.widget.TextView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.example.myfirsrtpro.ui.monthly.MonthlyFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -60,7 +59,6 @@ public class SignUpActivity extends AppCompatActivity implements  DialogInterfac
     }
 
     public void submit(View view){
-        //Intent intent = new Intent(this,MainActivity.class);
         exist = true;
         if(!Patterns.EMAIL_ADDRESS.matcher(editTextEmailSignUp.getText().toString()).find()){
             validEmail.setText("Invalid Email");
@@ -74,7 +72,6 @@ public class SignUpActivity extends AppCompatActivity implements  DialogInterfac
             exist = false;
         }
         if(exist && !editTextEmailSignUp.getText().toString().equals("") && validatePassword1(editTextPasswordSignUp.getText().toString()) && Patterns.EMAIL_ADDRESS.matcher(editTextEmailSignUp.getText().toString()).find()){
-            //intent.putExtra("email",editTextEmailSignUp.getText().toString());
             signUp(editTextEmailSignUp.getText().toString(),editTextPasswordSignUp.getText().toString());
 
 
@@ -160,10 +157,8 @@ public class SignUpActivity extends AppCompatActivity implements  DialogInterfac
                             user1.setKey(key);
 
                             myRef.setValue(user1); //push the object to the firebase data set
-                            /*firebaseEvents.add(event1);
-                            myAdapter.notifyDataSetChanged();*/
 
-                            Intent i = new Intent(SignUpActivity.this, nav_menu1.class);
+                            Intent i = new Intent(SignUpActivity.this, nav_menu.class);
                             startActivity(i);
 
                         } else {
@@ -192,7 +187,7 @@ public class SignUpActivity extends AppCompatActivity implements  DialogInterfac
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Are you sure ? this will take you back to the first page");
+        builder.setMessage("Are you sure ? this will Discard the changes");
         builder.setCancelable(false);
         builder.setPositiveButton("yes", this);
         builder.setNegativeButton("No",this);

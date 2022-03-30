@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -21,8 +20,6 @@ import com.example.myfirsrtpro.CalendarAdapter;
 import com.example.myfirsrtpro.CalendarUtils;
 //import com.example.myfirsrtpro.Event;
 //import com.example.myfirsrtpro.EventAdapter;
-import com.example.myfirsrtpro.FireBaseEvent;
-import com.example.myfirsrtpro.FireBaseEventAdapter;
 import com.example.myfirsrtpro.R;
 
 import com.example.myfirsrtpro.databinding.FragmentWeeklyBinding;
@@ -48,9 +45,7 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
 
     //accessing the events list view
     //the object for the adapter connecting the data to the view
-    //private FireBaseEventAdapter myEventAdapter;
     //object containing the items to be displayed - Data
-    //private ArrayList<FireBaseEvent> eventlist;
 
 
 
@@ -71,7 +66,7 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
 
         calendarRecyclerView = root.findViewById(R.id.calendarRecyclerView);
         monthYearText = root.findViewById(R.id.monthYearTV);
-        eventListView = root.findViewById(R.id.eventListView);
+        //eventListView = root.findViewById(R.id.eventListView);
 
         preButtonWeek = root.findViewById(R.id.preButtonWeek);
         nxtButtonWeek = root.findViewById(R.id.nxtButtonWeek);
@@ -80,39 +75,8 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
         nxtButtonWeek.setOnClickListener(this);
         preButtonWeek.setOnClickListener(this);
 
-        //two names for the same id !!
-        //myEventsListView = root.findViewById(R.id.eventListView);
-
-        //eventlist = new ArrayList<FireBaseEvent>();
-        //connect adapter with data
-        //this was context
-        //myEventAdapter = new FireBaseEventAdapter(getContext().getApplicationContext(),R.layout.event_cell,eventlist);
-
-
-        //connect adapter with view
-        //eventListView.setAdapter(myEventAdapter);
-
-        //connects click listener to items in the list
-        /*myEventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-            }
-        });
-        myEventsListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                myRef.child("users/").removeValue();
-                Event.eventList.remove(i);
-                myEventAdapter.notifyDataSetChanged();
-                return false;
-            }
-        });
-
-*/
 
         setWeekView();
-        //setEventAdapter();
         return root;
 
     }
@@ -144,32 +108,6 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
         //setEventAdapter();
     }
 
-    /*private void setEventAdapter() {
-        ArrayList<FireBaseEvent> dailyEvents = eventsForDate(CalendarUtils.selectedDate,eventlist);
-        //this was context
-        FireBaseEventAdapter eventAdapter = new FireBaseEventAdapter(getContext().getApplicationContext(),dailyEvents);
-
-        eventListView.setAdapter(eventAdapter);
-    }
-
-    //todo this need to read from the data base ! --> events from the week *
-    public  ArrayList<FireBaseEvent> eventsForDate(LocalDate date,ArrayList<FireBaseEvent> eventList){
-        ArrayList<FireBaseEvent> events = new ArrayList<>();
-
-        for(FireBaseEvent event : eventList){
-            if(event.getDate().toString().equals(date.toString()){
-                events.add(event);
-            }
-        }
-
-        return events;
-    }*/
-
-    /*public String toString(LocalDate date){
-        return return ""+date.getDayOfMonth()+"/"+date.getMonth()+"/"+date.getYear();
-    }
-*/
-
     public void onItemClick(int position, LocalDate date) {
         CalendarUtils.selectedDate = date;
         setWeekView();
@@ -192,12 +130,4 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
 
 
 }
-//todo: 0.rearrange the ui thing
-//todo: 1.delete event from database. *
-//todo: 2.add done checkbox to the event. *
-//todo: 3.delete activity layouts except:arrayList,eventActicity2,login,signup,nav_menu1,appbarnavmenu1,calendar_cell,contentnavmenu1,event_cell,all fragments except reminder,header,navheadernavmenu1,newmenu?
-//todo: 4.delete drawables that are not in use.
-//todo: 5.rename the project and the eventActicity2.
-//todo: 6.design! *
-//todo: 7.rearrange colors,strings,delete all commented/not used code/save it somewhere else.
 

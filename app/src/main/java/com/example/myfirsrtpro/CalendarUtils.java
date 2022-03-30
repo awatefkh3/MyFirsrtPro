@@ -51,10 +51,6 @@ public class CalendarUtils {
         return time.format(formatter);
     }
 
-    public static String formattedShortTime(LocalTime time){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        return time.format(formatter);
-    }
 
 
     public static ArrayList<LocalDate> daysInWeekArray(LocalDate selectedDate) {

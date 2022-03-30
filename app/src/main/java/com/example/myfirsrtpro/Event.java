@@ -1,84 +1,71 @@
 package com.example.myfirsrtpro;
 
-import android.text.format.Time;
+import android.icu.util.IndianCalendar;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 
-//public class Event {
-
-    /*private String name;
-    //private LocalDate date;
-    //private LocalTime time;
-    public static ArrayList<Event> eventList = new ArrayList<>();
+public class Event {
 
 
-    //private Date date1;
-    //private Time time1;
+    private String time;
+    private String date;
+    private String name;
+    private String key;
+    private boolean done;
 
 
-    *//*public Event(LocalTime time){
-        this.time = LocalTime.now();
-    }
-
-
-    public Event(String name, LocalDate date, LocalTime time) {
-        this.name = name;
-        this.date = date;
+    public Event(String time, String date, String name) {
         this.time = time;
-    }
-*//*
-    public static ArrayList<Event> eventsForDate(LocalDate date){
-        ArrayList<Event> events = new ArrayList<>();
-
-        for(Event event : eventList){
-            if(event.getDate().equals(date))
-                events.add(event);
-        }
-
-        return events;
+        this.date = date;
+        this.name = name;
+        this.done = false;
     }
 
-    *//*public static ArrayList<Event> eventsForDateAndTime(LocalDate date,LocalTime time){
-        ArrayList<Event> events = new ArrayList<>();
+    public Event(){
 
-        for(Event event : eventList){
-            int eventHour = event.time.getHour();
-            int cellHour  = time.getHour();
-            if(event.getDate().equals(date) && eventHour==cellHour)
-                events.add(event);
-        }
-
-        return events;
-    }*//*
+    }
 
     public String getName() {
-        return name;
+        return this.name;
     }
+
 
     public void setName(String name) {
         this.name = name;
     }
 
-    *//*public LocalDate getDate() {
-        return date;
+    public String getTime(){
+        return this.time;
+        }
+
+    public void setTime(String time){
+        this.time = time;
     }
 
-    public void setDate(LocalDate date) {
+    public String getDate(){
+        return this.date;
+    }
+
+    public void setDate(String date){
         this.date = date;
     }
 
-    public LocalTime getTime() {
-        return time;
+
+    public String getKey() {
+        return key;
     }
 
-    public void setTime(LocalTime time) {
-        this.time = time;
-    }*//*
+    public void setKey(String key) {
+        this.key = key;
+    }
 
+    public boolean isDone() {
+        return this.done;
+    }
 
+    public void setDone(boolean done) {
+        this.done = done;
+    }
 }
-*/
-//todo delete this

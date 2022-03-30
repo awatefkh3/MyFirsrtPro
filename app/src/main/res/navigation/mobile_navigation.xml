@@ -7,31 +7,26 @@
 
     <fragment
         android:id="@+id/nav_camera"
-        android:name="com.example.myfirsrtpro.ui.camera.CameraFragment"
+        android:name="com.example.myfirsrtpro.ui.CameraFragment"
         android:label="@string/menu_camera"
         tools:layout="@layout/fragment_camera" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.myfirsrtpro.ui.gallery.GalleryFragment"
+        android:name="com.example.myfirsrtpro.ui.GalleryFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
-   <!-- <fragment
-        android:id="@+id/reminder_menu"
-        android:name="com.example.myfirsrtpro.ui.reminder.ReminderFragment"
-        android:label="@string/menu_reminder"
-        tools:layout="@layout/fragment_reminder" />
--->
+
     <fragment
         android:id="@+id/about_menu"
-        android:name="com.example.myfirsrtpro.ui.about.AboutFragment"
+        android:name="com.example.myfirsrtpro.ui.AboutFragment"
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_about" />
 
     <fragment
         android:id="@+id/nav_monthlyCal"
-        android:name="com.example.myfirsrtpro.ui.monthly.MonthlyFragment"
+        android:name="com.example.myfirsrtpro.ui.MonthlyFragment"
         android:label="Monthly Calendar"
         tools:layout="@layout/fragment_monthly" />
 
@@ -53,37 +48,10 @@
         android:label="Events List"
         tools:layout="@layout/fragment_events" />
 
-    <!--<fragment
-        android:id="@+id/nav_logout"
-        android:name="com.example.myfirsrtpro.ui.LogOutFragment"
-        android:label="Log Out"
-        tools:layout="@layout/fragment_logout"/>-->
-
     <fragment
         android:id="@+id/nav_propic"
         android:name="com.example.myfirsrtpro.ui.EditProfileFragment"
         android:label="Edit Your Profile"
         tools:layout="@layout/fragment_editprofile"/>
-
-
-
-
-
-    <!--<fragment
-        android:id="@+id/nav_editAlarm"
-        android:name="com.example.myfirsrtpro.ui.MyAlarmFragment"
-        android:label="Alarm"
-        tools:layout="@layout/fragment_alarm"/>
--->
-    <!--<fragment
-        android:id="@+id/nav_alarms"
-        android:name="com.example.myfirsrtpro.ui.AlarmsFragment"
-        android:label="Alarm"
-        tools:layout="@layout/fragment_alarms"/>-->
-
-
-
-
-
 
 </navigation>

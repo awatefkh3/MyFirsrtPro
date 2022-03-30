@@ -1,4 +1,4 @@
-package com.example.myfirsrtpro.ui.gallery;
+package com.example.myfirsrtpro.ui;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -27,7 +27,6 @@ import java.io.FileNotFoundException;
 public class GalleryFragment extends Fragment implements View.OnClickListener {
 
     private static final int GALLERY_REQUEST = 1;
-    private GalleryViewModel galleryViewModel;
     private FragmentGalleryBinding binding;
 
 
@@ -43,8 +42,6 @@ public class GalleryFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
 
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -90,4 +87,3 @@ public class GalleryFragment extends Fragment implements View.OnClickListener {
         binding = null;
     }
 }
-//todo use this

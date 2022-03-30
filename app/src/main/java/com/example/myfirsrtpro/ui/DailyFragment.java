@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,26 +13,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myfirsrtpro.CalendarUtils;
 //import com.example.myfirsrtpro.Event;
-import com.example.myfirsrtpro.EventEditActivity2;
+import com.example.myfirsrtpro.EventEditActivity;
 //import com.example.myfirsrtpro.HourAdapter;
 //import com.example.myfirsrtpro.HourEvent;
-import com.example.myfirsrtpro.FireBaseEvent;
-import com.example.myfirsrtpro.FireBaseEventAdapter;
 import com.example.myfirsrtpro.R;
 import com.example.myfirsrtpro.databinding.FragmentDailyBinding;
-import com.example.myfirsrtpro.databinding.FragmentWeeklyBinding;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.format.TextStyle;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 public class DailyFragment extends Fragment implements View.OnClickListener {
@@ -216,7 +203,7 @@ public class DailyFragment extends Fragment implements View.OnClickListener {
     }
 
     public void newEventAction(View view) {
-        startActivity(new Intent(this.getActivity(), EventEditActivity2.class));
+        startActivity(new Intent(this.getActivity(), EventEditActivity.class));
     }
 
     @Override

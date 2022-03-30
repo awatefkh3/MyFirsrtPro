@@ -21,42 +21,15 @@
             android:exported="true" />
 
         <activity
-            android:name=".EventEditActivity2"
+            android:name=".EventEditActivity"
             android:exported="true" />
         <activity
-            android:name=".nav_menu1"
+            android:name=".nav_menu"
             android:exported="true"
             android:label="@string/title_activity_nav_menu1"
             android:theme="@style/Theme.MyFirsrtPro.NoActionBar" />
         <activity
-            android:name=".ReminderActivity"
-            android:exported="true" />
-        <!--<activity
-            android:name=".WeekViewActivity"
-            android:exported="true" />-->
-        <!--<activity
-            android:name=".DailyCalendarActivity"
-            android:exported="true" />-->
-        <activity
-            android:name=".ProfileActivity"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
-        <activity
             android:name=".SignUpActivity"
-            android:exported="true" />
-        <activity
-            android:name=".AboutActivity"
-            android:exported="true" />
-        <!--<activity
-            android:name=".ArrayListActivity"
-            android:exported="true" />-->
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true" />
-        <activity
-            android:name=".MonthViewActivity"
             android:exported="true" />
         <activity
             android:name=".WelcomeActivity"

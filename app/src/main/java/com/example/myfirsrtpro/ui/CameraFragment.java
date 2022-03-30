@@ -1,4 +1,4 @@
-package com.example.myfirsrtpro.ui.camera;
+package com.example.myfirsrtpro.ui;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -35,13 +35,10 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
 
     private ImageView imageProfileView;
 
-    private CameraViewModel cameraViewModel;
     private FragmentCameraBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        cameraViewModel =
-                new ViewModelProvider(this).get(CameraViewModel.class);
 
         binding = FragmentCameraBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -81,4 +78,3 @@ public class CameraFragment extends Fragment implements View.OnClickListener {
 
 
 }
-//todo use this

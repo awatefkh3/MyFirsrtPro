@@ -1,33 +1,19 @@
 package com.example.myfirsrtpro.ui;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.myfirsrtpro.AboutActivity;
 import com.example.myfirsrtpro.CalendarUtils;
-import com.example.myfirsrtpro.EventEditActivity2;
-import com.example.myfirsrtpro.FireBaseEvent;
-import com.example.myfirsrtpro.FireBaseEventAdapter;
-import com.example.myfirsrtpro.MusicService;
-import com.example.myfirsrtpro.ProfileActivity;
+import com.example.myfirsrtpro.Event;
+import com.example.myfirsrtpro.EventAdapter;
 import com.example.myfirsrtpro.R;
-import com.example.myfirsrtpro.databinding.FragmentDailyBinding;
 import com.example.myfirsrtpro.databinding.FragmentEventsBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -37,9 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDate;
-import java.time.format.TextStyle;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class EventsFragment extends Fragment {
 
@@ -47,9 +31,9 @@ public class EventsFragment extends Fragment {
 
     private ListView eventsListView;
 
-    private ArrayList<FireBaseEvent> eventlist;
+    private ArrayList<Event> eventlist;
 
-    private FireBaseEventAdapter myAdapter;
+    private EventAdapter myAdapter;
 
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://myfirsrtpro-default-rtdb.europe-west1.firebasedatabase.app/");
@@ -70,7 +54,7 @@ public class EventsFragment extends Fragment {
 
         //connect listView with adapter+arrayList
         eventlist = new ArrayList<>();
-        myAdapter = new FireBaseEventAdapter(getContext().getApplicationContext(), R.layout.event_cell, eventlist);
+        myAdapter = new EventAdapter(getContext().getApplicationContext(), R.layout.event_cell, eventlist);
 
         String UID = mFirebaseAuth.getUid();
         //build a ref for user related data in real time DataBase using user id
@@ -91,7 +75,7 @@ public class EventsFragment extends Fragment {
         eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                FireBaseEvent event2 = (FireBaseEvent) eventsListView.getItemAtPosition(i);
+                Event event2 = (Event) eventsListView.getItemAtPosition(i);
                 if(!event2.isDone()){
                     myAdapter.checkDone(event2);
                     myRef.child(eventlist.get(i).getKey()).child("done").setValue(true);
@@ -129,7 +113,7 @@ public class EventsFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 myAdapter.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    FireBaseEvent fireBaseEvent = dataSnapshot.getValue(FireBaseEvent.class);
+                    Event fireBaseEvent = dataSnapshot.getValue(Event.class);
                     eventlist.add(fireBaseEvent);
                     myAdapter.notifyDataSetChanged();
                 }

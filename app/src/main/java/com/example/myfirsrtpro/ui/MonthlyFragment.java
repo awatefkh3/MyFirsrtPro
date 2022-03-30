@@ -1,45 +1,45 @@
-package com.example.myfirsrtpro.ui.monthly;
+package com.example.myfirsrtpro.ui;
 
 
 import static com.example.myfirsrtpro.CalendarUtils.daysInMonthArray;
 import static com.example.myfirsrtpro.CalendarUtils.monthYearFromDate;
 
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfirsrtpro.CalendarAdapter;
 import com.example.myfirsrtpro.CalendarUtils;
-import com.example.myfirsrtpro.Item;
 import com.example.myfirsrtpro.NotificationReceiver;
 import com.example.myfirsrtpro.R;
 //import com.example.myfirsrtpro.WeekViewActivity;
 import com.example.myfirsrtpro.databinding.FragmentMonthlyBinding;
-import com.example.myfirsrtpro.ui.WeeklyFragment;
+import com.example.myfirsrtpro.nav_menu;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemListener, View.OnClickListener {
+public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemListener, View.OnClickListener{
 
     private FragmentMonthlyBinding binding;
     private static final int NOTIFICATION_REMINDER_NIGHT = 1;
@@ -87,14 +87,6 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
 
         setMonthView();
 
-//        final TextView textView = binding.textAbout;
-//        aboutViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
-
 
         // Write a message to the database
         String UID  = mFirebaseAuth.getUid();
@@ -103,26 +95,6 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
         //getReference returns root - the path is users / all (for me )
 
 
-        //adds an item to the FB under the reference specified
-        //Item item1 = new Item();
-        //myRef.push().setValue(item1); //put the object
-
-        /*myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //for each,children are the objects
-                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    Item item1 = dataSnapshot.getValue(Item.class);
-                    //list.add(item1);--> add to the arrayList
-                    //myAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
 
         return root;
     }
@@ -162,11 +134,7 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
 
 
     }
-    /*public void WeeklyAction(View view){
-        startActivity(new Intent(this.getActivity(), WeekViewActivity.class));
-    }
 
-*/
     @Override
     public void onClick(View view) {
         switch(view.getId()){
@@ -180,4 +148,5 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
                 break;
         }
     }
+
 }

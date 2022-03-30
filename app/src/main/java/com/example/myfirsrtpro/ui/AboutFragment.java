@@ -1,4 +1,4 @@
-package com.example.myfirsrtpro.ui.about;
+package com.example.myfirsrtpro.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,26 +18,16 @@ import com.example.myfirsrtpro.databinding.FragmentAboutBinding;
 
 
 public class AboutFragment extends Fragment {
-    private AboutViewModel aboutViewModel;
     private FragmentAboutBinding binding;
     private Intent musicIntent;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        aboutViewModel =
-                new ViewModelProvider(this).get(AboutViewModel.class);
 
         binding = FragmentAboutBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-//        final TextView textView = binding.textAbout;
-//        aboutViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
         //this will start the service which will turn on the music
         musicIntent = new Intent(this.getContext(), MusicService.class);
         getContext().startService(musicIntent);
@@ -51,4 +41,3 @@ public class AboutFragment extends Fragment {
         binding = null;
     }
 }
-//todo rearrange this

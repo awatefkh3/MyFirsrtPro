@@ -11,9 +11,6 @@ import android.os.Build;
 
 import androidx.core.app.NotificationManagerCompat;
 
-import com.example.myfirsrtpro.ui.EventsFragment;
-import com.example.myfirsrtpro.ui.MyAlarmFragment;
-
 /**
  * An {@link IntentService} subclass for handling asynchronous task requests in
  * a service on a separate handler thread.
@@ -34,15 +31,13 @@ public class NotificationIntentService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         Notification.Builder noBuilder = new Notification.Builder(this);
-        // TODO : need to change the notification title and content text
         noBuilder.setContentTitle("Welcome!");//notification title
         noBuilder.setContentText("Tap Here To Edit An Event");//notification body text
         noBuilder.setSmallIcon(R.drawable.ic_baseline_ac_unit_24);
 
         //this intent will be pending until the user clicks on the notification
         //and will activate the activity specified in the intent
-        //Intent noIntent1 = new Intent(this,WelcomeActivity.class);
-        Intent noIntent1 = new Intent(this, EventEditActivity2.class);
+        Intent noIntent1 = new Intent(this, EventEditActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this,2,noIntent1,PendingIntent.FLAG_UPDATE_CURRENT);
         noBuilder.setContentIntent(pendingIntent);
 

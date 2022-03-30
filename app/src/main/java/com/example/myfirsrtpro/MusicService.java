@@ -39,4 +39,3 @@ public class MusicService extends Service {
         mediaPlayer.stop();
     }
 }
-//todo put this somewhere and turn it on

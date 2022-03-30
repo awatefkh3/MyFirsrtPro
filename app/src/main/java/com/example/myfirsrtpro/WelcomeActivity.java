@@ -3,9 +3,6 @@ package com.example.myfirsrtpro;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -29,7 +26,6 @@ import java.util.regex.Pattern;
 public class WelcomeActivity extends AppCompatActivity implements View.OnLongClickListener{
 
     //declaring all components
-    //private static final int NOTIFICATION_REMINDER_NIGHT = 1;
     private static final String TAG = "FIREBASE";
     private EditText editTextPassword,editTextEmail;
     private Button buttonLogin;
@@ -41,15 +37,6 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnLongCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-      /* //pending intent waiting for the right time
-        Intent notifyIntent = new Intent(this,NotificationReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast
-                (this, NOTIFICATION_REMINDER_NIGHT, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,  System.currentTimeMillis(),
-                1000 * 60 * 60 * 24, pendingIntent);
-
-*/
 
         //returns a reference to the instance of the project Firebase
         mAuth = FirebaseAuth.getInstance();
@@ -71,7 +58,6 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnLongCli
             editTextPassword.setText(password);
         }
 
-        //String email= getIntent().getStringExtra("email");
     }
 
     //clears the email and password input on long click by user
@@ -84,7 +70,6 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnLongCli
 
     public void login(View view){
 
-        //Intent intent = new Intent(this,MainActivity.class);
         //if the username is not null move to the next page
 
 
@@ -102,8 +87,6 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnLongCli
             editor.commit();
 
             invalidEmailOrPass.setText("");
-            //startActivity(intent);
-            //intent.putExtra("email",editTextEmail.getText().toString());
             login(editTextEmail.getText().toString(),editTextPassword.getText().toString());
 
 
@@ -164,7 +147,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnLongCli
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent i = new Intent(WelcomeActivity.this, nav_menu1.class);
+                            Intent i = new Intent(WelcomeActivity.this, nav_menu.class);
                             startActivity(i);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -187,4 +170,3 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnLongCli
 
 
 }
-//todo delete this
