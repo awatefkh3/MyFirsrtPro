@@ -1,21 +1,21 @@
-package com.example.myfirsrtpro;
+    package com.example.myfirsrtpro;
 
 
-import androidx.appcompat.app.AppCompatActivity;
+    import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
+    import android.os.Bundle;
+    import android.view.View;
+    import android.widget.EditText;
+    import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+    import com.google.firebase.auth.FirebaseAuth;
+    import com.google.firebase.database.DatabaseReference;
+    import com.google.firebase.database.FirebaseDatabase;
 
-import java.time.LocalTime;
-import java.util.ArrayList;
+    import java.time.LocalTime;
+    import java.util.ArrayList;
 
-public class EventEditActivity extends AppCompatActivity implements View.OnClickListener {
+    public class EventEditActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private String myHour;
@@ -28,8 +28,8 @@ public class EventEditActivity extends AppCompatActivity implements View.OnClick
     private LocalTime time;
     private ArrayList<Event> firebaseEvents;
 
-    EditText editTextEventName;
-    TextView textViewEventDate, textViewEventTime, saveTv;
+    private EditText editTextEventName;
+    private TextView textViewEventDate, textViewEventTime, saveTv;
 
     //gets instance of authentication project in FB console
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
@@ -71,39 +71,32 @@ public class EventEditActivity extends AppCompatActivity implements View.OnClick
     }
 
 
-    public void saveEventAction(View view) {
-
-        String eventName = editTextEventName.getText().toString();
-        // Write a message to the database
-        String UID = mFirebaseAuth.getUid();
-        //build a ref for user related data in real time DataBase using user id
-        //getReference returns root - the path is users / all (for me )
-        DatabaseReference myRef = database.getReference("events/" + UID);
-
-        //adds an item to the FB under the reference specified
-        //building objects to my date and time classes
-        MyTime myTime1 = new MyTime(myHour, myMinute, mySecond);
-        MyDate myDate1 = new MyDate(myDay, myMonth, myYear);
-        String myDate1Str = myDate1.getDay() + "/" + myDate1.getMonth() + "/" + myDate1.getYear();
-        String myTime1Str = myTime1.getHour() + ":" + myTime1.getMinute() + ":" + myTime1.getSecond();
-        Event event1 = new Event(myTime1Str, myDate1Str, eventName);
-        String key = myRef.push().getKey();
-        myRef = database.getReference("events/" + UID + "/" + key);
-        event1.setKey(key);
-
-        myRef.setValue(event1); //push the object to the firebase data sets
-        firebaseEvents.add(event1);
-        myAdapter.notifyDataSetChanged();
-
-        finish();
-
-
-    }
-
 
         @Override
         public void onClick (View view){
-            saveEventAction(view);
+            String eventName = editTextEventName.getText().toString();
+            // Write a message to the database
+            String UID = mFirebaseAuth.getUid();
+            //build a ref for user related data in real time DataBase using user id
+            //getReference returns root - the path is users / all (for me )
+            DatabaseReference myRef = database.getReference("events/" + UID);
+            //building objects to my date and time classes
+            MyTime myTime1 = new MyTime(myHour, myMinute, mySecond);
+            MyDate myDate1 = new MyDate(myDay, myMonth, myYear);
+            String myDate1Str = myDate1.getDay() + "/" + myDate1.getMonth() + "/" + myDate1.getYear();
+            String myTime1Str = myTime1.getHour() + ":" + myTime1.getMinute() + ":" + myTime1.getSecond();
+            Event event1 = new Event(myTime1Str, myDate1Str, eventName);
+            //adds an item to the FB under the reference specified
+            String key = myRef.push().getKey();
+            myRef = database.getReference("events/" + UID + "/" + key);
+            event1.setKey(key);
+            //push the object to the firebase data sets
+            myRef.setValue(event1);
+            firebaseEvents.add(event1);
+            myAdapter.notifyDataSetChanged();
+
+            finish();
+
         }
     }
 
