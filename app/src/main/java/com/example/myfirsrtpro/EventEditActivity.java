@@ -50,7 +50,7 @@
         saveTv = findViewById(R.id.textView4);
 
         time = LocalTime.now();
-        textViewEventDate.setText("Date: " + CalendarUtils.formattedDate(CalendarUtils.selectedDate));
+        textViewEventDate.setText("Date: " + CalendarUtils.monthYearFromDate(CalendarUtils.selectedDate));
         textViewEventTime.setText("Time: " + CalendarUtils.formattedTime(time));
 
 

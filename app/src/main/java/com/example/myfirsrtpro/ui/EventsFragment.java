@@ -27,6 +27,7 @@ import java.util.ArrayList;
 
 public class EventsFragment extends Fragment {
 
+
     private FragmentEventsBinding binding;
 
     private ListView eventsListView;
@@ -62,29 +63,34 @@ public class EventsFragment extends Fragment {
 
         //connect adapter with view
         eventsListView.setAdapter(myAdapter);
+
+
+        // long click on event listener
         eventsListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            //responding
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                myRef.child(eventlist.get(i).getKey()).removeValue();
-                eventlist.remove(i);
-                myAdapter.notifyDataSetChanged();
+                myRef.child(eventlist.get(i).getKey()).removeValue(); //removing the event from the firebase
+                myAdapter.notifyDataSetChanged(); //notifying and updating the adapter about the change
                 return false;
             }
         });
 
+        // click on event listener
         eventsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            //responding
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Event event2 = (Event) eventsListView.getItemAtPosition(i);
+                Event event2 = (Event) eventsListView.getItemAtPosition(i); //getting the event from the list
+                //if the event is not done yet --> change to done
                 if(!event2.isDone()){
-                    myAdapter.checkDone(event2);
                     myRef.child(eventlist.get(i).getKey()).child("done").setValue(true);
                 }
+                //if the event is done --> change to not done
                 else if(event2.isDone()){
-                    myAdapter.undoCheckDone(event2);
                     myRef.child(eventlist.get(i).getKey()).child("done").setValue(false);
                 }
-                myAdapter.notifyDataSetChanged();
+                myAdapter.notifyDataSetChanged();//notifying and updating the adapter about the change
             }
         });
 //
@@ -111,11 +117,11 @@ public class EventsFragment extends Fragment {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                myAdapter.clear();
+                myAdapter.clear(); //clearing the adapter to avoid mistaken results
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Event fireBaseEvent = dataSnapshot.getValue(Event.class);
-                    eventlist.add(fireBaseEvent);
-                    myAdapter.notifyDataSetChanged();
+                    eventlist.add(fireBaseEvent); //adds the event to the events list that reflects the events in the firebase
+                    myAdapter.notifyDataSetChanged(); //notifying the adapter about the change --> updating it
                 }
             }
 
@@ -128,22 +134,6 @@ public class EventsFragment extends Fragment {
 
 
 
-        /*myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //for each,children are the objects
-                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-
-                    myAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-*/
     }
 
 

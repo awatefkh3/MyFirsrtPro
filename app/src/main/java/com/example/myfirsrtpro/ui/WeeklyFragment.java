@@ -18,8 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfirsrtpro.CalendarAdapter;
 import com.example.myfirsrtpro.CalendarUtils;
-//import com.example.myfirsrtpro.Event;
-//import com.example.myfirsrtpro.EventAdapter;
 import com.example.myfirsrtpro.R;
 
 import com.example.myfirsrtpro.databinding.FragmentWeeklyBinding;
@@ -66,7 +64,6 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
 
         calendarRecyclerView = root.findViewById(R.id.calendarRecyclerView);
         monthYearText = root.findViewById(R.id.monthYearTV);
-        //eventListView = root.findViewById(R.id.eventListView);
 
         preButtonWeek = root.findViewById(R.id.preButtonWeek);
         nxtButtonWeek = root.findViewById(R.id.nxtButtonWeek);
@@ -81,12 +78,12 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
 
     }
 
-    public void nextWeekAction(View view) {
+    public void nextWeekAction() {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate.plusWeeks(1);
         setWeekView();
     }
 
-    public void previousWeekAction(View view) {
+    public void previousWeekAction() {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusWeeks(1);
         setWeekView();
     }
@@ -105,7 +102,6 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
     @Override
     public void onResume() {
         super.onResume();
-        //setEventAdapter();
     }
 
     public void onItemClick(int position, LocalDate date) {
@@ -118,10 +114,10 @@ public class WeeklyFragment extends Fragment implements CalendarAdapter.OnItemLi
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.nxtButtonWeek:
-                nextWeekAction(nxtButtonWeek);
+                nextWeekAction();
                 break;
             case R.id.preButtonWeek:
-                previousWeekAction(preButtonWeek);
+                previousWeekAction();
                 break;
             default:
                 break;

@@ -5,19 +5,15 @@ import static com.example.myfirsrtpro.CalendarUtils.daysInMonthArray;
 import static com.example.myfirsrtpro.CalendarUtils.monthYearFromDate;
 
 import android.app.AlarmManager;
-import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -28,11 +24,8 @@ import com.example.myfirsrtpro.CalendarAdapter;
 import com.example.myfirsrtpro.CalendarUtils;
 import com.example.myfirsrtpro.NotificationReceiver;
 import com.example.myfirsrtpro.R;
-//import com.example.myfirsrtpro.WeekViewActivity;
 import com.example.myfirsrtpro.databinding.FragmentMonthlyBinding;
-import com.example.myfirsrtpro.nav_menu;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -116,12 +109,12 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
     }
 
 
-    public void previousMonthAction(View view) {
+    public void previousMonthAction() {
         CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusMonths(1);
         setMonthView();
     }
 
-    public void nextMonthAction(View view) {
+    public void nextMonthAction() {
         CalendarUtils.selectedDate  = CalendarUtils.selectedDate.plusMonths(1);
         setMonthView();
    }
@@ -139,10 +132,10 @@ public class MonthlyFragment extends Fragment implements CalendarAdapter.OnItemL
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.nxtButton:
-                nextMonthAction(nxtButton);
+                nextMonthAction();
                 break;
             case R.id.preButton:
-                previousMonthAction(preButton);
+                previousMonthAction();
                 break;
             default:
                 break;

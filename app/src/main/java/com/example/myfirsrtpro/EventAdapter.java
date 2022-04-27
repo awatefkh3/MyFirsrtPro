@@ -1,7 +1,6 @@
 package com.example.myfirsrtpro;
 
 import android.content.Context;
-import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,57 +12,51 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-public class EventAdapter extends ArrayAdapter<Event>{
+public class EventAdapter extends ArrayAdapter<Event> {
 
-        private TextView eventCellTV,eventCellTime,eventCellDate;
-        private Context context;
-        private  int resource;
+    private TextView eventCellTV, eventCellTime, eventCellDate, yesNo;
+    private Context context;
+    private int resource;
 
-        public EventAdapter(@NonNull Context context, int resource, List<Event> events ) {
-            super(context, resource, events);
-            this.context = context;
-            this.resource = resource;
-        }
-
-        public EventAdapter(@NonNull Context context, List<Event> events ) {
-            super(context, 0, events);
-        }
-
-
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            Event event  = (Event)getItem(position);
-
-            if(convertView == null){
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.event_cell,parent,false);
-            }
-
-             eventCellTV = convertView.findViewById(R.id.eventCellTV);
-             eventCellTime = convertView.findViewById(R.id.eventCellTime);
-             eventCellDate = convertView.findViewById(R.id.eventCellDate);
-
-            eventCellTV.setText(event.getName());
-            eventCellTime.setText(event.getTime());
-            eventCellDate.setText(event.getDate());
-
-
-            return convertView;
-        }
-
-    public void checkDone(Event fireBaseEvent){
-            fireBaseEvent.setDone(true);
-            eventCellTV.setPaintFlags(eventCellTV.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            eventCellDate.setPaintFlags(eventCellDate.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            eventCellTime.setPaintFlags(eventCellTime.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+    public EventAdapter(@NonNull Context context, int resource, List<Event> events) {
+        super(context, resource, events);
+        this.context = context;
+        this.resource = resource;
     }
 
-    public void undoCheckDone(Event fireBaseEvent){
-            fireBaseEvent.setDone(false);
-            eventCellTV.setPaintFlags(eventCellTV.getPaintFlags() & ( ~ Paint.STRIKE_THRU_TEXT_FLAG));
-            eventCellDate.setPaintFlags(eventCellDate.getPaintFlags() & ( ~ Paint.STRIKE_THRU_TEXT_FLAG));
-            eventCellTime.setPaintFlags(eventCellTime.getPaintFlags()  & ( ~ Paint.STRIKE_THRU_TEXT_FLAG));
-    }
+    public EventAdapter(@NonNull Context context, List<Event> events) {
+        super(context, 0, events);
     }
 
+
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        Event event = (Event) getItem(position);
+
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.event_cell, parent, false);
+        }
+
+        eventCellTV = convertView.findViewById(R.id.eventCellTV);
+        eventCellTime = convertView.findViewById(R.id.eventCellTime);
+        eventCellDate = convertView.findViewById(R.id.eventCellDate);
+        yesNo = convertView.findViewById(R.id.yesNo);
+
+        eventCellTV.setText(event.getName());
+        eventCellTime.setText(event.getTime());
+        eventCellDate.setText(event.getDate());
+        String c = " ";
+        if(event.isDone()){
+             c = "v";
+        }
+        else{
+            c = "x";
+        }
+        yesNo.setText(c);
+
+        return convertView;
+    }
+
+}
 

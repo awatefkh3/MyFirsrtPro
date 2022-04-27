@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,9 +24,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myfirsrtpro.R;
 import com.example.myfirsrtpro.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -62,7 +58,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
 
     //authentication
     private static final String TAG = "FIREBASE";
-    private FirebaseAuth mAuth;
+
 
 
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
@@ -99,15 +95,13 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         userslist = new ArrayList<>();//each UID has only one user !
 
 
-        mAuth = FirebaseAuth.getInstance();
-
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    User user = dataSnapshot.child("").getValue(User.class);
-                    userslist.add(user);
-                    showUserProfile(user);
+                    User user = dataSnapshot.child("").getValue(User.class); //gets the user
+                    userslist.add(user); // adds the user to the users list
+                    showUserProfile(user); // calling the method that shows the users information
                 }
             }
 

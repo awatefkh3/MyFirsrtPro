@@ -11,14 +11,7 @@ import android.os.Build;
 
 import androidx.core.app.NotificationManagerCompat;
 
-/**
- * An {@link IntentService} subclass for handling asynchronous task requests in
- * a service on a separate handler thread.
- * <p>
- * <p>
- * TODO: Customize class - update intent actions, extra parameters and static
- * helper methods.
- */
+
 public class NotificationIntentService extends IntentService {
     //this is the channel id for notification management uses
     private static final int NOTIFICATION_ID = 3;

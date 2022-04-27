@@ -131,14 +131,6 @@ public class SignUpActivity extends AppCompatActivity implements  DialogInterfac
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            //gets instance of authentication project in FB console
-                            FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
-                            //gets the root of the real time DataBase in the FB console
-                            FirebaseDatabase database = FirebaseDatabase.getInstance("https://myfirsrtpro-default-rtdb.europe-west1.firebasedatabase.app/");
-                            String UID = mFirebaseAuth.getUid();
-                            //build a ref for user related data in real time DataBase using user id
-                            //getReference returns root - the path is users / all (for me )
-                            DatabaseReference myRef = database.getReference("users/" + UID);
 
                             String email1 =String.valueOf(editTextEmailSignUp.getText());
                             String password1 =String.valueOf(editTextPasswordSignUp.getText());
@@ -151,12 +143,26 @@ public class SignUpActivity extends AppCompatActivity implements  DialogInterfac
                             else if(MaleRadioButton.isChecked()){
                                 female1 = false;
                             }
+
+
                             User user1 = new User(email1,password1,name1,age1,female1);
+
+                            //gets instance of authentication project in FB console
+                            FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+                            //gets the root of the real time DataBase in the FB console
+                            FirebaseDatabase database = FirebaseDatabase.getInstance("https://myfirsrtpro-default-rtdb.europe-west1.firebasedatabase.app/");
+                            //getting the id of the users
+                            String UID = mFirebaseAuth.getUid();
+                            //build a ref for user related data in real time DataBase using user id
+                            //getReference returns root - the path is users / all (for me )
+                            DatabaseReference myRef = database.getReference("users/" + UID);
+                            //getting the key of the
                             String key = myRef.push().getKey();
+                            //reference of the the specified  user
                             myRef = database.getReference("users/" + UID + "/" + key);
                             user1.setKey(key);
-
-                            myRef.setValue(user1); //push the object to the firebase data set
+                            //push the object to the firebase data set
+                            myRef.setValue(user1);
 
                             Intent i = new Intent(SignUpActivity.this, nav_menu.class);
                             startActivity(i);
@@ -174,25 +180,29 @@ public class SignUpActivity extends AppCompatActivity implements  DialogInterfac
     }
 
     @Override
+    //respond to the different buttons being clicked
     public void onClick(DialogInterface dialogInterface, int i) {
+        //when the positive button is clicked
         if(i == dialogInterface.BUTTON_POSITIVE){
-            super.onBackPressed();
-            dialogInterface.cancel();
+            super.onBackPressed(); //calling the onBackPressed method
+            dialogInterface.cancel(); //canceling
         }
+        //when the negative button is clicked
         if(i == dialogInterface.BUTTON_NEGATIVE){
-            dialogInterface.cancel();
+            dialogInterface.cancel(); //canceling
         }
     }
 
     @Override
+    // overriding the respond to the back button being pressed
     public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Are you sure ? this will Discard the changes");
-        builder.setCancelable(false);
-        builder.setPositiveButton("yes", this);
-        builder.setNegativeButton("No",this);
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this); //building the dialog
+        builder.setMessage("Are you sure ? this will Discard the changes"); //setting the dialog's message
+        builder.setCancelable(false); //setting that the dialog is not cancelable
+        builder.setPositiveButton("yes", this); //setting the text and listener to the positive button
+        builder.setNegativeButton("No",this); //setting the text and listener to the negative button
+        AlertDialog dialog = builder.create(); //creating the dialog
+        dialog.show(); // displaying the dialog
     }
 
 

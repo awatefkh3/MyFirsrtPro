@@ -38,6 +38,7 @@ public class CalendarUtils {
         return date.format(formatter);
     }
 
+
     public static String monthDayFromDate(LocalDate date){
         if(date != null) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d");
@@ -79,9 +80,4 @@ public class CalendarUtils {
         return null;
     }
 
-
-    public static String formattedDate(LocalDate date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
-        return date.format(formatter);
-    }
 }

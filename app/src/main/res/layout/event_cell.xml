@@ -38,6 +38,18 @@
             android:textColor="@color/black"
             android:textSize="15sp" />
 
+        <TextView
+            android:id="@+id/yesNo"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="*"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:gravity="center"/>
+
+
+
+
 
     </LinearLayout>
 

@@ -1,13 +1,10 @@
 package com.example.myfirsrtpro;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
-import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
@@ -16,8 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myfirsrtpro.databinding.ActivityNavMenuBinding;
-import com.example.myfirsrtpro.ui.MonthlyFragment;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -106,9 +101,9 @@ public class nav_menu extends AppCompatActivity  {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    User user = dataSnapshot.child("").getValue(User.class);
-                    userslist.add(user);
-                    loadImage(user);
+                    User user = dataSnapshot.child("").getValue(User.class); //gets the user
+                    userslist.add(user);// adds the user to the users list
+                    loadImage(user);// calling the method that loads the user image
                 }
             }
 
